@@ -25,7 +25,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-spacegrey)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -54,3 +54,24 @@
 ;; they are implemented.
 (after! lsp-rust
   (setq lsp-rust-server 'rust-analyzer))
+
+(defun baal-setup-lsp-company ()
+  (setq-local company-backends
+              '(company-capf company-dabbrev company-dabbrev-code)))
+
+(add-hook 'lsp-completion-mode-hook #'baal-setup-lsp-company)
+
+(setq company-idle-delay 0.2;;
+      company-minimum-prefix-length 2 ;; Show the menu after one key press
+      company-tooltip-limit 15 ;; Limit on how many options to display
+      company-show-numbers t   ;; Show numbers behind options
+      company-tooltip-align-annotations t ;; Align annotations to the right
+      company-require-match nil           ;; Allow free typing
+      company-selection-wrap-around t ;; Wrap around to beginning when you hit bottom of suggestions
+      company-dabbrev-ignore-case t ;; Don't ignore case when completing
+      company-dabbrev-downcase t ;; Don't
+      )
+
+(setq lsp-idle-delay 0.200)
+(setq lsp-enable-file-watchers nil)
+(setq doom--line-number-style 'relative)
