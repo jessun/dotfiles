@@ -34,9 +34,9 @@ endif
 " UI ==========================
 Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
-Plug 'overcache/NeoSolarized'
+" Plug 'overcache/NeoSolarized'
 Plug 'itchyny/lightline.vim'         " 底部条
-Plug 'sainnhe/forest-night'
+" Plug 'sainnhe/forest-night'
 
 " general =====================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -1013,3 +1013,4 @@ let g:go_highlight_variable_declarations = 1
 " nmap <silent> <leader>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ===================================================e
 "
+
