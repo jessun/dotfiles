@@ -157,41 +157,41 @@ let g:mkdp_page_title = '${name}'
 " =============== 'ense-analysis/ale' ===============
 " \   'rust': ['rustfmt']
 " \   'go': ['gofmt', 'goimports', 'gomod'],
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\}
+" let g:ale_fixers = {
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \   'javascript': ['eslint'],
+" \}
 " \  'rust': ['rls', 'cargo', 'rustc']
 " \  'go': ['gopls'],
-let g:ale_linters = {
-\  'javascript': ['eslint'],
-\}
-let g:ale_linters_explicit = 1
-let g:ale_completion_enabled = 0   " 自动补全
-let g:ale_completion_tsserver_autoimport = 1
-let g:ale_echo_msg_error_str = 'Err'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_echo_msg_warning_str = 'Wrn'
-let g:ale_fix_on_save = 0
-let g:ale_keep_list_window_open = 1
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_list_window_size = 3
-let g:ale_open_list = 1
-let g:ale_set_quickfix = 1
+" let g:ale_linters = {
+" \  'javascript': ['eslint'],
+" \}
+" let g:ale_linters_explicit = 1
+" let g:ale_completion_enabled = 0   " 自动补全
+" let g:ale_completion_tsserver_autoimport = 1
+" let g:ale_echo_msg_error_str = 'Err'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_echo_msg_warning_str = 'Wrn'
+" let g:ale_fix_on_save = 0
+" let g:ale_keep_list_window_open = 1
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_list_window_size = 3
+" let g:ale_open_list = 1
+" let g:ale_set_quickfix = 1
 " let g:ale_rust_rls_executable = '~/.cargo/bin/'
 " let g:ale_rust_rls_toolchain = 'nightly'
-let g:ale_set_highlights = 1
-let g:ale_sign_column_always = 1   "保持侧边栏可见
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+" let g:ale_set_highlights = 1
+" let g:ale_sign_column_always = 1   "保持侧边栏可见
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
 "
 " " 跳转错误行快捷键，所以快捷键是Ctrl+k或j
 " "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " "nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " nmap <leader>gg <Plug>(ale_go_to_definition)
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+" highlight ALEErrorSign ctermbg=NONE ctermfg=red
+" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 " ===================================================
 " 
 " ============='scrooloose/nerdcommenter' ===========

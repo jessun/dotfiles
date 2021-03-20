@@ -20,7 +20,7 @@ set tags=./.tags;,.tags
 syntax on
 set shell=/bin/bash
 set mmp=100000
-set regexpengine=1
+" set regexpengine=1
 set redrawtime=100000
 set ttimeout
 set ttimeoutlen=0
