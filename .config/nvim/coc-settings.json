@@ -167,6 +167,7 @@
     "println",
     "ptypes",
     "rustc",
+    "sshuttle",
     "struct",
     "ucommon",
     "ucore",
