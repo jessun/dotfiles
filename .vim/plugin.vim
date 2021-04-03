@@ -497,7 +497,7 @@ nnoremap <silent> <space>v :Vista!!<CR>
 " This could make the display more compact or more spacious.
 " e.g., more compact: ["▸ ", ""]
 " Note: this option only works the LSP executives, doesn't work for `:Vista ctags`.
-let g:vista_icon_indent = [">", ">->"]
+let g:vista_icon_indent = [">", ">>>>>>"]
 
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
@@ -737,7 +737,7 @@ endfunction
 nmap g[ <Plug>(coc-git-prevchunk)
 nmap g] <Plug>(coc-git-nextchunk)
 " show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
+nmap gh <Plug>(coc-git-chunkinfo)
 " show commit contains current position
 nmap gc <Plug>(coc-git-commit)
 " create text object for git chunks

@@ -92,7 +92,7 @@ filetype on
 filetype plugin indent on
 filetype indent on
 set autoindent
-set foldmethod=expr
+set foldmethod=manual
 set complete=.
 set nofoldenable
 set smartindent
