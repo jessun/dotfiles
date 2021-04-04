@@ -189,7 +189,7 @@ let g:mkdp_page_title = '${name}'
 " " 跳转错误行快捷键，所以快捷键是Ctrl+k或j
 " "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " "nmap <silent> <C-j> <Plug>(ale_next_wrap)
-" nmap <leader>gg <Plug>(ale_go_to_definition)
+" nmap <space>gg <Plug>(ale_go_to_definition)
 " highlight ALEErrorSign ctermbg=NONE ctermfg=red
 " highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 " ===================================================
@@ -289,9 +289,9 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 "
 " Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+nmap <space><tab> <plug>(fzf-maps-n)
+xmap <space><tab> <plug>(fzf-maps-x)
+omap <space><tab> <plug>(fzf-maps-o)
 "
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -347,7 +347,7 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 " 让代码更加易于纵向排版，以=或,符号对齐，使用:Tab /=即按等号对齐
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
+" Start interactive EasyAlign for a motion/text object (e.g. <space>aip)
 nmap ga <Plug>(EasyAlign)
 " ====================================================
 "
@@ -436,11 +436,11 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <space>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <space>f  <Plug>(coc-format-selected)
+nmap <space>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -451,14 +451,14 @@ augroup mygroup
 augroup end
 
 " Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Example: `<space>aap` for current paragraph
+xmap <space>a  <Plug>(coc-codeaction-selected)
+nmap <space>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <space>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <space>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -498,7 +498,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -517,6 +517,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>m  :CocCommand document.renameCurrentWord<CR>
+vnoremap <silent><nowait> <space>m  :CocCommand document.renameCurrentWord<CR>
+nnoremap <space>rf <Plug>(coc-refactor)
 " ====================================================
 "
 " ============== 'liuchengxu/vista.vim' ==============
@@ -573,24 +576,24 @@ autocmd FileType vista nnoremap <buffer> <silent> aa :<c-u>call vista#cursor#Fol
 " endif
 " " :leaderfFile 搜索当前目录下所有文件
 " " :leaderfMru 搜索最常用文件
-" noremap <leader>fb :<C-U><C-R>=printf("leaderf buffer %s", "")<CR><CR>
-" noremap <leader>fm :<C-U><C-R>=printf("leaderf mru %s", "")<CR><CR>
-" noremap <leader>ft :<C-U><C-R>=printf("leaderf bufTag %s", "")<CR><CR>
-" noremap <leader>fl :<C-U><C-R>=printf("leaderf line %s", "")<CR><CR>
+" noremap <space>fb :<C-U><C-R>=printf("leaderf buffer %s", "")<CR><CR>
+" noremap <space>fm :<C-U><C-R>=printf("leaderf mru %s", "")<CR><CR>
+" noremap <space>ft :<C-U><C-R>=printf("leaderf bufTag %s", "")<CR><CR>
+" noremap <space>fl :<C-U><C-R>=printf("leaderf line %s", "")<CR><CR>
 " noremap <C-B> :<C-U><C-R>=printf("leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR><CR>
 " noremap <C-F> :<C-U><C-R>=printf("leaderf! rg -e %s ", expand("<cword>"))<CR><CR>
 " " search visually selected text literally
 " xnoremap gf :<C-U><C-R>=printf("leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 " noremap go :<C-U>leaderf! rg --recall<CR>
 " " should use `leaderf gtags --update` first
-" noremap <leader>fr :<C-U><C-R>=printf("leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fd :<C-U><C-R>=printf("leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fo :<C-U><C-R>=printf("leaderf! gtags --recall %s", "")<CR><CR>
-" noremap <leader>fn :<C-U><C-R>=printf("leaderf gtags --next %s", "")<CR><CR>
-" noremap <leader>fp :<C-U><C-R>=printf("leaderf gtags --previous %s", "")<CR><CR>
+" noremap <space>fr :<C-U><C-R>=printf("leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <space>fd :<C-U><C-R>=printf("leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <space>fo :<C-U><C-R>=printf("leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <space>fn :<C-U><C-R>=printf("leaderf gtags --next %s", "")<CR><CR>
+" noremap <space>fp :<C-U><C-R>=printf("leaderf gtags --previous %s", "")<CR><CR>
 "
-""nmap <leader>p :<C-U><C-R>=printf("leaderf rg --fuzzy")<CR><CR>
-""nmap <leader>p :<C-U><C-R>=printf("leaderf rg --regexMode")<CR><CR>
+""nmap <space>p :<C-U><C-R>=printf("leaderf rg --fuzzy")<CR><CR>
+""nmap <space>p :<C-U><C-R>=printf("leaderf rg --regexMode")<CR><CR>
 " highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
 " highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
 " let g:Lf_PopupPalette = {
@@ -741,8 +744,8 @@ endfunction
 " Keymapping for grep word under cursor with interactive mode
 nnoremap <silent> <space>* :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
-vnoremap <leader>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
-nnoremap <leader>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
+vnoremap <space>g :<C-u>call <SID>GrepFromSelected(visualmode())<CR>
+nnoremap <space>g :<C-u>set operatorfunc=<SID>GrepFromSelected<CR>g@
 
 function! s:GrepFromSelected(type)
   let saved_unnamed_register = @@
@@ -889,8 +892,8 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
+xmap <silent> <space>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <space>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ====================================================
 "
 " ================== 'golang/highlight' =================
@@ -914,18 +917,18 @@ let g:go_highlight_variable_declarations = 1
 "
 " ==================== 'Key Map' ====================
 " === scrooloose/nerdcommenter' 
-" <leader>cc 注释掉在可视模式下选择的当前行或文本
-" <leader>cn 与cc相同，但强制嵌套。
-" <leader>c<space> 切换所选行的注释状态。如果最上面的选定行被注释，则所有选定的行均未注释，反之亦然。
-" <leader>cm 仅使用一组多部分定界符注释给定的行。
-" <leader>ci 分别切换所选行的注释状态。
-" <leader>cs 用漂亮的块格式布局注释掉选定的行。
-" <leader>cy 与cc相同，除了首先删除注释行。
-" <leader>c$ 注释当前行从光标到行尾。
-" <leader>cA 在行尾添加注释定界符，并在它们之间进入插入模式。
-" <leader>ca 切换到另一组定界符。
-" <leader>cl 与<leader>cc 相同，除了定界符在左侧对齐
-" <leader>cb 与<leader>cc 相同，除了定界符在两侧对齐
+" <space>cc 注释掉在可视模式下选择的当前行或文本
+" <space>cn 与cc相同，但强制嵌套。
+" <space>c<space> 切换所选行的注释状态。如果最上面的选定行被注释，则所有选定的行均未注释，反之亦然。
+" <space>cm 仅使用一组多部分定界符注释给定的行。
+" <space>ci 分别切换所选行的注释状态。
+" <space>cs 用漂亮的块格式布局注释掉选定的行。
+" <space>cy 与cc相同，除了首先删除注释行。
+" <space>c$ 注释当前行从光标到行尾。
+" <space>cA 在行尾添加注释定界符，并在它们之间进入插入模式。
+" <space>ca 切换到另一组定界符。
+" <space>cl 与<space>cc 相同，除了定界符在左侧对齐
+" <space>cb 与<space>cc 相同，除了定界符在两侧对齐
 "
 " === junegunn/fzf
 " :Files 列出当前目录下所有文件
@@ -954,9 +957,9 @@ let g:go_highlight_variable_declarations = 1
 " :GGrep 等同 `git grep`
 " 上述命令大多支持`CTRL-T`(new tab)， `CTRL-X`(new split)， `CTRL-V`(new vertical split)
 " 如果命令后面加上感叹号(!)，就变成全屏显示
-" nmap <leader><tab> <plug>(fzf-maps-n) 不知如何使用
-" xmap <leader><tab> <plug>(fzf-maps-x) 不知如何使用
-" omap <leader><tab> <plug>(fzf-maps-o) 不知如何使用
+" nmap <space><tab> <plug>(fzf-maps-n) 不知如何使用
+" xmap <space><tab> <plug>(fzf-maps-x) 不知如何使用
+" omap <space><tab> <plug>(fzf-maps-o) 不知如何使用
 "
 " Insert mode completion
 " imap <c-x><c-k> <plug>(fzf-complete-word) 插入单词
@@ -982,12 +985,12 @@ let g:go_highlight_variable_declarations = 1
 " nmap gr 查找引用处
 " nnoremap K 显示文档
 " nmap ;rn 单词重命名
-" nmap <leader>f 格式化
-" xmap <leader>f 格式化
-" xmap <leader>a 选择
-" nmap <leader>a 选择
-" nmap <leader>ac 将 cocAction 在当前行应用
-" nmap <leader>qf 自动修复当前行
+" nmap <space>f 格式化
+" xmap <space>f 格式化
+" xmap <space>a 选择
+" nmap <space>a 选择
+" nmap <space>ac 将 cocAction 在当前行应用
+" nmap <space>qf 自动修复当前行
 " xmap if 选区，表示函数，函数内部文本
 " omap if 选区，表示函数，函数内部文本
 " xmap af 选区，表示函数，全部函数文本
@@ -1037,8 +1040,8 @@ let g:go_highlight_variable_declarations = 1
 " imap <C-j> <Plug>(coc-snippets-expand-jump)
 "
 " === 'iamcco/coc-actions'
-" xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-" nmap <silent> <leader>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
+" xmap <silent> <space>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+" nmap <silent> <space>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ===================================================e
 "
 

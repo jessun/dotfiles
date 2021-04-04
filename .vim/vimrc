@@ -181,8 +181,8 @@ call SourceIfExists("~/.vim/plugin.vim")
 " ===================================================
 "
 " ==================== Key Map ======================
-let mapleader=" "
 nnoremap <space> <Nop>
+let mapleader = "\<Space>"
 " cnoremap ls ls<cr>:b<space>
 nnoremap gj j
 nnoremap gk k
