@@ -92,7 +92,7 @@ filetype on
 filetype plugin indent on
 filetype indent on
 set autoindent
-set foldmethod=expr
+set foldmethod=manual
 set complete=.
 set nofoldenable
 set smartindent
@@ -181,8 +181,8 @@ call SourceIfExists("~/.vim/plugin.vim")
 " ===================================================
 "
 " ==================== Key Map ======================
-let mapleader=" "
 nnoremap <space> <Nop>
+let mapleader = "\<Space>"
 " cnoremap ls ls<cr>:b<space>
 nnoremap gj j
 nnoremap gk k
