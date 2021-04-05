@@ -455,6 +455,7 @@ command! -nargs=? Fold :call     CocActionAsync('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 
 " Add (Neo)Vim's native statusline support.
@@ -483,7 +484,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>r  :<C-u>CocListResume<CR>
 
-autocmd BufWritePre *.go :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
