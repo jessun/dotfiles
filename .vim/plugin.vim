@@ -503,7 +503,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <space>x  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
@@ -855,6 +855,7 @@ nmap <space>ef :CocCommand explorer --preset floatingLeftside<CR>
 
 " List all presets
 nmap <space>el :CocList explPresets<CR>
+nmap <space>d :CocCommand explorer<CR>
 " ===================================================
 "
 " ============ 'voldikss/coc-bookmark' ==============
@@ -1007,7 +1008,7 @@ let g:go_highlight_variable_declarations = 1
 " :OR 自动 import 依赖
 " noremap <space>a coc 诊断
 " noremap <space>e coc 插件列表
-" noremap <space>x coc-explorer 窗口
+" noremap <space>d coc-explorer 窗口
 " noremap <space>c coclist commands 列表
 " noremap <space>o coclist outline 
 " noremap <space>s coclist -I symbols
