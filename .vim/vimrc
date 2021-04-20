@@ -207,6 +207,9 @@ nmap <leader>ps :set paste<CR>
 nmap <leader>tn :tabnew<CR>
 vmap <leader>y "+y<CR>
 :command! Config sp ~/.vim/vimrc | sp ~/.vim/plugin.vim
+:command! Reload :source ~/.vim/vimrc
+nnoremap <Leader>rl :source ~/.vim/vimrc<CR>
+
 
 "noremap <leader>y "*y
 "noremap <leader>p "*p
