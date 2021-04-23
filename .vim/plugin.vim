@@ -41,6 +41,8 @@ Plug 'itchyny/lightline.vim'         " 底部条
 " general =====================
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'easymotion/vim-easymotion'
 
 " code ========================
 Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
@@ -958,7 +960,7 @@ let g:go_highlight_variable_declarations = 1
 " :History/ 搜索历史
 " :Snippets Snippets(https://github.com/SirVer/ultisnips)
 " :Commits 浏览 git commits 历史
-" :BCommits	浏览当前 buffer 的 git commits 历史
+" :BCommits 浏览当前 buffer 的 git commits 历史
 " :Maps normal mode 下的按键映射
 " :Helptags
 " :Filetypes
@@ -1052,4 +1054,41 @@ let g:go_highlight_variable_declarations = 1
 " nmap <silent> <space>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ===================================================e
 "
+map <Leader> <Plug>(easymotion-prefix)
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" You can use other keymappings like <C-l> instead of <CR> if you want to
+" use these mappings as default search and sometimes want to move cursor with
+" EasyMotion.
+" function! s:incsearch_config(...) abort
+"   return incsearch#util#deepextend(deepcopy({
+"   \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+"   \   'keymap': {
+"   \     "\<CR>": '<Over>(easymotion)'
+"   \   },
+"   \   'is_expr': 0
+"   \ }), get(a:, 1, {}))
+" endfunction
+"
+" noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+" noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+" noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
+
+
+let g:comfortable_motion_friction = 100
+let g:comfortable_motion_air_drag = 4.0
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
