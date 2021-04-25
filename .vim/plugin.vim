@@ -42,7 +42,8 @@ Plug 'itchyny/lightline.vim'         " 底部条
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 
 " code ========================
 Plug 'tommcdo/vim-fugitive-blame-ext' " git 信息
@@ -794,9 +795,9 @@ function! RemoveWavyline()
 endfunction
 "
 " 隐藏波浪线
+set guifont=JetBrains\ Mono:h17
 if has("gui_running") " GUI
     if has("gui_macvim") " MacVim
-        "set guifont=JetBrains\ Mono:h17
         autocmd BufEnter * call RemoveWavyline()
     elseif " Linux Or Windows Gvim
 
@@ -923,6 +924,14 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
+" ===================================================
+"
+" ================== 'yuttie/comfortable-motion.vim' =================
+let g:comfortable_motion_friction = 150
+let g:comfortable_motion_air_drag = 4.0
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+"
 " ===================================================
 "
 " ==================== 'Key Map' ====================
@@ -1054,21 +1063,21 @@ let g:go_highlight_variable_declarations = 1
 " nmap <silent> <space>a :<C-u>set operatorfunc=SID>cocActionsOpenFromSelected<CR>
 " ===================================================e
 "
-map <Leader> <Plug>(easymotion-prefix)
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" map <Leader> <Plug>(easymotion-prefix)
+" " <Leader>f{char} to move to {char}
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
+"
+" " s{char}{char} to move to {char}{char}
+" nmap s <Plug>(easymotion-overwin-f2)
+"
+" " Move to line
+" map <Leader>L <Plug>(easymotion-bd-jk)
+" nmap <Leader>L <Plug>(easymotion-overwin-line)
+"
+" " Move to word
+" map  <Leader>w <Plug>(easymotion-bd-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 " You can use other keymappings like <C-l> instead of <CR> if you want to
 " use these mappings as default search and sometimes want to move cursor with
 " EasyMotion.
@@ -1089,6 +1098,15 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 
 let g:comfortable_motion_friction = 100
-let g:comfortable_motion_air_drag = 4.0
+let g:comfortable_motion_air_drag = 2.0
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+
+let g:neovide_refresh_rate=140
+let g:neovide_no_idle=v:true
+let g:neovide_cursor_trail_length=1
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
