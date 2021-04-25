@@ -17,8 +17,8 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-#bindsym $mod+Return exec alacritty
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec kitty
 
 # Window kill command
 bindsym $mod+q kill
@@ -131,9 +131,9 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
-workspace $ws1 output DP-0
-workspace $ws2 output DP-1
-workspace $ws3 output HDMI-0
+# workspace $ws1 output DP-0
+# workspace $ws2 output DP-1
+# workspace $ws3 output HDMI-0
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -239,7 +239,7 @@ exec --no-startup-id workspace 2; exec slack
 
 bar {
     i3bar_command i3bar
-    output DP-2
+    output eDP-1
     mode hide
     position bottom
     colors {
