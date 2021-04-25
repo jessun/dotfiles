@@ -794,9 +794,9 @@ function! RemoveWavyline()
 endfunction
 "
 " 隐藏波浪线
+set guifont=JetBrains\ Mono:h17
 if has("gui_running") " GUI
     if has("gui_macvim") " MacVim
-        "set guifont=JetBrains\ Mono:h17
         autocmd BufEnter * call RemoveWavyline()
     elseif " Linux Or Windows Gvim
 
@@ -1089,6 +1089,11 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 
 let g:comfortable_motion_friction = 100
-let g:comfortable_motion_air_drag = 4.0
+let g:comfortable_motion_air_drag = 2.0
 noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
+
+let g:neovide_refresh_rate=140
+let g:neovide_no_idle=v:true
+let g:neovide_cursor_trail_length=1
+

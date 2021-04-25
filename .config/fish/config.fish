@@ -77,7 +77,7 @@ export LANG=zh_CN.UTF-8
 
 # Golang
 export GO111MODULE=on
-export GOPROXY=https://goproxy.io,direct
+export GOPROXY=goproxy.cn,goproxy.io,direct 
 if test -e "$HOME/.gvm/environments/default"
     bass source "$HOME/.gvm/environments/default"
 end
