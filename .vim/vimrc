@@ -72,7 +72,7 @@ set rnu " set relative_numbser
 " set nornu
 set ru " set ruler
 set showcmd " 右下角显示指令
-"set t_Co=256
+set t_Co=256
 """""set t_BE=0
 if has('nvim')
     set termguicolors
@@ -211,8 +211,6 @@ vmap <leader>y "+y<CR>
 :command! Config sp ~/.vim/vimrc | sp ~/.vim/plugin.vim
 :command! Reload :source ~/.vim/vimrc
 nnoremap <Leader>rl :source ~/.vim/vimrc<CR>
-
-
 "noremap <leader>y "*y
 "noremap <leader>p "*p
 "noremap <leader>Y "+y

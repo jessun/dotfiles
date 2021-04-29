@@ -1,0 +1,9 @@
+[Unit]
+Description=clash daemon
+[Service]
+Type=simple
+User=root
+ExecStart=/home/jessun/.local/apple/init.sh
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

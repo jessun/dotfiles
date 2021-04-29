@@ -1,4 +1,4 @@
-" =================== File Info =====================
+"=================== File Info =====================
 "  Author: jessun1990@gmail.com
 "  Desc: plugins config of vim/nvim
 "  Location: ~/.vim/plugin.vim
@@ -146,7 +146,7 @@ let g:mkdp_preview_options = {
 
 " use a custom markdown style must be absolute path
 " like '/Users/username/markdown.css' or expand('~/markdown.css')
-let g:mkdp_markdown_css = expand('~/.vim/github-markdown.css')
+let g:mkdp_markdown_css = expand('~/.vim/conf/github-markdown.css')
 " use a custom highlight style must absolute path
 " like '/Users/username/highlight.css' or expand('~/highlight.css')
 let g:mkdp_highlight_css = ''
@@ -155,6 +155,9 @@ let g:mkdp_port = ''
 " preview page title
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '${name}'
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
 " ===================================================
 "
 " =============== 'ense-analysis/ale' ===============
