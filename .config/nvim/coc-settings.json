@@ -165,6 +165,7 @@
     "Pgrpc",
     "Printf",
     "Prkey",
+    "Procs",
     "Rbac",
     "Resps",
     "SLAIDs",
