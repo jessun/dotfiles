@@ -72,7 +72,6 @@ end
 #
 # ========== Env Vars ===========
 #export TERM="xterm-256color"
-export TERM="screen-256color"
 export LANG=zh_CN.UTF-8
 
 # Golang
@@ -120,3 +119,6 @@ end
 # ===============================
 export GOPRIVATE=actiontech.cloud
 export GOINSECURE=actiontech.cloud
+
+thefuck --alias | source
+export TERM="screen-256color"
