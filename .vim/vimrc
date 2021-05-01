@@ -74,7 +74,9 @@ set ru " set ruler
 set showcmd " 右下角显示指令
 set t_Co=256
 """""set t_BE=0
-" set termguicolors
+if has('nvim')
+    set termguicolors
+endif
 set vb t_vb=
 set guioptions-=l            " 禁止显示滚动条
 set guioptions-=L
