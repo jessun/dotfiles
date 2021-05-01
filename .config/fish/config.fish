@@ -22,7 +22,7 @@ switch (uname)
             alias pbcopy 'xsel --clipboard --input'
             alias pbpaste 'xsel --clipboard --output'
         end
-        # setxkbmap -option caps:swapescape
+        setxkbmap -option caps:swapescape
     case "*"
         echo "unknowon os"
 end
