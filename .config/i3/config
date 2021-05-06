@@ -239,7 +239,7 @@ exec --no-startup-id workspace 2; exec slack
 
 bar {
     i3bar_command i3bar
-    output eDP-1
+    output DP-2
     mode hide
     position bottom
     colors {
