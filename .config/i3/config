@@ -18,6 +18,8 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 bindsym $mod+Return exec alacritty
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle
+
 # bindsym $mod+Return exec kitty
 
 # Window kill command
@@ -92,9 +94,9 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # workspaces
-set $ws1 1
-set $ws2 2
-set $ws3 3
+set $ws1 1.Web
+set $ws2 2.Term
+set $ws3 3.Ssh
 set $ws4 4
 set $ws5 5
 set $ws6 6
@@ -219,23 +221,25 @@ mode "resize" {
 }
 
 # Autostart applications
+exec_always --no-startup-id exec i3-workspace-names
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id blueberry-tray
 exec --no-startup-id volumeicon
 exec --no-startup-id copyq
+exec --no-startup-id sudo echo "disable" > /sys/firmware/acpi/interrupts/gpe06
 # exec --no-startup-id aw-qt
 # exec --no-startup-id ss-qt5
 # exec --no-startup-id evolution
 exec --no-startup-id ibus-daemon -x -d
 exec --no-startup-id env QT_SCALE_FACTOR=1  megasync
-exec --no-startup-id /opt/appimages/picgo.AppImage
+# exec --no-startup-id /opt/appimages/picgo.AppImage
 exec --no-startup-id utools
 exec --no-startup-id synergy
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id /$HOME/.config/polybar/launch.sh
-exec --no-startup-id exec mailspring
-exec --no-startup-id workspace 2; exec slack
+# exec --no-startup-id exec mailspring
+# exec --no-startup-id workspace 2; exec slack
 
 bar {
     i3bar_command i3bar

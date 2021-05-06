@@ -22,7 +22,9 @@ switch (uname)
             alias pbcopy 'xsel --clipboard --input'
             alias pbpaste 'xsel --clipboard --output'
         end
-        # setxkbmap -option caps:swapescape
+        if type -q 'setxkbmap'
+            setxkbmap -option caps:swapescape
+        end
     case "*"
         echo "unknowon os"
 end
@@ -71,7 +73,7 @@ end
 # ===============================
 #
 # ========== Env Vars ===========
-#export TERM="xterm-256color"
+export TERM="screen-256color"
 export LANG=zh_CN.UTF-8
 
 # Golang
@@ -120,5 +122,6 @@ end
 export GOPRIVATE=actiontech.cloud
 export GOINSECURE=actiontech.cloud
 
-thefuck --alias | source
-export TERM="screen-256color"
+if type -q thefuck
+    thefuck --alias | source
+end
