@@ -11,10 +11,17 @@
     show-merge     = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 [core]
     editor         = "nvim"
+    quotepath      = false
+    ; pager          = delta
+; [delta]
+;     ; plus-style     = "syntax #012800"
+;     ; minus-style    = "syntax #340001"
+;     syntax-theme   = Nord
+;     navigate       = true
+; [interactive]
+;     diffFilter = delta --color-only
 [diff]
     tool           = vimdiff
-[core]
-    quotepath      = false
 [i18n]  
     commitencoding = utf-8
 [gui]  
