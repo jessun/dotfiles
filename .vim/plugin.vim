@@ -34,6 +34,7 @@ endif
 " UI ==========================
 Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
+"Plug 'cormacrelf/vim-colors-github'
 " Plug 'overcache/NeoSolarized'
 Plug 'itchyny/lightline.vim'         " 底部条
 " Plug 'sainnhe/forest-night'
@@ -141,7 +142,9 @@ let g:mkdp_preview_options = {
     \ 'sync_scroll_type': 'middle',
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {}
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
     \ }
 
 " use a custom markdown style must be absolute path
