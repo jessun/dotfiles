@@ -34,8 +34,8 @@ endif
 " UI ==========================
 Plug 'sheerun/vim-polyglot'          " 语法高亮
 Plug 'flazz/vim-colorschemes'        " 配色主题
-"Plug 'cormacrelf/vim-colors-github'
-" Plug 'overcache/NeoSolarized'
+Plug 'arzg/vim-colors-xcode'
+Plug 'overcache/NeoSolarized'
 Plug 'itchyny/lightline.vim'         " 底部条
 " Plug 'sainnhe/forest-night'
 
@@ -809,7 +809,8 @@ if has("gui_running") " GUI
 
     endif
 else " Terminal
-    colorscheme mod8
+    colorscheme NeoSolarized
+    set bg=dark
     if has('mac') " MacOS iterm2 or termial
         colorscheme mod8
         " colorscheme lucario
