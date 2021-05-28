@@ -678,7 +678,7 @@ function! LightlineGitBlame()
 endfunction
 
 let g:lightline = {
-   \ 'colorscheme': 'wombat',
+   \ 'colorscheme': 'nord',
    \ 'active': {
    \    'left': [
    \        ['mode', 'paste', 'gitbranch', 'buffgitstatus', 'progitstatus'],
@@ -809,8 +809,8 @@ if has("gui_running") " GUI
 
     endif
 else " Terminal
-    colorscheme NeoSolarized
-    set bg=dark
+    colorscheme mod8
+    " set bg=dark
     if has('mac') " MacOS iterm2 or termial
         colorscheme mod8
         " colorscheme lucario
