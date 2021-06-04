@@ -113,7 +113,7 @@ let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
 " specify browser to open preview page
 " default: ''
-let g:mkdp_browser = 'google-chrome-unstable'
+let g:mkdp_browser = 'microsoft-edge-dev'
 " set to 1, echo preview page url in command line when open preview page
 " default is 0
 let g:mkdp_echo_preview_url = 0
@@ -809,10 +809,8 @@ if has("gui_running") " GUI
 
     endif
 else " Terminal
-    colorscheme NeoSolarized
-    set bg=dark
+    colorscheme mod8
     if has('mac') " MacOS iterm2 or termial
-        colorscheme mod8
         " colorscheme lucario
         " colorscheme nord
         " colorscheme nordisk
