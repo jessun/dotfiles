@@ -28,6 +28,7 @@ bindsym $mod+q kill
 # start program launcher
 bindsym $mod+d exec --no-startup-id /opt/uTools/utools
 bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+bindsym Print exec flameshot gui
 
 # change focus
 bindsym $mod+h focus left
@@ -238,8 +239,8 @@ exec --no-startup-id utools
 exec --no-startup-id synergy
 # exec --no-startup-id xfce4-power-manager
 exec --no-startup-id /$HOME/.config/polybar/launch.sh
-# exec --no-startup-id exec mailspring
-# exec --no-startup-id workspace 2; exec slack
+exec --no-startup-id exec mailspring
+exec --no-startup-id exec slack
 
 bar {
     i3bar_command i3bar
