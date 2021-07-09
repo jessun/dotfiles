@@ -255,6 +255,7 @@
     "pflag",
     "pkill",
     "println",
+    "prometheud",
     "promql",
     "ptypes",
     "rustc",
