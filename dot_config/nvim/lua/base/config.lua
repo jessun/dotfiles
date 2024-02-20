@@ -1,10 +1,11 @@
 local Config = {}
 
 function Config:load_config()
+    vim.loader.enable()
     vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1 -- disable netrw at the very start of your init.lua
+    vim.g.loaded_netrwPlugin = 1         -- disable netrw at the very start of your init.lua
 
-    vim.opt.termguicolors = true -- set termguicolors to enable highlight groups
+    vim.opt.termguicolors = true         -- set termguicolors to enable highlight groups
 
     vim.o.maxmempattern = 2000000        -- vim 做字符串匹配时使用的最大内存
     vim.o.redrawtime = 200000            -- vim 重绘屏幕时间，单位毫秒
@@ -82,7 +83,7 @@ function Config:load_config()
     -- vim.api.nvim_command("set tags=./tags,tags,./.tags,./ctags,ctags,./.ctags") -- TODO
     vim.o.background = "dark"                              -- TODO
     vim.api.nvim_command("filetype on")                    -- TODO
-    vim.api.nvim_command("colorscheme retrobox")             -- TODO
+    vim.api.nvim_command("colorscheme retrobox")           -- TODO
     vim.api.nvim_command("set shortmess+=c")               -- TODO
     -- vim.api.nvim_command("set wildmenu") -- TODO
     vim.api.nvim_command("filetype plugin indent on")      -- TODO
@@ -103,7 +104,6 @@ function Config:load_config()
     -- vim.api.nvim_command("autocmd FileType json syntax match Comment +//.+$+") --- gitcommit file title length limit
     -- vim.api.nvim_command("autocmd FileType json setlocal shiftwidth=2 softtabstop=2 tabstop=2") --- gitcommit file title length limit
 
-    vim.g.did_load_filetypes = 1
     ------------------------------------------------------------------------------------------------------------ basic config }
 
     ------------------------------------------------------------------------------------------------------------ { key map
