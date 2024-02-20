@@ -1,0 +1,50 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+
+## variables
+export LANG=zh_CN.UTF-8
+export LOCAL_SOCKS5_PROXY={{ .socks5_proxy }}
+export LOCAL_HTTP_PROXY={{ .http_proxy }}
+export GPG_TTY=$(tty)
+
+
+## proxy
+alias cleanallproxy "export all_proxy=; export http_proxy=; export https_proxy=; git config --global http.proxy ''; git config --global https.proxy ''"
+alias shellusehttpproxy "export all_proxy='$LOCAL_HTTP_PROXY'; export http_proxy='$LOCAL_HTTP_PROXY'; export https_proxy='$LOCAL_HTTP_PROXY'"
+alias shellusesocks5proxy "export all_proxy='$LOCAL_SOCKS5_PROXY'; export http_proxy='$LOCAL_SOCKS5_PROXY'; export https_proxy='$LOCAL_SOCKS5_PROXY'"
+alias usehttpproxy "export all_proxy='$LOCAL_HTTP_PROXY'; export http_proxy='$LOCAL_HTTP_PROXY'; export https_proxy='$LOCAL_HTTP_PROXY'; git config --global http.proxy '$LOCAL_HTTP_PROXY'; git config --global https.proxy '$LOCAL_HTTP_PROXY'"
+alias usesocks5proxy "export all_proxy='$LOCAL_SOCKS5_PROXY'; export http_proxy='$LOCAL_SOCKS5_PROXY'; export https_proxy='$LOCAL_SOCKS5_PROXY'; git config --global http.proxy '$LOCAL_SOCKS5_PROXY'; git config --global https.proxy '$LOCAL_SOCKS5_PROXY'"
+
+
+## config
+set -g __fish_prompt_hostname "{{ .hostname }}"
+
+### local bin
+if test -d "$HOME/.local/bin/"
+    set -gx PATH "$HOME/.local/bin/" $PATH
+end
+
+## golang
+export CC=x86_64-unknown-linux-gnu-gcc
+export GOARCH=amd64
+export GOOS=linux
+export GO111MODULE=on
+export GOPROXY=goproxy.cn,goproxy.io,direct
+export GOPRIVATE=
+export GOINSECURE=
+alias gomod "go mod vendor;and go mod tidy -go=1.16 ;and go mod tidy -go=1.17"
+
+
+## rust
+if test -d "$HOME/.cargo/bin/"
+    set -gx PATH "$HOME/.cargo/bin/" $PATH
+end
+
+# pnpm
+set -gx PNPM_HOME "/home/jessun-wsl/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

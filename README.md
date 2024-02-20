@@ -16,3 +16,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 - [x] gitui theme nord
 - [x] git config
 - [x] tmux config
+- [x] fish config
