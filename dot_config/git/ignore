@@ -4,3 +4,4 @@ Session.vim
 .python-version
 
 .DS_Store
+lazy-lock.json
