@@ -10,3 +10,7 @@ or
 ```shell
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.com/jessun/dotfiles.git
 ```
+
+## Configs
+
+- [x] gitui theme nord
