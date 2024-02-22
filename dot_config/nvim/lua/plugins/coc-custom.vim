@@ -216,19 +216,23 @@ nmap <leader>cs  <Plug>(coc-codeaction-selected)
 xmap <leader>ca  <Plug>(coc-codeaction)
 nmap <leader>ca  <Plug>(coc-codeaction)
 
-" xmap <silent> <leader><leader> :<C-u>CocList --auto-preview files<CR>
-" nmap <silent> <leader><leader> :<C-u>CocList --auto-preview files<CR>
-" xmap <silent> <leader>/ :<C-u>CocList --interactive --auto-preview grep<CR>
-" nmap <silent> <leader>/ :<C-u>CocList --interactive --auto-preview grep<CR>
-" xmap <leader>b   :CocList --auto-preview buffers<CR>
-" nmap <leader>b   :CocList --auto-preview buffers<CR>
+xmap <silent> <leader><leader> :<C-u>CocList --auto-preview files<CR>
+nmap <silent> <leader><leader> :<C-u>CocList --auto-preview files<CR>
+xmap <silent> <leader>/ :<C-u>CocList --interactive --auto-preview grep<CR>
+nmap <silent> <leader>/ :<C-u>CocList --interactive --auto-preview grep<CR>
+xmap <silent> <leader>b   :CocList --auto-preview buffers<CR>
+nmap <silent> <leader>b   :CocList --auto-preview buffers<CR>
+xmap <silent> <leader>k :CocList maps<CR>
+nmap <silent> <leader>k :CocList maps<CR>
+xmap <silent> <leader>m :CocList marks<CR>
+nmap <silent> <leader>m :CocList marks<CR>
 
-" nnoremap <silent> <leader>* :exe 'CocList --interactive --auto-preview --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <leader>* :exe 'CocList --interactive --auto-preview --input='.expand('<cword>').' grep'<CR>
 
 nnoremap <silent><nowait> <leader>cd  :<C-u>CocList --auto-preview diagnostics<cr>
 
-xmap <leader>cc  :CocList --auto-preview commands<CR>
-nmap <leader>cc  :CocList --auto-preview commands<CR>
+xmap <leader>cc  :CocList commands<CR>
+nmap <leader>cc  :CocList commands<CR>
 
 xmap <leader>cm  :CocList --auto-preview marks<CR>
 nmap <leader>cm  :CocList --auto-preview marks<CR>

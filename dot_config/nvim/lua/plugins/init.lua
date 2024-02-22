@@ -23,8 +23,19 @@ require("lazy").setup({
     },
 
     -- ========================================================================
+    -- https://github.com/numToStr/Comment.nvim 注释
+    {
+        'numToStr/Comment.nvim',
+    },
+
+    -- ========================================================================
     -- https://github.com/neoclide/jsonc.vim  highlight of jsonc filetype
-    { 'neoclide/jsonc.vim' },
+    {
+        'neoclide/jsonc.vim',
+        config = function()
+            require('plugins/comment')
+        end
+    },
 
     -- ========================================================================
     -- https://github.com/nvim-tree/nvim-tree.lua 目录树插件
