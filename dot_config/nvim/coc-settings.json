@@ -45,15 +45,14 @@
     // ============== coc-config-notification ==============
     "notification.winblend": 0,
     // ============== coc-config-suggest ==============
+    "suggest.enablePreselect": false,
     "suggest.defaultSortMethod": "alphabetical",
-    "suggest.preferCompleteThanJumpPlaceholder": true,
     "suggest.floatConfig": {
         "highlight": "CocNord",
     },
     "suggest.pumFloatConfig": {
         "highlight": "CocNord",
     },
-    "suggest.acceptSuggestionOnCommitCharacter": true,
     "suggest.selection": "recentlyUsedByPrefix",
     "suggest.completionItemKindLabels": {
         "text": "TXT",
@@ -105,9 +104,7 @@
     // ============== coc-rust-analyzer ==============
     "rust-analyzer.server.path": "/usr/sbin/rust-analyzer",
     // ============== coc-go ==============
-    "go.goplsOptions": {
-        "allowModfileModifications": true
-    },
+    "go.goplsPath": "/opt/homebrew/bin/gopls",
     // ============== coc-git ==============
     "git.enableGutters": false,
     // "git.signPriority": 0,
