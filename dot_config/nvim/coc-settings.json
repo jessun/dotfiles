@@ -102,9 +102,7 @@
     "session.restartOnSessionLoad": true,
     "session.saveOnVimLeave": true,
     // ============== coc-rust-analyzer ==============
-    "rust-analyzer.server.path": "/usr/sbin/rust-analyzer",
     // ============== coc-go ==============
-    "go.goplsPath": "/opt/homebrew/bin/gopls",
     // ============== coc-git ==============
     "git.enableGutters": false,
     // "git.signPriority": 0,
