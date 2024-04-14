@@ -1,5 +1,6 @@
+-- install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -11,6 +12,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
+-- install other plugins
 require("lazy").setup({
     -- ========================================================================
     -- https://github.com/neoclide/coc.nvim coc.nvim
