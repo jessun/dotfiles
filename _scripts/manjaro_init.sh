@@ -6,7 +6,7 @@ yay --noconfirm
 
 yay -S \
     base-devel socat bison\
-    fish fishe tmux fzf \
+    fish fisher tmux fzf \
     git \
     ripgrep gitui rust-analyzer fd \
     neovim-nightly-bin python-neovim \
