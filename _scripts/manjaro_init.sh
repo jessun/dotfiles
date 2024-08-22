@@ -11,5 +11,4 @@ sudo yay -S  --noconfirm \
     rustup ripgrep gitui rust-analyzer fd \
     neovim-nightly-bin python-neovim \
     pnpm yarn npm \
-    tmux-plugin-manager \
     go
