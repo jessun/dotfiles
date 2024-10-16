@@ -1,0 +1,28 @@
+
+[env]
+TERM = "xterm-256color"
+[font]
+size = 20.0
+
+[font.bold]
+family = "BerkeleyMonoTrial Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "BerkeleyMonoTrial Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "BerkeleyMonoTrial Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "BerkeleyMonoTrial Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 1
+
+[general]
+import = ["~/.config/alacritty/nord.toml"]
