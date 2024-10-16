@@ -1,0 +1,78 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+############# Variables ##########################
+export LANG=zh_CN.UTF-8
+export LOCAL_SOCKS5_PROXY={{ .socks5_proxy }}
+export LOCAL_HTTP_PROXY={{ .http_proxy }}
+export GPG_TTY=$(tty)
+export TERM='xterm-256color'
+if type -q nvim
+    export EDITOR='nvim'
+    alias nvim-dev "NVIM_APPNAME=nvim-dev nvim"
+end
+export VISUAL='nvim'
+##################################################
+
+
+############# Fish Config ########################
+set -g __fish_prompt_hostname "{{ .hostname }}"
+set -g fish_prompt_pwd_dir_length 0
+if test -d "$HOME/.local/bin/"
+    set -gx PATH "$HOME/.local/bin/" $PATH
+end
+##################################################
+
+
+############# Proxy ##############################
+alias cleanallproxy "export all_proxy=; export http_proxy=; export https_proxy=; git config --global http.proxy ''; git config --global https.proxy ''"
+alias shellusehttpproxy "export all_proxy='$LOCAL_HTTP_PROXY'; export http_proxy='$LOCAL_HTTP_PROXY'; export https_proxy='$LOCAL_HTTP_PROXY'"
+alias shellusesocks5proxy "export all_proxy='$LOCAL_SOCKS5_PROXY'; export http_proxy='$LOCAL_SOCKS5_PROXY'; export https_proxy='$LOCAL_SOCKS5_PROXY'"
+alias usehttpproxy "export all_proxy='$LOCAL_HTTP_PROXY'; export http_proxy='$LOCAL_HTTP_PROXY'; export https_proxy='$LOCAL_HTTP_PROXY'; git config --global http.proxy '$LOCAL_HTTP_PROXY'; git config --global https.proxy '$LOCAL_HTTP_PROXY'"
+alias usesocks5proxy "export all_proxy='$LOCAL_SOCKS5_PROXY'; export http_proxy='$LOCAL_SOCKS5_PROXY'; export https_proxy='$LOCAL_SOCKS5_PROXY'; git config --global http.proxy '$LOCAL_SOCKS5_PROXY'; git config --global https.proxy '$LOCAL_SOCKS5_PROXY'"
+##################################################
+
+
+############# Golang #############################
+export GOARCH=amd64
+export GOOS=linux
+export GO111MODULE=on
+export GOPROXY=goproxy.cn,goproxy.io,direct
+export GOPRIVATE=
+export GOINSECURE=
+alias gomod "go mod vendor;and go mod tidy"
+##################################################
+
+
+############# Rust ###############################
+## rust
+if test -d "$HOME/.cargo/bin/"
+    set -gx PATH "$HOME/.cargo/bin/" $PATH
+end
+##################################################
+
+
+############# Pnpm ###############################
+if test -d "$HOME/.local/share/pnpm"
+  set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+end
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+##################################################
+
+
+############# Ruby ###############################
+if test -d "$HOME/.local/share/gem/ruby/3.2.0/bin"
+  set -gx PATH "$HOME/.local/share/gem/ruby/3.2.0/bin" $PATH
+end
+##################################################
+
+
+############# Perl ###############################
+# temporary solution
+if type -q cpanm
+  test -d "$HOME/perl5/lib/perl5" && eval $(perl -I "$HOME/perl5/lib/perl5" -Mlocal::lib)
+end
+##################################################
