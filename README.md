@@ -18,3 +18,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 - [x] ssh(https://www.openssh.com/)
 - [x] git(https://github.com/git/git)
 - [x] alacritty(https://github.com/alacritty/alacritty)
+- [x] kitty(https://github.com/kovidgoyal/kitty)
