@@ -13,6 +13,11 @@ if type -q nvim
     alias nvim-dev "NVIM_APPNAME=nvim-dev nvim"
 end
 export VISUAL='nvim'
+
+## WSL in windows, the username must be "jessun"
+if test -e '/mnt/c/Users/jessu/AppData/Local/Programs/Microsoft VS Code Insiders/bin/code-insiders'
+    alias win-code '/mnt/c/Users/jessu/AppData/Local/Programs/Microsoft\ VS\ Code\ Insiders/bin/code-insiders'
+end
 ##################################################
 
 
