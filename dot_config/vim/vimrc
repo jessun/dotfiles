@@ -1,0 +1,212 @@
+" Vim config file
+" location: ~/.config/vim/vimrc or ~/.vimrc
+" docs: 
+"    - linux
+"        - /usr/share/vim/vim91/doc/*
+"        - /usr/share/vim/vimfiles/doc/*
+" reference website:
+"    - https://vimhelp.org/
+"    - https://vimdoc.sourceforge.net/
+
+" ===============================================
+" 基础设置
+" Basic Settings
+" ===============================================
+set nocompatible
+" 设置vim编码
+" Set vim encoding
+set encoding=utf-8
+" 用于读取外部命令的编码
+" Encoding for reading external commands
+set makeencoding=utf-8
+" 设置文件编码
+" Set file encoding
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk,gb2312
+" 设置菜单语言
+" Set menu language
+set langmenu="zh_CN.UTF-8"
+set belloff=all
+
+" ===============================================
+" 界面设置
+" UI Settings
+" ===============================================
+" macos 下开启字体抗锯齿
+" Enable font anti-aliasing under macOS
+if has('macunix') || has('mac') || has('osx')
+    set antialias
+endif
+set colorcolumn=80
+set termguicolors
+" 高亮所在列和行
+" Highlight current column and line
+set cursorline cursorcolumn
+" 状态栏
+" Status bar
+set laststatus=2
+" 菜单最大项目数
+" Maximum number of menu items
+set menuitems=9999
+" 你输入左括号或右括号时，高亮显示与其匹配的括号。
+" When you type a left or right parenthesis, the matching parenthesis is highlighted
+set showmatch
+set matchtime=7
+" ===============================================
+" 编辑器行为
+" Editor Behavior
+" ===============================================
+" 新行使用当前行的缩进
+" New line uses current line's indent
+set autoindent
+" 要允许在插入模式下对所有内容进行退格
+" Allow backspace over everything in insert mode
+set backspace=indent,eol,nostop
+" 每一个换行将继续在视觉上缩进
+" Visually indent wrapped lines
+set breakindent
+" 当设置 linebreak 时，长行将在合适的位置换行
+" Wrap long lines at appropriate places when linebreak is set
+set linebreak
+" 关闭自动换行
+" Disable automatic line wrapping
+set wrap
+" Tab替换为空格
+" Replace Tab with spaces
+set expandtab
+" 使用剪贴板寄存器
+" Use clipboard register
+if has('clipboard')
+  if has('unix') || has('macunix') || has('wsl')
+      set clipboard=unnamedplus
+  elseif has('win32') || has('win64')
+      set clipboard=unnamed
+  endif
+endif
+" 历史记录
+" History records
+set history=10000
+" 启用鼠标
+" Enable mouse
+set mouse=a
+" 启用粘贴模式
+" enable paste mode
+set paste
+" ===============================================
+" 搜索设置
+" Search Settings
+" ===============================================
+" 搜索高亮
+" Highlight search matches incrementally
+set incsearch
+" 搜索高亮
+" Highlight all search matches
+set hlsearch
+" 忽略大小写
+" Ignore case in search
+set ignorecase
+" 启用智能大小写匹配
+" Enable smart case matching
+set smartcase
+" 显示的搜索结果数量上限
+" Maximum number of matches shown for the search
+set maxsearchcount=9999
+" ===============================================
+" 文件处理
+" File Handling
+" ===============================================
+" 文件被外部修改时，再次读取文件
+" Reload file when modified externally
+set autoread
+" 自动保存
+" Auto save
+set autowriteall
+set nobackup
+" 关闭swap文件
+" Disable swap file
+set noswapfile
+
+" ===============================================
+" 性能优化
+" Performance Optimization
+" ===============================================
+" 一个缓冲区可使用的最大内存量
+" Maximum memory for one buffer
+set maxmem=2000000
+" 所有缓冲区一起使用的最大内存量
+" Maximum memory for all buffers
+set maxmemtot=2000000
+" 用于模式匹配的最大内存量
+" Maximum memory for pattern matching
+set maxmempattern=2000000
+" 延迟屏幕刷新以提高性能
+" Delay screen redraw to improve performance
+set lazyredraw
+
+" ===============================================
+" 开发相关
+" Development Related
+" ===============================================
+" 启用C语言缩进
+" Enable C-style indenting
+set cindent
+" 复制时保留缩进格式
+" Preserve indent format when copying
+set copyindent
+" 自动完成选项
+" Auto-completion options
+set completeopt=menu,menuone,preview
+" 命令行数
+" Number of command lines
+set cmdheight=2
+" 命令行窗口高度
+" Command line window height
+set cmdwinheight=2
+" 禁止读取文件中的 vim 配置
+" disable reading file setting
+set nomodeline
+" 启用行号
+" Print the line number in front of each line.
+set number
+" 启用相对行号
+" enable relative number
+set relativenumber
+" ===============================================
+" 代码折叠
+" Code Folding
+" ===============================================
+"关闭折叠
+" Disable folding
+set nofoldenable
+set foldmethod=expr
+
+" ===============================================
+" 按键映射
+" Key Mappings
+" ===============================================
+nmap j gj
+nmap k gk
+
+" ===============================================
+" WSL 特定设置
+" WSL Specific Settings
+" ===============================================
+" fix cursor in wsl
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+let &t_SI .= "\<Esc>[5 q"
+" solid block
+let &t_EI .= "\<Esc>[1 q"
+
+" ===============================================
+" 文件类型设置
+" File Type Settings
+" ===============================================
+filetype indent plugin on
+if has('syntax')
+  syntax on
+endif
+
+
+augroup load_nord_theme
+  autocmd BufRead,BufNewFile * if filereadable('./nord.vim') | source ./nord.vim | endif
+augroup END

@@ -2,6 +2,7 @@
 Session.vim
 
 .python-version
+*.bak
 
 .DS_Store
 lazy-lock.json
