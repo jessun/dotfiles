@@ -1,0 +1,161 @@
+" Vim config file
+" location: ~/.config/vim/vimrc or ~/.vimrc
+" docs: 
+"    - linux
+"        - /usr/share/vim/vim91/doc/*
+"        - /usr/share/vim/vimfiles/doc/*
+" reference website:
+"    - https://vimhelp.org/
+"    - https://vimdoc.sourceforge.net/
+
+" plugins =============================================== {
+" https://github.com/Shougo/dein.vim
+let $CACHE = expand('~/.cache')
+if !($CACHE->isdirectory())
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dir = 'dein.vim'->fnamemodify(':p')
+  if !(s:dir->isdirectory())
+    let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !(s:dir->isdirectory())
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+    endif
+  endif
+  execute 'set runtimepath^='
+        \ .. s:dir->fnamemodify(':p')->substitute('[/\\]$', '', '')
+endif
+
+" Ward off unexpected things that your distro might have made, as
+" well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
+" Set dein base path (required)
+let s:dein_base = '~/.cache/dein/'
+
+" Set dein source path (required)
+let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+
+" Set dein runtime path (required)
+execute 'set runtimepath+=' .. s:dein_src
+
+" Call dein initialization (required)
+call dein#begin(s:dein_base)
+
+call dein#add(s:dein_src)
+
+" Your plugins go here:
+call dein#add('nordtheme/vim')
+colorscheme nord
+
+" Finish dein initialization (required)
+call dein#end()
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" Enable syntax highlighting
+if has('syntax')
+  syntax on
+endif
+
+" Uncomment if you want to install not-installed plugins on startup.
+if dein#check_install()
+call dein#install()
+endif
+" plugins =============================================== }
+
+
+" ui =============================================== {
+if has('macunix') || has('mac') || has('osx')
+    set antialias " macos 下开启字体抗锯齿
+endif
+set colorcolumn=80
+set termguicolors
+
+set cursorline cursorcolumn " 高亮所在列和行
+
+set langmenu="zh_CN.UTF-8" " 设置菜单语言
+set belloff=all
+
+set autoindent " 新行使用当前行的缩进
+set backspace=indent,eol,nostop " 要允许在插入模式下对所有内容进行退格
+set breakindent " 每一个换行将继续在视觉上缩进
+set linebreak " 当设置 linebreak 时，长行将在合适的位置（如单词的边界）换行，以提高可读性
+set wrap " 关闭自动换行
+set expandtab " 在插入模式下，将 <Tab> 键插入的实际制表符（Tab）替换为空格。此选项影响缩进方式，尤其是在使用自动缩进（autoindent）时
+
+set incsearch " 搜索高亮
+set hlsearch " 搜索高亮
+
+
+set nofoldenable "关闭折叠
+set foldmethod=expr
+
+set laststatus=2 " 状态栏
+set menuitems=9999 " 菜单最大项目数
+" ui =============================================== {
+
+" key =============================================== {
+nmap j gj
+nmap k gk
+" key =============================================== }
+
+" edit =============================================== {
+set clipboard='unnamedplus' " 使用剪贴板寄存器
+
+set history=10000 " 历史记录
+set ignorecase " 忽略大小写
+set smartcase " 启用智能大小写匹配
+set mouse=a " 启用鼠标
+" edit =============================================== }
+
+" auto-completion =============================================== {
+set completeopt=menu,menuone,preview
+" auto-completion =============================================== }
+
+
+" performance =============================================== {
+set maxmem=2000000 " 一个缓冲区可使用的最大内存量
+set maxmemtot=2000000 " 所有缓冲区一起使用的最大内存量
+set maxmempattern=2000000 " 用于模式匹配的最大内存量
+set lazyredraw " 当启用 lazyredraw 时，Vim 会延迟屏幕的刷新，直到所有命令执行完毕后才更新屏幕。这可以提高在处理大量文本或进行复杂操作时的性能。
+" perrormance =============================================== }
+
+
+" file =============================================== {
+set autoread  " 文件被外部修改时，再次读取文件
+set autowriteall " 自动保存
+
+set nobackup
+"set backupdir=./.backup,~/.backup,.,/tmp
+"set backupext='.bak' " 备份文件后缀新增.bak
+
+set noswapfile " 关闭swap文件
+set encoding=utf-8 " 设置vim编码
+set makeencoding=utf-8 " 用于读取外部命令的编码
+set fileencoding=utf-8 "设置文件编码
+set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1,gbk,gb2312
+" file =============================================== }
+
+
+" develop =============================================== {
+set cindent " 启用C语言缩进
+set copyindent " 当 'copyindent' 选项开启时，Vim 会在复制文本时保留缩进格式
+" develop =============================================== }
+
+
+" menu =============================================== {
+set cmdheight=2 " 命令行数
+set cmdwinheight=2 " 命令行数
+set langmenu='zh_CN.UTF-8'
+" menu =============================================== {
+
+
+" fix cursor in wsl
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+let &t_SI .= "\<Esc>[5 q"
+" solid block
+let &t_EI .= "\<Esc>[1 q"
