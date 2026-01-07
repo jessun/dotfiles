@@ -1,0 +1,16 @@
+{{- $user := promptStringOnce . "user" "User name" -}}
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $hostname := promptStringOnce . "hostname" "Host name" -}}
+
+{{- $socks5_proxy := promptStringOnce . "socks5_proxy" "Socks5 proxy(socks5://127.0.0.1:1087)" -}}
+{{- $http_proxy := promptStringOnce . "http_proxy" "Http proxy(http://127.0.0.1:1087)" -}}
+{{- $https_proxy := promptStringOnce . "https_proxy" "Https proxy(http://127.0.0.1:1087)" -}}
+
+[data]
+user = {{ $user | quote }}
+email = {{ $email | quote }}
+hostname = {{ $hostname | quote }}
+
+http_proxy = {{ $http_proxy | quote }}
+https_proxy = {{ $https_proxy | quote }}
+socks5_proxy = {{ $socks5_proxy | quote }}
