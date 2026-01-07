@@ -13,7 +13,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 
 ## Configs
 
-- [ ] chezmoi(https://chezmoi.io/)
+- [x] chezmoi(https://chezmoi.io/)
 - [ ] tmux(https://github.com/tmux/tmux)
 - [ ] ssh(https://www.openssh.com/)
 - [ ] git(https://github.com/git/git)
