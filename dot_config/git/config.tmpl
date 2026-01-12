@@ -1,0 +1,86 @@
+# git config
+[alias]
+    s                    = "status"
+    lg                   = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+    push-current         = "!sh -c 'git push -u origin $(git rev-parse --abbrev-ref HEAD)'"
+    force-push-current   = "!sh -c 'git push -u --force-with-lease origin $(git rev-parse --abbrev-ref HEAD)'"
+    stash-list           = "stash list --pretty=format:'%Cblue%gd%Cred: %C(yellow)%s'q"
+    prev                 = "checkout HEAD^1"
+    next                 = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
+    find-merge           = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+    show-merge           = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
+    copy-branch-name     = "!sh -c 'echo `git rev-parse --abbrev-ref HEAD` | pbcopy' > /dev/null || return && exit 0"
+    proxy-clean          = !git config --global http.proxy '' && git config --global https.proxy ''
+    proxy-enable         = !git config --global http.proxy '{{ .http_proxy }}' && git config --global https.proxy '{{ .https_proxy }}'
+    proxy-socks5-enable  = !git config --global http.proxy '{{ .socks5_proxy }}' && git config --global https.proxy '{{ .socks5_proxy }}'
+    delete-merged-branch = "!sh -c 'git branch --merged | xargs git branch -d' "
+[core]
+    editor         = "nvim"
+    quotepath      = false
+	longpaths = true
+	autocrlf = input
+	trustctime = false
+	attributesfile = ~/.attributes_global
+	ignorecase = true
+	untrackedcache = true
+	excludesfile = ~/.gitignore_global
+[diff]
+    tool           = "nvimdiff"
+[i18n]  
+    commitencoding = utf-8
+[gui]  
+    encoding       = utf-8
+[pull]
+    rebase         = true
+[user]
+    name = {{ .user }}
+    email = {{ .email }}
+[http]
+	proxy = {{ .http_proxy }}
+	postBuffer = 524288000
+[https]
+	proxy = {{ .https_proxy }}
+[receive]
+	denyNonFastForwards = true
+	denyDeletes = true
+[branch "master"]
+	pushRemote = no_push                 # never push to master branch directly
+[branch "main"]
+	pushRemote = no_push
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
+
+;other example
+;[url "git@192.168.124.1:xxx"]
+;    insteadOf      = http://yyy.zzz/xxx
+;[url "git@github.com:xxx"]
+;    insteadOf      = https://github.com/xxx
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+	defaultBranch = main
+[diff "text"]
+	textconv = cat
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[mergetool]
+	keepBackup = false
+[lfs]
+	concurrenttransfers = 8
+	fetchrecentrefsdays = 0
+	pruneoffsetdays = 0
+	dialtimeout = 3
+	tlstimeout = 3
+[lfs "transfer"]
+	maxretries = 1
+	maxretrydelay = 2
+[merge "lfs-text"]
+	driver = git lfs merge-driver --ancestor %O --current %A --other %B --marker-size %L --output %A --program 'git merge-file --stdout --marker-size=%%L %%A %%O %%B >%%D'
+[rebase]
+	backend = merge
+[safe]
+	directory = *
