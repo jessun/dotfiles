@@ -19,7 +19,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 - [x] ssh(https://www.openssh.com/)
 - [x] vim(https://github.com/vim/vim)
 - [x] neovim(https://github.com/neovim/neovim)
-- [ ] git(https://github.com/git/git)
+- [x] git(https://github.com/git/git)
 - [ ] alacritty(https://github.com/alacritty/alacritty)
 - [ ] kitty(https://github.com/kovidgoyal/kitty)
 - [ ] fish(https://github.com/fish-shell/fish-shell)
