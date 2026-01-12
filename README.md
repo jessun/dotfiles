@@ -17,7 +17,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 - [x] tmux(https://github.com/tmux/tmux)
 - [x] bat(https://github.com/sharkdp/bat)
 - [x] ssh(https://www.openssh.com/)
-- [ ] vim(https://github.com/vim/vim)
+- [x] vim(https://github.com/vim/vim)
 - [ ] neovim(https://github.com/neovim/neovim)
 - [ ] git(https://github.com/git/git)
 - [ ] alacritty(https://github.com/alacritty/alacritty)

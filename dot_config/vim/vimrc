@@ -1,0 +1,86 @@
+" -----------------------------------------------------------------------------
+"  Vimrc
+"  Author:   jessun.pro@gmail.com
+"  Github:   https://github.com/jessun
+"  Location: ~/.config/vim/vimrc
+" -----------------------------------------------------------------------------
+"  Dependencies:
+"  - System Tools (macOS):
+"    $ brew install fzf bat fd ripgrep the_silver_searcher perl universal-ctags
+"  Documentation:
+"  - Local (Linux): /usr/share/vim/vim*/doc/*
+"  - Local (macOS): /Applications/MacVim.app/Contents/Resources/vim/runtime/doc/*
+"  - Online:        https://vimhelp.org/
+"                   https://github.com/vim/vim/blob/master/runtime/doc/options.txt
+" -----------------------------------------------------------------------------
+
+" =============================================================================
+" 00. Bootstrap & Initialization
+" =============================================================================
+" Leader keys must be defined immediately. Plugins read these variables during
+" their initialization; setting them later will cause plugins to default to '\'.
+let g:mapleader = "\<Space>"
+let maplocalleader = "\\"
+
+" Disable Vi-compatibility to enable advanced Vim features.
+set nocompatible
+
+" Force UTF-8 encoding. This ensures external scripts and files with non-ASCII
+" characters (e.g., icons, localized text) are loaded correctly.
+set encoding=utf-8
+scriptencoding utf-8
+
+" XDG Standard Compliance:
+" Force Vim to use ~/.config/vim as the primary runtime path. This allows
+" autoload/ and plugin/ directories to function correctly in this location.
+set runtimepath^=~/.config/vim
+set runtimepath+=~/.config/vim/after
+let &packpath = &runtimepath
+
+" Enable filetype detection, plugin loading, and indentation rules.
+" This is the foundation for syntax highlighting and auto-completion.
+filetype plugin indent on
+
+" =============================================================================
+" 01. Module Loader Utility
+" =============================================================================
+" Safely sources a list of files. If a file is missing, it skips it silently
+" to prevent startup errors and ensure system stability.
+function! SourceIfExists(file_list) abort
+  for l:file in a:file_list
+    let l:path = expand(l:file)
+    " if filereadable(l:path)
+      execute 'source ' . l:path
+    " else
+      " (可选) 如果你想知道哪些文件没找到，可以取消下面这行的注释
+      " echom "Skipped: " . l:full_path
+    " endif
+  endfor
+endfunction
+
+" =============================================================================
+" 02. Load Configuration Modules
+" =============================================================================
+let s:config_root = expand('~/.config/vim')
+
+" Module Definition:
+" Order matters here. We load plugins and core options first, then mappings,
+" and finally UI and feature-specific configurations.
+" 'core/options.vim', 1. General Settings (Performance, UX, Indent)
+" 'core/packages.vim', 2. Plugin Manager (Must load first to register commands)
+" 'ui/theme.vim',     3. Visuals (Fonts, Colorscheme logic)
+" 'ui/lightline.vim', 4. Statusline Configuration
+let s:modules = [ 
+        \ 'core/options.vim' ,
+        \ 'core/packages.vim' ,
+        \ 'ui/theme.vim',
+        \ 'ui/lightline.vim',
+        \ ]
+
+
+" Resolve paths and execute loading
+call SourceIfExists(map(s:modules, {idx, val -> s:config_root . '/' . val}))
+
+" =============================================================================
+" End of file
+" =============================================================================
