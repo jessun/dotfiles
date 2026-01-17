@@ -1,0 +1,268 @@
+tap "ksk001100/ruget"
+tap "lencx/chatgpt", "https://github.com/lencx/ChatGPT.git"
+tap "lihaoyun6/tap"
+tap "localsend/localsend"
+tap "playcover/playcover"
+tap "productdevbook/tap"
+tap "sozercan/kaset", "https://github.com/sozercan/kaset"
+tap "tw93/tap"
+tap "ybeapps/sourcegit"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Maintained ctags implementation
+brew "universal-ctags"
+# LSP implementation using universal-ctags as backend
+brew "ctags-lsp"
+# Modern, maintained replacement for ls
+brew "eza"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Plugin manager for the Fish shell
+brew "fisher"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Blazing fast terminal-ui for git written in rust
+brew "gitui"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Language server for the Go language
+brew "gopls"
+# Post-modern modal text editor
+brew "helix"
+# Configurable static site generator
+brew "hugo"
+# Git-compatible distributed version control system
+brew "jj"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# No Nonsense Neovim Client in Rust
+brew "neovide"
+# Highly capable, feature-rich programming language
+brew "perl"
+# Rsync for cloud storage
+brew "rclone"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Code-search similar to ack
+brew "the_silver_searcher"
+# Terminal multiplexer
+brew "tmux"
+# Manage complex tmux sessions easily
+brew "tmuxinator"
+# Plugin manager for tmux
+brew "tpm"
+# CLI tool that moves files or folder to the trash
+brew "trash"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# JavaScript package manager
+brew "yarn"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+brew "ksk001100/ruget/ruget"
+# Comprehensive macOS cleanup and application uninstall tool
+brew "tw93/tap/mole"
+# GPU-accelerated terminal emulator
+cask "alacritty"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# AI Coding Agent IDE
+cask "antigravity"
+# Platform for API documentation, debugging, and testing
+cask "apifox"
+# User-friendly GUI app for Homebrew
+cask "applite"
+# Telegram client with ghost mode and message history
+cask "ayugram"
+# Cloud storage service
+cask "baidunetdisk"
+# Online gaming platform
+cask "battle-net"
+# Display management tool
+cask "betterdisplay"
+# Official bilibili video streaming and sharing platform
+cask "bilibili"
+# Send any size file between devices
+cask "blip"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
+# Web debugging Proxy application
+cask "charles"
+# Continuation of Clash Verge - A Clash Meta GUI based on Tauri
+cask "clash-verge-rev"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# Command-line agent for Cursor
+cask "cursor-cli"
+# Social software for creating music short videos
+cask "douyin"
+# Chat client for Douyin
+cask "douyin-chat"
+# Project management software
+cask "feishu"
+# Web browser
+cask "firefox@beta"
+cask "font-jetbrains-mono-nerd-font"
+# Download accelerator and organiser
+cask "free-download-manager"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Web browser
+cask "google-chrome"
+# Web browser
+cask "google-chrome@beta"
+# Web browser
+cask "google-chrome@canary"
+# Web browser
+cask "google-chrome@dev"
+# Client for the Google Drive storage service
+cask "google-drive"
+# Chromium-based web browser
+cask "helium-browser"
+# Free and open-source media player
+cask "iina"
+# Monitor for displaying process traffic on status bar
+cask "itraffic"
+# Menu bar manager
+cask "jordanbaird-ice"
+# File archiver
+cask "keka"
+# GPU-based terminal emulator
+cask "kitty@nightly"
+# Open-source epub reader
+cask "koodo-reader"
+# Utility that shows the latest app updates
+cask "latest"
+# Search and play songs from a variety of online sources
+cask "listen1"
+# Open-source cross-platform alternative to AirDrop
+cask "localsend"
+# Privacy-first, open-source platform for knowledge sharing and management
+cask "logseq"
+# Text editor
+cask "macvim-app"
+# Extensible two-pane file manager
+cask "marta"
+# Syncs files between computers and MEGA Cloud drives
+cask "megasync"
+# Multi-platform web browser
+cask "microsoft-edge"
+# Multi-platform web browser
+cask "microsoft-edge@beta"
+# Open-source download manager
+cask "motrix"
+# Music streaming platform
+cask "neteasemusic"
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Calendar for professionals and teams
+cask "notion-calendar"
+# Email client integrated with Notion workspace
+cask "notion-mail"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Cloud storage client
+cask "onedrive"
+# Replacement for Docker Desktop
+cask "orbstack"
+# WebKit based web browser
+cask "orion"
+# Tool for uploading images
+cask "picgo"
+# Colour picker for colours onscreen
+cask "pika"
+# Screenshot tool
+cask "pixpin"
+# Sideload iOS apps and games
+cask "playcover-community"
+# Menu bar app to find and kill processes running on open ports
+cask "portkiller"
+# Instant messaging tool
+cask "qq"
+# A lightweight and high-performance screen recorder for macOS.
+cask "quickrecorder"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Standalone client for sing-box, the universal proxy platform
+cask "sfm"
+# Snip or pin screenshots
+cask "snipaste"
+# Git GUI client
+cask "sourcegit"
+# Network tool based on Clash
+cask "stash"
+# System monitor for the menu bar
+cask "stats"
+# Video game digital distribution service
+cask "steam"
+# Git client
+cask "sublime-merge"
+# Native GUI tool for relational databases
+cask "tableplus"
+# Unpacks archive files
+cask "the-unarchiver"
+# Web browser
+cask "thebrowsercompany-dia"
+# Adaptive AI IDE
+cask "trae"
+# Adaptive AI IDE
+cask "trae-cn"
+# Open-source BitTorrent client
+cask "transmission"
+# Open-source code editor
+cask "visual-studio-code"
+# Open-source code editor
+cask "visual-studio-code@insiders"
+# Web browser with built-in email client focusing on customization and control
+cask "vivaldi"
+# Rust-based terminal
+cask "warp"
+# Free messaging and calling application
+cask "wechat"
+# Text input app from WeChat team for Chinese users
+cask "wetype"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+# Agentic IDE powered by AI Flow paradigm
+cask "windsurf@next"
+# Network protocol analyzer
+cask "wireshark-app"
+# Install and switch between multiple versions of Xcode
+cask "xcodes-app"
+# Platform for podcasting and audio-sharing
+cask "ximalaya"
+# Multiplayer code editor
+cask "zed"
+# Multiplayer code editor
+cask "zed@preview"
+vscode "arcticicestudio.nord-visual-studio-code"
+vscode "donjayamanne.githistory"
+vscode "ms-ceintl.vscode-language-pack-zh-hans"
+go "cmd/go"
+go "cmd/gofmt"
+cargo "cargo-update"
+cargo "mdbook"
+cargo "rm-improved"
+cargo "rust-analyzer"
+cargo "rustlings"
+cargo "work-tuimer"
