@@ -1,0 +1,48 @@
+###############################################################################
+##  fish config file 
+##  Author:      jessun.pro@gmail.com
+##  Location: ~/.config/fish/config.fish
+###############################################################################
+
+###############################################################################
+## Variables 
+###############################################################################
+set -gx GPG_TTY (tty) 
+set -gx LANG zh_CN.UTF-8
+set -gx LOCAL_HTTP_PROXY "{{ .http_proxy }}"
+set -gx LOCAL_SOCKS5_PROXY "{{ .socks5_proxy }}"
+
+###############################################################################
+## Fish Prompt & Config
+###############################################################################
+set -g __fish_prompt_hostname "{{ .hostname }}"
+set -g fish_prompt_pwd_dir_length 0
+
+###############################################################################
+## Path Management
+###############################################################################
+fish_add_path "$HOME/.local/bin"
+fish_add_path "$HOME/.cargo/bin"
+fish_add_path "$HOME/.local/share/gem/ruby/3.2.0/bin"
+fish_add_path "$HOME/.local/share/pnpm"
+if type -q cpanm
+  test -d "$HOME/perl5/lib/perl5" && eval (perl -I "$HOME/perl5/lib/perl5" -Mlocal::lib)
+end
+
+###############################################################################
+## Golang
+###############################################################################
+set -gx GO111MODULE on
+set -gx GOPROXY goproxy.cn,goproxy.io,direct
+set -gx GOPRIVATE ""
+set -gx GOINSECURE ""
+
+###############################################################################
+## Interactive Session Only
+###############################################################################
+if status is-interactive
+    source $HOME/.config/fish/interactive.fish 
+end
+###############################################################################
+## End
+###############################################################################
