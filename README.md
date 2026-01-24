@@ -23,3 +23,4 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --verbose https://github.co
 - [x] alacritty(https://github.com/alacritty/alacritty)
 - [x] kitty(https://github.com/kovidgoyal/kitty)
 - [x] fish(https://github.com/fish-shell/fish-shell)
+- [x] homebrew bundle(https://brew.sh)
