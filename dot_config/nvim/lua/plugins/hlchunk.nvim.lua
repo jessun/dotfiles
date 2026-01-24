@@ -39,10 +39,10 @@ require('hlchunk').setup({
         support_filetypes = {
             "*"
         },
-        style = "#D08770",
+        style = "#5E81AC",
     },
     chunk = {
-        enable = true,
+        enable = false,
         chars = {
             horizontal_line = "─",
             vertical_line = "│",

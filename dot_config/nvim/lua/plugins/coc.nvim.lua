@@ -49,46 +49,11 @@ local set_hl = vim.api.nvim_set_hl
 
 -- SemanticTokens ==============================================================
 -- Active Highlights
-set_hl(0, "CocHighlightText", { bg = "#B48EAD", fg = "#2E3440" })
-set_hl(0, "CocErrorHighlight", { bg = "#BF616A", fg = "#d8dee9" })
-set_hl(0, "CocWarnHighlight", { bg = "#EBCB8B", fg = "#d8dee9" })
-set_hl(0, "CocSemLifetime", { fg = "#EBCB8B" })
-
--- Temporarily disabled semantic highlights
--- set_hl(0, "CocSemAbstract", { fg = "#D08770" })
--- set_hl(0, "CocSemAsync", { fg = "#EBCB8B" })
--- set_hl(0, "CocSemClass", { fg = "#81A1C1" })
--- set_hl(0, "CocSemComment", { fg = "#434C5E" })
--- set_hl(0, "CocSemDeclaration", { fg = "#8FBCBB" })
--- set_hl(0, "CocSemDecorator", { fg = "#88C0D0" })
--- set_hl(0, "CocSemDefaultLibrary", { fg = "#88C0D0" })
--- set_hl(0, "CocSemDefinition", { fg = "#81A1C1" })
--- set_hl(0, "CocSemDeprecated", { fg = "#BF616A" })
--- set_hl(0, "CocSemDocumentation", { fg = "#B48EAD" })
--- set_hl(0, "CocSemEnum", { fg = "#81A1C1" })
--- set_hl(0, "CocSemEnumMember", {})
--- set_hl(0, "CocSemEvent", {})
--- set_hl(0, "CocSemFunction", { fg = "#81A1C1" })
--- set_hl(0, "CocSemFunction", { fg = "#81A1C1" })
--- set_hl(0, "CocSemInterface", { fg = "#81A1C1" })
--- set_hl(0, "CocSemKeyword", { fg = "#88C0D0" })
--- set_hl(0, "CocSemMacro", { fg = "#81A1C1" })
--- set_hl(0, "CocSemMethod", { fg = "#8FBCBB" })
--- set_hl(0, "CocSemModification", { fg = "#88C0D0" })
--- set_hl(0, "CocSemModifier", { fg = "#88C0D0" })
--- set_hl(0, "CocSemNamespace", { fg = "#EBCB8B" })
--- set_hl(0, "CocSemNumber", { fg = "#B48EAD" })
--- set_hl(0, "CocSemOperator", { fg = "#81A1C1" })
--- set_hl(0, "CocSemParameter", { fg = "#5E81AC" })
--- set_hl(0, "CocSemProperty", { fg = "#5E81AC" })
--- set_hl(0, "CocSemReadonly", { fg = "#81A1C1" })
--- set_hl(0, "CocSemRegexp", { fg = "#8FBCBB" })
--- set_hl(0, "CocSemStatic", { fg = "#BF616A" })
--- set_hl(0, "CocSemString", { fg = "#A3BE8C" })
--- set_hl(0, "CocSemStruct", { fg = "#81A1C1" })
--- set_hl(0, "CocSemType", { fg = "#81A1C1" })
--- set_hl(0, "CocSemTypeParameter", { fg = "#81A1C1" })
--- set_hl(0, "CocSemVariable", { fg = "#d8dee9" })
+set_hl(0, "CocHighlightText", { bg = "#D08770", fg = "#2E3440" })
+set_hl(0, "CocErrorHighlight", { bg = "#BF616A", fg = "#2E3440" })
+set_hl(0, "CocWarnHighlight", { bg = "#EBCB8B", fg = "#2E3440" })
+set_hl(0, "CocInfoHighlight", { bg = "#5E81AC", fg = "#2E3440" })
+set_hl(0, "CocHintHighlight", { bg = "#4C566A", fg = "#2E3440" })
 
 -- ============================================================================
 -- 4. Advanced Functions (Grep & Cursors)
@@ -132,12 +97,31 @@ keyset("n", "<C-x>", function()
         return "*<Plug>(coc-cursors-word):nohlsearch<CR>"
     end
 end, { silent = true, expr = true, replace_keycodes = true })
-
 -- ============================================================================
--- 5. Key Mappings
+-- 5. coc-spell-checker
+-- ============================================================================
+vim.api.nvim_create_user_command('CleanList', function(opts)
+    local start_line = opts.line1
+    local end_line = opts.line2
+
+    vim.cmd(string.format('%d,%ds/^\\s*"\\([^"]*\\)",\\?\\s*$/\\1/e', start_line, end_line))
+end, { range = true })
+-- ============================================================================
+-- 6. Key Mappings
 -- ============================================================================
 
 local opts_expr = { silent = true, expr = true, replace_keycodes = false }
+
+-- Float Window Scrol
+-- Normal
+keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
+-- Insert
+keyset("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+keyset("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
+-- Visual
+keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
+keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 
 -- Super TAB (Completion + Jump + Indent)
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#_select_confirm() : ' ..
