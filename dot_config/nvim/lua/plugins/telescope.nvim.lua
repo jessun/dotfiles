@@ -24,14 +24,15 @@ vim.api.nvim_set_keymap("n", "<leader>th", ":Telescope help_tags<CR>", { noremap
 vim.api.nvim_set_keymap("n", "<leader>tk", ":Telescope marks<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tm", ":Telescope keymaps<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tr", ":Telescope registers<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>to", ":lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>",
-    { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>to",
+    ":lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope coc diagnostics<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "tr", ":Telescope coc references<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "tu", ":Telescope coc references_used<CR>", { noremap = true, silent = true })
 
 -- --- Quick Access Mappings ---
+vim.api.nvim_set_keymap("n", "<leader>m", ":Telescope keymaps<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader><leader>", ":Telescope find_files<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>/", ":Telescope live_grep<CR>", { noremap = true, silent = true })

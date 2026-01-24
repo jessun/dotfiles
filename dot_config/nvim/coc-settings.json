@@ -70,6 +70,7 @@
     "dialog.rounded": false,
     "explorer.file.showHiddenFiles": true,
     "extensions.updateCheck": "daily",
+    "git.enableGutters": false,
     "git.addGBlameToVirtualText": false,
     "git.addedSign.text": "█",
     "git.changeRemovedSign.text": "█",
@@ -142,5 +143,13 @@
         "staticcheck": true
     },
     "rust-analyzer.check.command": "clippy",
-    "cSpell.userWords": []
+    "cSpell.userWords": [
+        "KHTML",
+        "bufwtr",
+        "byobu",
+        "gitui",
+        "jessun",
+        "nvim",
+        "tmuxinator"
+    ]
 }

@@ -1,4 +1,3 @@
--- Set configuration and data directories
 vim.g.coc_config_home = vim.fn.stdpath("config")
 vim.g.coc_data_home = vim.fn.stdpath("data") .. "/coc"
 
@@ -73,7 +72,28 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         --  编辑器配色插件 ====================================================
-        { 'gbprod/nord.nvim', config = function() vim.cmd([[colorscheme nord]]) end }, -- 编辑器配色插件
+        { 'rktjmp/lush.nvim' },
+        { 'gbprod/nord.nvim',            config = function() vim.cmd.color('nord') end }, -- 编辑器配色插件
+        { 'AlexvZyl/nordic.nvim' },
+        { 'rmehri01/onenord.nvim' },
+        { 'fcancelinha/nordern.nvim' },
+        { 'chriskempson/base16-vim' },
+        { 'rebelot/kanagawa.nvim' },
+        { 'vague-theme/vague.nvim' },
+        { 'zenbones-theme/zenbones.nvim' },
+        { 'kvrohit/rasmus.nvim' },
+        {
+            'antonk52/lake.nvim',
+            config = function() -- vim.cmd.color('lake')
+            end
+        },
+        -- no color
+        { 'LuRsT/austere.vim' },
+        { 'cideM/yui' },
+        { 'pgdouyon/vim-yin-yang' },
+        { 'kxzk/skull-vim' },
+        { 'ntk148v/komau.vim' },
+        { 'maxmx03/solarized.nvim' },
         -- Coc.nvim ===========================================================
         {
             'neoclide/coc.nvim',
@@ -121,13 +141,6 @@ require("lazy").setup({
             dependencies = "nvim-lua/plenary.nvim",
             config = function()
                 load_plugin_config("todo-comments.lua")
-            end
-        },
-        -- 滚动条 =============================================================
-        {
-            'petertriho/nvim-scrollbar',
-            config = function()
-                load_plugin_config("nvim-scrollbar.lua")
             end
         },
         -- 高亮搜索关键字 =====================================================
@@ -186,12 +199,34 @@ require("lazy").setup({
                 load_plugin_config("lualine.nvim.lua")
             end
         },
+        --  大文件 =============================================================
+        {
+            "LunarVim/bigfile.nvim",
+            version = "*",
+            config = function()
+                load_plugin_config("bigfile.nvim.lua")
+            end
+        },
+        {
+            "lewis6991/gitsigns.nvim",
+            event = { "BufReadPre", "BufNewFile" },
+            config = function()
+                load_plugin_config("gitsigns.nvim.lua")
+            end
+        },
+        -- 滚动条 =============================================================
+        -- {
+        --     'petertriho/nvim-scrollbar',
+        --     config = function()
+        --         load_plugin_config("nvim-scrollbar.lua")
+        --     end
+        -- },
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
 })
 -- ============================================================================
 -- End of file

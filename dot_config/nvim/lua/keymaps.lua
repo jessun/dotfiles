@@ -42,8 +42,8 @@ map("n", "k", "gk", opts)
 
 -- Search Centering
 -- Keep the search result in the middle of the screen when jumping.
-map("n", "n", "nzz", opts)
-map("n", "N", "Nzz", opts)
+-- map("n", "n", "nzz", opts)
+-- map("n", "N", "Nzz", opts)
 
 -- ============================================================================
 -- 3. Clipboard Integration
