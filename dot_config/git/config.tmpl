@@ -19,7 +19,7 @@
     proxy-socks5-enable  = !git config --global http.proxy '{{ .socks5_proxy }}' && git config --global https.proxy '{{ .socks5_proxy }}'
 
 [core]
-    editor = sh -c 'if command -v nvim >/dev/null 2>&1; then exec nvim "$0"; else exec vim "$0"; fi'
+    editor = "nvim"
     quotepath = false
     longpaths = true
     autocrlf = input
@@ -92,6 +92,7 @@
 [user]
     name = {{ .user }}
     email = {{ .email }}
+    signingkey = {{ .signingkey }}
 
 [http]
     proxy = {{ .http_proxy }}
@@ -107,6 +108,9 @@
 
 [commit]
     gpgSign = true
+
+[gpg]
+    program = {{ .gpgcommand }}
 
 [tag]
     gpgSign = true
