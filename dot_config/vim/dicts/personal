@@ -1,7 +1,4 @@
-antoinemadec
-itchyny
-justinmk
-neoclide
-nordtheme
-xoffset
-yoffset
+clippy
+ctags
+gopls
+struct
