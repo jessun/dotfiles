@@ -1,4 +1,11 @@
 {
+    "inlayHint.display": true,
+    "inlayHint.enable": true,
+    "semanticTokens.enable": true,
+    "Lua.diagnostics.globals": [
+        "vim"
+    ],
+    "inlayHint.position": "eol",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.formatOnSave": true,
     "coc.source.tag.filetypes": [
@@ -22,7 +29,7 @@
     "list.previousKeymap": "<C-p>",
     "session.directory": "${env:HOME}/.local/state/vim/sessions",
     "session.restartOnSessionLoad": true,
-    "outline.sortBy": "name",
+    "outline.sortBy": "position",
     "outline.keepWindow": true,
     "suggest.defaultSortMethod": "alphabetical",
     "suggest.selection": "recentlyUsedByPrefix",
@@ -63,15 +70,14 @@
     "dialog.rounded": false,
     "explorer.file.showHiddenFiles": true,
     "extensions.updateCheck": "daily",
-    "git.addGBlameToVirtualText": true,
+    "git.enableGutters": false,
+    "git.addGBlameToVirtualText": false,
     "git.addedSign.text": "█",
     "git.changeRemovedSign.text": "█",
     "git.changedSign.text": "█",
     "git.removedSign.text": "█",
     "git.signPriority": 0,
     "git.topRemovedSign.text": "█",
-    "inlayHint.enable": true,
-    "inlayHint.position": "eol",
     "cSpell.allowCompoundWords": true,
     "cSpell.ignorePaths": [
         "node_modules",
@@ -84,7 +90,9 @@
         "**/*.dll",
         "**/vendor",
         "**/vendor/**",
-        "vendor/**"
+        "vendor/**",
+        "${env:HOME}/.cargo/**",
+        "${env:HOME}/.rustup/**"
     ],
     "cSpell.enabledLanguageIds": [
         "asciidoc",
@@ -124,7 +132,7 @@
     "cSpell.dictionaryDefinitions": [
         {
             "name": "personal",
-            "path": "${env:HOME}/.config/vim/dicts/personal"
+            "path": "${env:HOME}/.config/nvim/dicts/personal"
         }
     ],
     "cSpell.dictionaries": [
@@ -135,4 +143,13 @@
         "staticcheck": true
     },
     "rust-analyzer.check.command": "clippy",
+    "cSpell.userWords": [
+        "KHTML",
+        "bufwtr",
+        "byobu",
+        "gitui",
+        "jessun",
+        "nvim",
+        "tmuxinator"
+    ]
 }
