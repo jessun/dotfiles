@@ -142,13 +142,5 @@
         "staticcheck": true
     },
     "rust-analyzer.check.command": "clippy",
-    "cSpell.userWords": [
-        "KHTML",
-        "bufwtr",
-        "byobu",
-        "gitui",
-        "jessun",
-        "nvim",
-        "tmuxinator"
-    ]
+    "cSpell.userWords": []
 }
