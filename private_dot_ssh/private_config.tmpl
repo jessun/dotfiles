@@ -1,5 +1,7 @@
 # Include
-# Include ~/.orbstack/ssh/config
+{{- if eq .chezmoi.os "darwin" }}
+Include ~/.orbstack/ssh/config
+{{- end }}
 
 Host github.com
   HostName ssh.github.com
