@@ -35,14 +35,14 @@ require('hlchunk').setup({
         },
     },
     line_num = {
-        enable = true,
+        enable = false,
         support_filetypes = {
             "*"
         },
         style = "#5E81AC",
     },
     chunk = {
-        enable = false,
+        enable = true,
         chars = {
             horizontal_line = "─",
             vertical_line = "│",
