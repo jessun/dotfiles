@@ -34,8 +34,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- Map '\' to toggle between the current and the last accessed buffer.
 map("n", "\\", "<C-^>", opts)
 map("i", "<C-6>", "<cmd>e #<CR>", { silent = true, desc = "Switch to alternate file" })
-map({ "n", "i" }, "<C-f>", "<cmd>bnext<CR>", { silent = true, desc = "Next Buffer" })
 map({ "n", "i" }, "<C-b>", "<cmd>bprev<CR>", { silent = true, desc = "Prev Buffer" })
+map({ "n", "i" }, "<C-f>", "<cmd>bnext<CR>", { silent = true, desc = "Next Buffer" })
 
 -- Visual Motions
 -- Move by visual lines (screen lines) instead of physical lines.
