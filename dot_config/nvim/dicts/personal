@@ -1,3 +1,4 @@
+Hedwig
 KHTML
 bufwtr
 byobu
@@ -5,7 +6,10 @@ clippy
 ctags
 gitui
 gopls
+hedwig
+icns
 jessun
 nvim
+rgba
 struct
 tmuxinator
