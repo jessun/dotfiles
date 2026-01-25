@@ -15,6 +15,7 @@ vim.filetype.add({
 local keyset = vim.keymap.set
 -- replace_keycodes = false is a critical setting recommended by coc.nvim official docs
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+local no_expr_opts = { silent = true, nowait = true }
 
 -- ============================================================================
 -- 1. Helper Functions
@@ -117,7 +118,7 @@ local opts_expr = { silent = true, expr = true, replace_keycodes = false }
 keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 -- Insert
-keyset("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>" : "<Right>"', opts)
+keyset("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>"kk : "<Right>"', opts)
 keyset("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
 -- Visual
 keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
@@ -135,17 +136,16 @@ keyset("n", "[a", ":<C-u>CocPrev<CR>", opts)
 keyset("n", "]a", ":<C-u>CocNext<CR>", opts)
 
 -- --- Coc List Mappings ---
-keyset("n", "<leader>ce", "<Cmd>CocCommand explorer<CR>", { silent = true, nowait = true })
-keyset("n", "<leader>cd", ":<C-u>CocList --auto-preview diagnostics<cr>", { silent = true, nowait = true })
-keyset("n", "<leader>cc", ":CocList commands<CR>", { silent = true, nowait = true })
-keyset("n", "<leader>c/", ":<C-u>CocList --interactive --auto-preview grep<CR>", { silent = true, nowait = true })
+keyset("n", "<leader>ce", "<Cmd>CocCommand explorer<CR>", no_expr_opts)
+keyset("n", "<leader>cd", ":<C-u>CocList --auto-preview diagnostics<cr>", no_expr_opts)
+keyset("n", "<leader>cc", ":CocList commands<CR>", no_expr_opts)
+keyset("n", "<leader>c/", ":<C-u>CocList --interactive --auto-preview grep<CR>", no_expr_opts)
 
 -- General List Mappings (Normal + Visual)
 keyset({ "n", "x" }, "<leader>cm", ":CocList maps<CR>", opts)
 keyset({ "n", "x" }, "<leader>ck", ":CocList marks<CR>", opts)
 keyset({ "n", "x" }, "<leader>cf", ":<C-u>CocList --auto-preview files<CR>", opts)
-keyset({ "n", "x" }, "<leader>cb", ":CocList --auto-preview buffers<CR>", opts)
-keyset({ "n", "x" }, "<leader>co", ":CocList --auto-preview outline<CR>", opts)
+keyset({ "n", "x" }, "<leader>cb", ":CocList --auto-preview buffers<CR>", no_expr_opts)
 
 -- Code Action Mappings
 keyset({ "n", "x" }, "<leader>cs", "<Plug>(coc-codeaction-selected)", { silent = true })
