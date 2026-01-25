@@ -1,29 +1,4 @@
-vim.g.coc_config_home = vim.fn.stdpath("config")
-vim.g.coc_data_home = vim.fn.stdpath("data") .. "/coc"
-
--- Global extension list to be installed automatically
-vim.g.coc_global_extensions = {
-    'coc-dictionary',
-    'coc-emoji',
-    'coc-explorer',
-    'coc-extension-codemod',
-    'coc-git',
-    'coc-go',
-    'coc-highlight',
-    'coc-json',
-    'coc-lists',
-    'coc-lua',
-    'coc-marketplace',
-    'coc-rust-analyzer',
-    'coc-snippets',
-    'coc-spell-checker',
-    'coc-syntax',
-    'coc-tag',
-    'coc-translator',
-    'coc-vimlsp',
-    'coc-word',
-    'coc-yank',
-}
+vim.g.enable_coc = true
 
 local function safe_load_file(path)
     if vim.fn.filereadable(path) == 1 then
@@ -45,6 +20,13 @@ local function load_plugin_config(filename)
     safe_load_file(plugin_path)
 end
 
+if vim.g.enable_coc then
+    load_plugin_config("coc.lua")
+else
+    --  ...
+end
+
+-- vim.fn.stdpath("data"): ~/.local/share/nvim/
 local function load_data_config(filepath)
     local path = vim.fn.stdpath("data") .. "/" .. filepath
     safe_load_file(path)
@@ -94,15 +76,6 @@ require("lazy").setup({
         { 'kxzk/skull-vim' },
         { 'ntk148v/komau.vim' },
         { 'maxmx03/solarized.nvim' },
-        -- Coc.nvim ===========================================================
-        {
-            'neoclide/coc.nvim',
-            build = 'pnpm install',
-            config = function()
-                load_data_config("/lazy/coc.nvim/doc/coc-example-config.lua")
-                load_plugin_config("coc.nvim.lua")
-            end
-        },
         -- 注释插件 ===========================================================
         {
             'numToStr/Comment.nvim',
@@ -122,10 +95,24 @@ require("lazy").setup({
                 load_plugin_config("telescope.nvim.lua")
             end
         },
+        -- Coc.nvim ===========================================================
+        {
+            'neoclide/coc.nvim',
+            build = 'pnpm install',
+            enabled = vim.g.enable_coc,
+            config = function()
+                load_data_config("/lazy/coc.nvim/doc/coc-example-config.lua")
+                load_plugin_config("coc.nvim.lua")
+            end
+        },
         -- Telescope coc integration ===========================================
         {
             'fannheyward/telescope-coc.nvim',
             dependencies = "nvim-lua/plenary.nvim",
+            enabled = vim.g.enable_coc,
+            config = function()
+                load_plugin_config("coc-telescope.lua")
+            end
         },
         -- 高亮 ===============================================================
         {
