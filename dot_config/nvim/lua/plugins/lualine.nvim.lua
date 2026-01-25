@@ -1,4 +1,11 @@
+local diagnostic_sources = {}
+if vim.g.enable_coc then
+    table.insert(diagnostic_sources, "coc")
+else
+    -- table.insert(diagnostic_sources, "nvim_lsp")
+end
 local colors = {
+
     black = "#383a42",
     dark_green = "#196F3D",
     grey = "#a0a1a7",
@@ -118,14 +125,7 @@ require("lualine").setup({
         lualine_b = {
             {
                 "diagnostics",
-                sources = {
-                    --	"nvim_lsp",
-                    --	"nvim_diagnostic",
-                    "coc",
-                    --	"nvim_workspace_diagnostic",
-                    --  "ale",
-                    --	"vim_lsp",
-                },
+                sources = diagnostic_sources,
                 diagnostics_color = {
                     -- error = "DiagnosticError",
                     -- warn = "DiagnosticWarn",
