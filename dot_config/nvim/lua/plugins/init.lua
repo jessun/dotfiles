@@ -1,4 +1,6 @@
+-- Lsp plugin =================================================================
 vim.g.enable_coc = true
+-- Lsp plugin =================================================================
 
 local function safe_load_file(path)
     if vim.fn.filereadable(path) == 1 then
@@ -201,13 +203,6 @@ require("lazy").setup({
                 load_plugin_config("gitsigns.nvim.lua")
             end
         },
-        -- 滚动条 =============================================================
-        -- {
-        --     'petertriho/nvim-scrollbar',
-        --     config = function()
-        --         load_plugin_config("nvim-scrollbar.lua")
-        --     end
-        -- },
         {
             "hedyhli/outline.nvim",
             lazy = true,
@@ -216,6 +211,13 @@ require("lazy").setup({
                 load_plugin_config("outline.nvim.lua")
             end
         }
+        -- 滚动条 =============================================================
+        -- {
+        --     'petertriho/nvim-scrollbar',
+        --     config = function()
+        --         load_plugin_config("nvim-scrollbar.lua")
+        --     end
+        -- },
     },
     -- Configure any other settings here. See the documentation for more details.
     --
