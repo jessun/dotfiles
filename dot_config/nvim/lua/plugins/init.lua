@@ -221,8 +221,17 @@ require("lazy").setup({
         --         load_plugin_config("nvim-scrollbar.lua")
         --     end
         -- },
+        {
+            "hedyhli/outline.nvim",
+            lazy = true,
+            cmd = { "Outline", "OutlineOpen" },
+            config = function()
+                load_plugin_config("outline.nvim.lua")
+            end
+        }
     },
     -- Configure any other settings here. See the documentation for more details.
+    --
     -- colorscheme that will be used when installing plugins.
     install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
