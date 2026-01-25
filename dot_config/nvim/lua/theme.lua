@@ -31,8 +31,8 @@ g.markdown_fenced_languages = { 'vim', 'help', 'json', 'python', 'bash', 'go', '
 
 if g.neovide or vim.fn.has("gui_running") == 1 then
     local font_list = {
-        "BerkeleyMonoTrial Nerd Font Mono", -- Priority 1
-        "JetBrainsMono Nerd Font",          -- Priority 2
+        "JetBrainsMono Nerd Font",          -- Priority 1
+        "BerkeleyMonoTrial Nerd Font Mono", -- Priority 2
         "Menlo",                            -- macOS Default
         "Consolas",                         -- Windows Default (Fallback)
     }
