@@ -233,14 +233,6 @@ local nvim_lsp_plugins = {
             load_plugin_config("lsp-setup.nvim.lua")
         end
     },
-    -- LSP progress messages ==============================================
-    {
-        "j-hui/fidget.nvim",
-        eanbled = false,
-        config = function()
-            load_plugin_config("fidget.nvim.lua")
-        end
-    },
     -- 显示代码中的 LSP 错误 ==============================================
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -339,6 +331,22 @@ local nvim_lsp_plugins = {
             load_plugin_config("conform.nvim.lua")
         end
     },
+    -- Noice.nvim =============================================================
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            load_plugin_config("noice.nvim.lua")
+        end
+    }
 }
 
 if vim.g.enable_coc then
