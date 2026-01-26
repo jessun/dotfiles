@@ -6,6 +6,28 @@ vim.diagnostic.config({
     virtual_lines = nil,
 })
 
+local harper_ls_cfg = {
+    settings = {
+        ["harper-ls"] = {
+            linters = {
+                SpellCheck = true,             -- 拼写检查
+                SpelledNumbers = false,        -- 检查数字拼写 (如 "one" vs "1")，建议关闭
+                AnA = true,                    -- 检查 a/an 的用法
+                SentenceCapitalization = true, -- 检查句子首字母大写
+                UnclosedQuotes = true,         -- 检查未闭合的引号
+                WrongQuotes = false,           -- 检查引号类型 (通常代码里不需要)
+                LongSentences = false,         -- 检查长难句 (写代码注释时建议关闭)
+                RepeatedWords = true,          -- 检查重复单词 (如 "the the")
+                Spaces = true,                 -- 检查空格问题
+                Matcher = true,                -- 模糊匹配检查
+            },
+            codeActions = {
+                forceStable = true,
+            }
+        }
+    }
+}
+
 require('lsp-setup').setup({
     default_mappings = true,
     -- Custom mappings, will overwrite the default mappings for the same key
@@ -64,30 +86,7 @@ require('lsp-setup').setup({
                 },
             },
         },
-        harper_ls = {
-            -- Harper 的配置在 settings["harper-ls"] 里
-            settings = {
-                ["harper-ls"] = {
-                    -- 在这里开启/关闭具体的检查规则
-                    linters = {
-                        SpellCheck = true,             -- 拼写检查
-                        SpelledNumbers = false,        -- 检查数字拼写 (如 "one" vs "1")，建议关闭
-                        AnA = true,                    -- 检查 a/an 的用法
-                        SentenceCapitalization = true, -- 检查句子首字母大写
-                        UnclosedQuotes = true,         -- 检查未闭合的引号
-                        WrongQuotes = false,           -- 检查引号类型 (通常代码里不需要)
-                        LongSentences = false,         -- 检查长难句 (写代码注释时建议关闭)
-                        RepeatedWords = true,          -- 检查重复单词 (如 "the the")
-                        Spaces = true,                 -- 检查空格问题
-                        Matcher = true,                -- 模糊匹配检查
-                    },
-                    -- 可以在这里配置具体的代码动作
-                    codeActions = {
-                        forceStable = true,
-                    }
-                }
-            }
-        },
+        harper_ls = harper_ls_cfg,
         lua_ls = {
             format = { enable = true },
             settings = {
