@@ -80,7 +80,7 @@ cmp.setup {
                 keyword_length = 4,
                 -- Use exact word match when searching `taglist`, for better searching
                 -- performance.
-                exact_match = false,
+                exact_match = true,
                 -- Prioritize searching result for current buffer.
                 current_buffer_only = false,
             },
@@ -135,7 +135,7 @@ require("cmp_dictionary").setup({
         "/usr/share/dict/words",
         "~/.config/nvim/dicts/personal"
     },
-    exact_length = 2,
+    exact_length = 4,
 })
 -- ============================================================================
 -- End of file

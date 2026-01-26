@@ -50,11 +50,11 @@ require('lsp-setup').setup({
         tgr = 'lua require"telescope.builtin".lsp_references()',
     },
     -- Global on_attach
-    on_attach = function(client, bufnr)
-        -- Support custom the on_attach function for global
-        -- Formatting on save as default
-        require('lsp-setup.utils').format_on_save(client)
-    end,
+    -- on_attach = function(client, bufnr)
+    --     -- Support custom the on_attach function for global
+    --     -- Formatting on save as default
+    --     require('lsp-setup.utils').format_on_save(client)
+    -- end,
     -- Global capabilities
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     -- Configuration of LSP servers
@@ -86,7 +86,7 @@ require('lsp-setup').setup({
                 },
             },
         },
-        harper_ls = harper_ls_cfg,
+        -- harper_ls = harper_ls_cfg,
         lua_ls = {
             format = { enable = true },
             settings = {
