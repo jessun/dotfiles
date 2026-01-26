@@ -77,10 +77,8 @@ let s:modules = [
         \ 'ui/lightline.vim',
         \ ]
 
-
 " Resolve paths and execute loading
 call SourceIfExists(map(s:modules, {idx, val -> s:config_root . '/' . val}))
-
 " =============================================================================
 " End of file
 " =============================================================================
