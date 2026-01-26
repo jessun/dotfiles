@@ -73,6 +73,7 @@ set laststatus=2
 " Sync Vim's clipboard with the system clipboard.
 " 'unnamedplus' uses the '+' register (standard on Linux/macOS).
 " 'unnamed' uses the '*' register (standard on Windows).
+set paste
 if has('clipboard')
   if has('unnamedplus')
     set clipboard=unnamedplus
