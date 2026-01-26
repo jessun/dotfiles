@@ -179,7 +179,6 @@ local plugins = {
     -- 大文件 =============================================================
     {
         "LunarVim/bigfile.nvim",
-        enabled = false,
         version = "*",
         config = function()
             load_plugin_config("bigfile.nvim.lua")
@@ -200,13 +199,6 @@ local plugins = {
         cmd = { "Outline", "OutlineOpen" },
         config = function()
             load_plugin_config("outline.nvim.lua")
-        end
-    },
-    -- 小插件集合 ==========================================================
-    {
-        "folke/snacks.nvim",
-        config = function()
-            load_plugin_config("snacks.nvim.lua")
         end
     },
 }
@@ -236,8 +228,6 @@ local nvim_lsp_plugins = {
         'junnplus/lsp-setup.nvim',
         dependencies = {
             'neovim/nvim-lspconfig',
-            'mason-org/mason.nvim',           -- optional
-            'mason-org/mason-lspconfig.nvim', -- optional
         },
         config = function()
             load_plugin_config("lsp-setup.nvim.lua")
@@ -246,6 +236,7 @@ local nvim_lsp_plugins = {
     -- LSP progress messages ==============================================
     {
         "j-hui/fidget.nvim",
+        eanbled = false,
         config = function()
             load_plugin_config("fidget.nvim.lua")
         end
