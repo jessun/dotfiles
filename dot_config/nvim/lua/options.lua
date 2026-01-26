@@ -63,13 +63,13 @@ opt.backspace = { "indent", "eol", "start" } -- Fix backspace behavior
 -- ============================================================================
 -- 4. Search & Performance
 -- ============================================================================
-opt.ignorecase = true -- Ignore case when searching
-opt.smartcase = true  -- Case sensitive if uppercase is used
-opt.incsearch = true  -- Show matches while typing
-opt.hlsearch = true   -- Highlight matches
-opt.updatetime = 100  -- Faster completion/updates
-opt.timeoutlen = 500  -- Faster key sequence timeout
-opt.lazyredraw = true -- Don't redraw while executing macros
+opt.ignorecase = true  -- Ignore case when searching
+opt.smartcase = true   -- Case sensitive if uppercase is used
+opt.incsearch = true   -- Show matches while typing
+opt.hlsearch = true    -- Highlight matches
+opt.updatetime = 100   -- Faster completion/updates
+opt.timeoutlen = 500   -- Faster key sequence timeout
+opt.lazyredraw = false -- Don't redraw while executing macros
 
 -- ============================================================================
 -- 5. System Integration
