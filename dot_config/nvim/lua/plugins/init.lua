@@ -1,37 +1,59 @@
 -- ============================================================================
--- 1. Functions
+-- 1. Helper Functions
 -- ============================================================================
-local function safe_load_file(path)
+
+-- 专门用于 require 模块的安全加载函数
+local function safe_require(module_name)
+    -- require 只需要模块名，不需要 .lua 后缀，也不需要绝对路径
+    local status, err = pcall(require, module_name)
+    if not status then
+        vim.notify(
+            "加载模块失败 [" .. module_name .. "]:\n" .. err,
+            vim.log.levels.ERROR
+        )
+    end
+    return status
+end
+
+-- 专门用于加载任意路径文件的函数 (用于 data 目录等非模块文件)
+local function safe_dofile(path)
     if vim.fn.filereadable(path) == 1 then
-        -- 使用 pcall 安全执行，防止报错中断启动
         local status, err = pcall(dofile, path)
         if not status then
             vim.notify(
-                "加载失败 [" .. path .. "]:\n" .. err,
-                vim.log.levels.ERROR)
-            -- else
-            -- vim.notify("已加载: " .. path, vim.log.levels.INFO) -- 调试用
+                "加载文件失败 [" .. path .. "]:\n" .. err,
+                vim.log.levels.ERROR
+            )
         end
     else
-        error("path[" .. path .. "] not exist")
+        -- 这里可以选择是否报错，或者仅仅是 warn
+        vim.notify("文件不存在: " .. path, vim.log.levels.WARN)
     end
 end
 
---
+-- ============================================================================
+-- 2. Config Loaders
+-- ============================================================================
+
+-- 重构 1: 使用 require 加载插件配置
+-- 假设传入 filename 为 "nvim-cmp.lua"
 local function load_plugin_config(filename)
-    local plugin_path =
-        vim.fn.stdpath("config") .. "/lua/plugins/" .. filename
-    safe_load_file(plugin_path)
+    -- 1. 去掉 .lua 后缀 (require 不需要后缀)
+    local module_name = filename:gsub("%.lua$", "")
+
+    -- 2. 拼接模块名 (lua/plugins/ 下的文件模块名为 "plugins.xxx")
+    local target_module = "plugins." .. module_name
+
+    safe_require(target_module)
 end
 
---
+-- 重构 2: 使用 vim.fs.joinpath 加载数据配置
+-- 保持使用 dofile，因为这些文件通常不在 lua 的 require 搜索路径中
 local function load_data_config(filepath)
-    -- vim.fn.stdpath("data"): ~/.local/share/nvim/
-    local path = vim.fn.stdpath("data") .. "/" .. filepath
-    safe_load_file(path)
+    -- 使用 vim.fs.joinpath 自动处理路径分隔符 (Neovim 0.10+)
+    local path = vim.fs.joinpath(vim.fn.stdpath("data"), filepath)
+    safe_dofile(path)
 end
-
-
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
@@ -95,7 +117,7 @@ local plugins = {
     {
         'numToStr/Comment.nvim',
         config = function()
-            load_plugin_config("comment.nvim.lua")
+            load_plugin_config("comment.lua")
         end
     },
     -- Telescope Fuzzy Finder =================================================
@@ -107,7 +129,7 @@ local plugins = {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
         config = function()
-            load_plugin_config("telescope.nvim.lua")
+            load_plugin_config("telescope.lua")
         end
     },
     -- TODO 注释关键字高亮 ================================================
@@ -138,14 +160,14 @@ local plugins = {
         "shellRaining/hlchunk.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            load_plugin_config("hlchunk.nvim.lua")
+            load_plugin_config("hlchunk.lua")
         end
     },
     -- marks 插件 =========================================================
     {
         "chentoast/marks.nvim",
         config = function()
-            load_plugin_config("marks.nvim.lua")
+            load_plugin_config("marks.lua")
         end
     },
     -- 批量替换插件 =======================================================
@@ -173,7 +195,7 @@ local plugins = {
     {
         'nvim-lualine/lualine.nvim',
         config = function()
-            load_plugin_config("lualine.nvim.lua")
+            load_plugin_config("lualine.lua")
         end
     },
     -- 大文件 =============================================================
@@ -181,7 +203,7 @@ local plugins = {
         "LunarVim/bigfile.nvim",
         version = "*",
         config = function()
-            load_plugin_config("bigfile.nvim.lua")
+            load_plugin_config("bigfile.lua")
         end
     },
     -- git sign =============================================================
@@ -189,7 +211,7 @@ local plugins = {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            load_plugin_config("gitsigns.nvim.lua")
+            load_plugin_config("gitsigns.lua")
         end
     },
     -- code outline =============================================================
@@ -198,7 +220,7 @@ local plugins = {
         lazy = true,
         cmd = { "Outline", "OutlineOpen" },
         config = function()
-            load_plugin_config("outline.nvim.lua")
+            load_plugin_config("outline.lua")
         end
     },
 }
@@ -210,7 +232,7 @@ local coc_plugins = {
         build = 'pnpm install',
         config = function()
             load_data_config("/lazy/coc.nvim/doc/coc-example-config.lua")
-            load_plugin_config("coc.nvim.lua")
+            load_plugin_config("coc.lua")
         end
     },
     -- Telescope coc integration ==========================================
@@ -230,14 +252,14 @@ local nvim_lsp_plugins = {
             'neovim/nvim-lspconfig',
         },
         config = function()
-            load_plugin_config("lsp-setup.nvim.lua")
+            load_plugin_config("lsp-setup.lua")
         end
     },
     -- 显示代码中的 LSP 错误 ==============================================
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
-            load_plugin_config("lsp_lines.nvim.lua")
+            load_plugin_config("lsp_lines.lua")
         end,
     },
     -- 补全插件 ===========================================================
@@ -285,7 +307,7 @@ local nvim_lsp_plugins = {
         },
         lazy = false, -- neo-tree will lazily load itself
         config = function()
-            load_plugin_config("neo-tree.nvim.lua")
+            load_plugin_config("neo-tree.lua")
         end
     },
     -- 颜色值高亮 =========================================================
@@ -321,14 +343,14 @@ local nvim_lsp_plugins = {
     {
         "gbprod/yanky.nvim",
         config = function()
-            load_plugin_config("yanky.nvim.lua")
+            load_plugin_config("yanky.lua")
         end
     },
     -- formatter =============================================================
     {
         'stevearc/conform.nvim',
         config = function()
-            load_plugin_config("conform.nvim.lua")
+            load_plugin_config("conform.lua")
         end
     },
 }
