@@ -331,22 +331,6 @@ local nvim_lsp_plugins = {
             load_plugin_config("conform.nvim.lua")
         end
     },
-    -- Noice.nvim =============================================================
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            load_plugin_config("noice.nvim.lua")
-        end
-    }
 }
 
 if vim.g.enable_coc then
