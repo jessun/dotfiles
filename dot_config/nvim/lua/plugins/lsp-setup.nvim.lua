@@ -1,18 +1,3 @@
--- ============================================================================
--- 1. Mason
--- ============================================================================
-local mason_lspconfig = require("mason-lspconfig")
-mason_lspconfig.setup({
-    automatic_enable = {
-        exclude = {
-            "rust_analyzer", -- rustaceanvim replacement
-        }
-    },
-})
-
--- ============================================================================
--- 2. LSP
--- ============================================================================
 -- "solid", "double", "rounded", "solid", "shadow"
 require('lspconfig.ui.windows').default_options.border = "solid"
 vim.diagnostic.config({
