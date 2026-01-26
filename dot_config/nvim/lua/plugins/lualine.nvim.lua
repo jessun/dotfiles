@@ -2,7 +2,7 @@ local diagnostic_sources = {}
 if vim.g.enable_coc then
     table.insert(diagnostic_sources, "coc")
 else
-    -- table.insert(diagnostic_sources, "nvim_lsp")
+    table.insert(diagnostic_sources, "nvim_lsp")
 end
 local colors = {
 

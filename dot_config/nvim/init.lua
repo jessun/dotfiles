@@ -6,7 +6,7 @@
 -- -----------------------------------------------------------------------------
 --  Dependencies:
 --  - System Tools (macOS):
---    $ brew install fzf bat fd ripgrep the_silver_searcher perl universal-ctags
+--    $ brew install fzf bat fd ripgrep the_silver_searcher perl universal-ctags gnu-sed
 --  Documentation:
 --  - Internal:      :help <topic>
 --  - Local (Linux): /usr/share/nvim/runtime/doc/*

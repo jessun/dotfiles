@@ -31,6 +31,7 @@
     "session.restartOnSessionLoad": true,
     "outline.sortBy": "position",
     "outline.keepWindow": true,
+    "suggest.labelMaxLength": 50,
     "suggest.defaultSortMethod": "alphabetical",
     "suggest.selection": "recentlyUsedByPrefix",
     "suggest.triggerAfterInsertEnter": true,
@@ -143,5 +144,13 @@
         "staticcheck": true
     },
     "rust-analyzer.check.command": "clippy",
-    "cSpell.userWords": []
+    "cSpell.userWords": [
+        "KHTML",
+        "bufwtr",
+        "byobu",
+        "gitui",
+        "jessun",
+        "nvim",
+        "tmuxinator"
+    ]
 }

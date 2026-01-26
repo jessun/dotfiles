@@ -7,6 +7,7 @@
 
 local opt = vim.opt
 local g = vim.g
+local map = vim.keymap.set
 
 -- ============================================================================
 -- 01. Basic Appearance
@@ -98,27 +99,27 @@ if g.neovide then
     g.neovide_scale_factor = 1.0
 
     -- Zoom In (Command + =)
-    vim.keymap.set("n", "<D-=>", function()
+    map("n", "<D-=>", function()
         vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.1
         print("Zoom: " .. string.format("%.2f", g.neovide_scale_factor))
     end)
 
     -- Zoom Out (Command + -)
-    vim.keymap.set("n", "<D-->", function()
+    map("n", "<D-->", function()
         vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 0.9
         print("Zoom: " .. string.format("%.2f", g.neovide_scale_factor))
     end)
 
     -- Reset Zoom (Command + 0)
-    vim.keymap.set("n", "<D-0>", function()
+    map("n", "<D-0>", function()
         vim.g.neovide_scale_factor = 1.0
         print("Zoom: 1.00")
     end)
 
-    vim.keymap.set('i', '<D-v>', '<C-r>+', { noremap = true, silent = true })
-    vim.keymap.set('c', '<D-v>', '<C-r>+', { noremap = true, silent = true })
-    vim.keymap.set('n', '<D-v>', '"+p', { noremap = true, silent = true })
-    vim.keymap.set('t', '<D-v>', '<C-\\><C-n>"+pi', { noremap = true, silent = true })
+    map('i', '<D-v>', '<C-r>+', { noremap = true, silent = true })
+    map('c', '<D-v>', '<C-r>+', { noremap = true, silent = true })
+    map('n', '<D-v>', '"+p', { noremap = true, silent = true })
+    map('t', '<D-v>', '<C-\\><C-n>"+pi', { noremap = true, silent = true })
 end
 
 -- ============================================================================

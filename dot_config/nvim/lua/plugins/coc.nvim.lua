@@ -113,16 +113,6 @@ end, { range = true })
 
 local opts_expr = { silent = true, expr = true, replace_keycodes = false }
 
--- Float Window Scrol
--- Normal
-keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
-keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
--- Insert
-keyset("i", "<C-f>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(1)<cr>"kk : "<Right>"', opts)
-keyset("i", "<C-b>", 'coc#float#has_scroll() ? "<c-r>=coc#float#scroll(0)<cr>" : "<Left>"', opts)
--- Visual
-keyset("v", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
-keyset("v", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 
 -- Super TAB (Completion + Jump + Indent)
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#_select_confirm() : ' ..
