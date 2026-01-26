@@ -8,5 +8,9 @@ require('nvim-treesitter').setup({
     auto_install = true,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '<filetype>' },
+    callback = function() vim.treesitter.start() end,
+})
 
 vim.opt.rtp:prepend(vim.fn.stdpath('data') .. '/site')

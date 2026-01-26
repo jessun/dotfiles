@@ -9,7 +9,10 @@ require("telescope").setup({
 })
 require('telescope').load_extension('coc')
 
-vim.api.nvim_set_keymap("n", "<leader>d", ":Telescope coc workspace_diagnostics<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>td", ":Telescope coc diagnostics<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "tr", ":Telescope coc references<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "tu", ":Telescope coc references_used<CR>", { noremap = true, silent = true })
+local map = vim.keymap.set
+local opts = { silent = true }
+
+map("n", "<leader>d", ":Telescope coc workspace_diagnostics<CR>", opts)
+map("n", "<leader>td", ":Telescope coc diagnostics<CR>", opts)
+map("n", "<leader>tr", ":Telescope coc references<CR>", opts)
+map("n", "<leader>tu", ":Telescope coc references_used<CR>", opts)
