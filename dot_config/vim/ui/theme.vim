@@ -14,6 +14,8 @@
 if has('termguicolors')
   set termguicolors
 endif
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Set the default background tone.
 set background=dark
@@ -81,6 +83,11 @@ for s:scheme in s:preferred_colorschemes
   endtry
 endfor
 
+" =============================================================================
+" 04. fix color
+" =============================================================================
+highlight Search ctermfg=255 ctermbg=237 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
+highlight IncSearch ctermfg=235 ctermbg=214 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
 " =============================================================================
 " End of file
 " =============================================================================
