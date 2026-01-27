@@ -40,3 +40,12 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+
+if type -q git
+    abbr -a push-current-git 'git push -u origin HEAD'
+    abbr -a pull-git 'git pull --prune'
+    abbr -a rebase-main-git 'git rebase -i origin/main'
+    abbr -a add-current-git 'git add .'
+    abbr -a status-git 'git status'
+    abbr -a diff-git 'git diff'
+end
