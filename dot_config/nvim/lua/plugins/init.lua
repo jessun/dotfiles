@@ -217,15 +217,6 @@ local plugins = {
             load_plugin_config("gitsigns.lua")
         end
     },
-    -- code outline =============================================================
-    {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        config = function()
-            load_plugin_config("outline.lua")
-        end
-    },
 }
 
 local coc_plugins = {
@@ -347,6 +338,15 @@ local nvim_lsp_plugins = {
         "gbprod/yanky.nvim",
         config = function()
             load_plugin_config("yanky.lua")
+        end
+    },
+    -- code outline =============================================================
+    {
+        "hedyhli/outline.nvim",
+        lazy = false,
+        cmd = { "Outline", "OutlineOpen" },
+        config = function()
+            load_plugin_config("outline.lua")
         end
     },
     -- formatter =============================================================
