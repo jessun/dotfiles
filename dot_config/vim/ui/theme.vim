@@ -83,14 +83,13 @@ for s:scheme in s:preferred_colorschemes
   endtry
 endfor
 
-" ============================================================================="
-" Fix Search Highlighting Persistence"
-" ============================================================================="
-augroup NordSearchFix
-  autocmd!
-  autocmd ColorScheme * highlight Search ctermfg=255 ctermbg=237 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
-  autocmd ColorScheme * highlight IncSearch ctermfg=235 ctermbg=214 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
-augroup END
+" =============================================================================
+" 04. fix color
+" =============================================================================
+if g:colors_name ==# 'nord'
+  highlight Search    ctermfg=240 ctermbg=254 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
+  highlight IncSearch ctermfg=240 ctermbg=254 cterm=bold,nocombine guifg=#4c566a guibg=#ECEFF4 gui=bold,nocombine
+endif
 " =============================================================================
 " End of file
 " =============================================================================
