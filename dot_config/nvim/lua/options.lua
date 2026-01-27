@@ -31,19 +31,20 @@ opt.backup = false  -- Disable backup (rely on git)
 -- ============================================================================
 -- 2. UI & Appearance
 -- ============================================================================
-opt.number = true         -- Show line numbers
-opt.relativenumber = true -- Relative line numbers
-opt.signcolumn = "yes"    -- Always show sign column
-opt.cursorline = false    -- Highlight current line
-opt.showtabline = 2       -- Always show tabline
-opt.laststatus = 2        -- Always show statusline
-opt.cmdheight = 2         -- Command line height
-opt.showcmd = true        -- Show incomplete commands
-opt.scrolloff = 5         -- Keep cursor vertically centered
-opt.sidescrolloff = 5     -- Keep context when scrolling sideways
-opt.splitright = true     -- Split vertical windows to the right
-opt.splitbelow = true     -- Split horizontal windows to the bottom
-opt.list = true           -- Show invisible characters
+opt.number = true           -- Show line numbers
+opt.relativenumber = true   -- Relative line numbers
+opt.signcolumn = "yes"      -- Always show sign column
+opt.cursorline = false      -- Highlight current line
+opt.showtabline = 2         -- Always show tabline
+opt.laststatus = 2          -- Always show statusline
+opt.cmdheight = 2           -- Command line height
+vim.opt.wildoptions = 'pum' --
+opt.showcmd = true          -- Show incomplete commands
+opt.scrolloff = 5           -- Keep cursor vertically centered
+opt.sidescrolloff = 5       -- Keep context when scrolling sideways
+opt.splitright = true       -- Split vertical windows to the right
+opt.splitbelow = true       -- Split horizontal windows to the bottom
+opt.list = true             -- Show invisible characters
 opt.listchars = { tab = "| ", trail = "·", extends = "»", precedes = "«" }
 opt.wrap = false
 opt.colorcolumn = "80"
