@@ -57,7 +57,7 @@ end
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
-vim.g.enable_coc = false
+vim.g.enable_coc = true
 vim.g.enable_native_lsp = not vim.g.enable_coc
 
 -- coc.nvim OR nvim-lspconfig
@@ -94,7 +94,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     --  编辑器配色插件 ========================================================
     {
-        'gbprod/nord.nvim', config = function() vim.cmd.color('nord') end
+        'gbprod/nord.nvim',
+        config = function()
+            load_plugin_config("nord.lua")
+        end
     },
     { 'rktjmp/lush.nvim' },
     { 'AlexvZyl/nordic.nvim' },
@@ -366,7 +369,6 @@ end
 require("lazy").setup({
     spec = plugins,
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "nord" } },
     -- automatically check for plugin updates
     checker = { enabled = false },
 })
