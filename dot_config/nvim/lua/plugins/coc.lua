@@ -136,6 +136,7 @@ keyset({ "n", "x" }, "<leader>cm", ":CocList maps<CR>", opts)
 keyset({ "n", "x" }, "<leader>ck", ":CocList marks<CR>", opts)
 keyset({ "n", "x" }, "<leader>cf", ":<C-u>CocList --auto-preview files<CR>", opts)
 keyset({ "n", "x" }, "<leader>cb", ":CocList --auto-preview buffers<CR>", no_expr_opts)
+keyset({ "n", "x" }, "<leader>co", "<cmd>CocOutline<CR>", no_expr_opts)
 
 -- Code Action Mappings
 keyset({ "n", "x" }, "<leader>cs", "<Plug>(coc-codeaction-selected)", { silent = true })
@@ -176,6 +177,8 @@ keyset("v", "<Leader>ct", "<Plug>(coc-translator-pv)", { silent = true })
 -- --- Quick Access Mappings ---
 keyset("n", "<leader>e", "<Cmd>CocCommand explorer<CR>", { silent = true, nowait = true })
 keyset("n", "<F3>", "<Cmd>CocCommand explorer<CR>", { silent = true, nowait = true })
+keyset({ "n", "x" }, "<leader>o", "<cmd>CocOutline<CR>", no_expr_opts)
+keyset({ "n", "x" }, "<F4>", "<cmd>CocOutline<CR>", no_expr_opts)
 -- keyset("n", "<leader>b", "<Cmd>CocList --auto-preview buffers<CR>", { silent = true, nowait = true })
 -- keyset("n", "<leader>d", "<Cmd>CocList --auto-preview diagnostics<CR>", { silent = true, nowait = true })
 -- keyset("n", "<leader><leader>", ":<C-u>CocList --auto-preview files<CR>", { silent = true, nowait = true })
