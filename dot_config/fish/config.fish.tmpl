@@ -38,6 +38,14 @@ set -gx GOPRIVATE ""
 set -gx GOINSECURE ""
 
 ###############################################################################
+## Pnpm
+###############################################################################
+set -gx PNPM_HOME "/Users/jessun/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+
+###############################################################################
 ## Interactive Session Only
 ###############################################################################
 if status is-interactive
