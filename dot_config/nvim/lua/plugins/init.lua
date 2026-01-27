@@ -57,7 +57,7 @@ end
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
-vim.g.enable_coc = true
+vim.g.enable_coc = false
 vim.g.enable_native_lsp = not vim.g.enable_coc
 
 -- coc.nvim OR nvim-lspconfig
@@ -99,6 +99,7 @@ local plugins = {
             load_plugin_config("nord.lua")
         end
     },
+    { 'cocopon/iceberg.vim' },
     { 'rktjmp/lush.nvim' },
     { 'AlexvZyl/nordic.nvim' },
     { 'rmehri01/onenord.nvim' },
@@ -237,6 +238,12 @@ local coc_plugins = {
             load_plugin_config("coc-telescope.lua")
         end
     },
+    {
+        'gelguy/wilder.nvim',
+        config = function()
+            load_plugin_config("wilder.lua")
+        end
+    }
 }
 local nvim_lsp_plugins = {
     -- LSP ================================================================
@@ -356,6 +363,25 @@ local nvim_lsp_plugins = {
             load_plugin_config("conform.lua")
         end
     },
+    -- lazy.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            load_plugin_config("noice.lua")
+        end
+    }
 }
 
 if vim.g.enable_coc then
