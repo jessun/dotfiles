@@ -22,9 +22,7 @@ if grep -q "Microsoft" /proc/version 2>/dev/null; or test -n "$WSL_DISTRO_NAME"
 end
 
 # https://github.com/microsoft/inshellisense
-if test -f ~/.inshellisense/fish/init.fish
-    source ~/.inshellisense/fish/init.fish
-end
+test -f ~/.inshellisense/init/fish/init.fish && source ~/.inshellisense/init/fish/init.fish
 
 if type -q eza
     alias ls "eza --git"
