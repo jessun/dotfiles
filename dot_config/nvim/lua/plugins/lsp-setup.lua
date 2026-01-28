@@ -1,10 +1,111 @@
 -- "solid", "double", "rounded", "solid", "shadow"
-require('lspconfig.ui.windows').default_options.border = "solid"
+require('lspconfig.ui.windows').default_options.border = "single"
 vim.diagnostic.config({
-    float = { border = "solid" },
+    float = { border = "single" },
     virtual_text = false,
     virtual_lines = nil,
 })
+
+local eslint_cfg = {
+    settings = {
+        -- 帮助 eslint 找到工作区配置
+        workingDirectory = { mode = 'location' },
+    },
+    -- 2. 设置保存时自动修复 (强烈推荐)
+    on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+        })
+    end,
+}
+
+local yamlls_cfg = {
+    settings = {
+        yaml = {
+            schemaStore = {
+                -- 必须关闭内置的 schemaStore 支持，防止冲突
+                enable = false,
+                url = "",
+            },
+            -- 使用 SchemaStore 提供的 yaml schemas
+            schemas = require("schemastore").yaml.schemas(),
+        },
+    },
+}
+
+local jsonls_cfg = {
+    settings = {
+        json = {
+            -- 这里调用 schemastore 获取所有流行 JSON 文件的 schema
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+        },
+    },
+}
+
+local lus_ls_cfg = {
+    format = { enable = true },
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file('', true),
+            },
+        },
+    },
+}
+
+local typos_lsp_cfg = {
+    init_options = {
+        diagnosticSeverity = "Hint",
+    },
+}
+
+local gopls_cfg = {}
+
+local vtsls_cfg = {
+    -- 这里是一些推荐的微调配置，让它更像 VS Code
+    settings = {
+        typescript = {
+            updateImportsOnFileMove = { enabled = "always" }, -- 移动文件自动更新引用
+            inlayHints = {
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = false },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+            },
+        },
+        javascript = {
+            updateImportsOnFileMove = { enabled = "always" },
+            inlayHints = {
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                variableTypes = { enabled = false },
+                propertyDeclarationTypes = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                enumMemberValues = { enabled = true },
+            },
+        },
+        vtsls = {
+            -- 如果你项目特别大，可以开启这一项来减少内存占用，但可能会稍微慢一点点
+            enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true, -- 自动使用工作区的 TS 版本
+            experimental = {
+                completion = {
+                    enableServerSideFuzzyMatch = true, -- 开启服务端模糊匹配
+                },
+            },
+        },
+    },
+}
 
 local harper_ls_cfg = {
     settings = {
@@ -34,9 +135,9 @@ require('lsp-setup').setup({
     -- Example mappings for telescope pickers:
     mappings = {
         gD = { cmd = vim.lsp.buf.declaration, opts = { desc = 'Go To Declaration' } },
-        gd = { cmd = vim.lsp.buf.definition, opts = { desc = 'Go To Definition' } },
-        gi = { cmd = vim.lsp.buf.implementation, opts = { desc = 'Go To Implementation' } },
-        gr = { cmd = vim.lsp.buf.references, opts = { desc = 'Go To References' } },
+        lgd = { cmd = vim.lsp.buf.definition, opts = { desc = 'Go To Definition' } },
+        lgi = { cmd = vim.lsp.buf.implementation, opts = { desc = 'Go To Implementation' } },
+        lgr = { cmd = vim.lsp.buf.references, opts = { desc = 'Go To References' } },
         K = { cmd = vim.lsp.buf.hover, opts = { desc = 'Hover' } },
         ['<C-k>'] = { cmd = vim.lsp.buf.signature_help, opts = { desc = 'Show Signature Help' } },
         ['<space>rn'] = { cmd = vim.lsp.buf.rename, opts = { desc = 'Rename' } },
@@ -45,64 +146,29 @@ require('lsp-setup').setup({
         ['<space>e'] = { cmd = vim.diagnostic.open_float, opts = { desc = 'Show Diagnostics' } },
         ['[d'] = { cmd = function() vim.diagnostic.jump({ count = -1, float = true }) end, opts = { desc = 'Prev Diagnostic' } },
         [']d'] = { cmd = function() vim.diagnostic.jump({ count = 1, float = true }) end, opts = { desc = 'Next Diagnostic' } },
-        tgd = 'lua require"telescope.builtin".lsp_definitions()',
-        tgi = 'lua require"telescope.builtin".lsp_implementations()',
-        tgr = 'lua require"telescope.builtin".lsp_references()',
+        gd = 'lua require"telescope.builtin".lsp_definitions()',
+        gi = 'lua require"telescope.builtin".lsp_implementations()',
+        gr = 'lua require"telescope.builtin".lsp_references()',
     },
     -- Global on_attach
-    -- on_attach = function(client, bufnr)
-    --     -- Support custom the on_attach function for global
-    --     -- Formatting on save as default
-    --     require('lsp-setup.utils').format_on_save(client)
-    -- end,
+    on_attach = function(client, bufnr)
+        -- Support custom the on_attach function for global
+        -- Formatting on save as default
+        -- require('lsp-setup.utils').format_on_save(client)
+        client.server_capabilities.semanticTokensProvider = nil
+    end,
     -- Global capabilities
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     -- Configuration of LSP servers
     servers = {
-        typos_lsp = {
-            init_options = {
-                diagnosticSeverity = "Hint",
-            },
-        },
-        jsonls = {
-            settings = {
-                json = {
-                    -- 这里调用 schemastore 获取所有流行 JSON 文件的 schema
-                    schemas = require("schemastore").json.schemas(),
-                    validate = { enable = true },
-                },
-            },
-        },
-        yamlls = {
-            settings = {
-                yaml = {
-                    schemaStore = {
-                        -- 必须关闭内置的 schemaStore 支持，防止冲突
-                        enable = false,
-                        url = "",
-                    },
-                    -- 使用 SchemaStore 提供的 yaml schemas
-                    schemas = require("schemastore").yaml.schemas(),
-                },
-            },
-        },
-        -- harper_ls = harper_ls_cfg,
-        lua_ls = {
-            format = { enable = true },
-            settings = {
-                Lua = {
-                    runtime = {
-                        version = 'LuaJIT',
-                    },
-                    diagnostics = {
-                        globals = { 'vim' },
-                    },
-                    workspace = {
-                        library = vim.api.nvim_get_runtime_file('', true),
-                    },
-                },
-            },
-        },
+        gopls = gopls_cfg,
+        vtsls = vtsls_cfg,
+        eslint = eslint_cfg,
+        typos_lsp = typos_lsp_cfg,
+        jsonls = jsonls_cfg,
+        yamlls = yamlls_cfg,
+        harper_ls = harper_ls_cfg,
+        lua_ls = lus_ls_cfg,
     },
     -- Configuration of LSP inlay hints
     inlay_hints = {
