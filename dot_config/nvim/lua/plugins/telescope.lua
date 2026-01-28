@@ -26,6 +26,7 @@ map({ "n" }, "<leader>m", ":Telescope keymaps<CR>", opts)
 map({ "n" }, "<leader><leader>", ":Telescope find_files<CR>", opts)
 map({ "n" }, "<leader>b", ":Telescope buffers<CR>", opts)
 map({ "n" }, "<leader>/", ":Telescope live_grep<CR>", opts)
+map({ "n" }, "<leader>d", ":Telescope diagnostics<CR>", opts)
 
 local builtin = require('telescope.builtin')
 -- <leader>w: 在当前 Buffer 中搜索当前光标下的单词
