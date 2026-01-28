@@ -57,7 +57,7 @@ end
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
-vim.g.enable_coc = false
+vim.g.enable_coc = true
 vim.g.enable_native_lsp = not vim.g.enable_coc
 
 -- coc.nvim OR nvim-lspconfig
@@ -99,6 +99,7 @@ local plugins = {
             load_plugin_config("nord.lua")
         end
     },
+    { 'tanvirtin/monokai.nvim' },
     { 'cocopon/iceberg.vim' },
     { 'rktjmp/lush.nvim' },
     { 'AlexvZyl/nordic.nvim' },
@@ -218,6 +219,24 @@ local plugins = {
             load_plugin_config("gitsigns.lua")
         end
     },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            load_plugin_config("noice.lua")
+        end
+    }
 }
 
 local coc_plugins = {
@@ -238,12 +257,13 @@ local coc_plugins = {
             load_plugin_config("coc-telescope.lua")
         end
     },
-    {
-        'gelguy/wilder.nvim',
-        config = function()
-            load_plugin_config("wilder.lua")
-        end
-    }
+    -- {
+    --     'gelguy/wilder.nvim',
+    --     enable = false,
+    --     config = function()
+    --         load_plugin_config("wilder.lua")
+    --     end
+    -- }
 }
 local nvim_lsp_plugins = {
     -- LSP ================================================================
@@ -319,11 +339,18 @@ local nvim_lsp_plugins = {
             load_plugin_config("nvim-colorizer.lua")
         end
     },
+    -- Golang =============================================================
+    {
+        "ray-x/go.nvim",
+        enabled = false,
+        event = { "CmdlineEnter" },
+        ft = { "go", 'gomod' },
+        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    },
     -- Rust =============================================================
     {
         "mrcjkb/rustaceanvim",
-        version = '^7', -- Recommended
-        lazy = false,   -- This plugin is already lazy
+        lazy = false, -- This plugin is already lazy
         config = function()
             load_plugin_config("rustaceanvim.lua")
         end
@@ -363,25 +390,6 @@ local nvim_lsp_plugins = {
             load_plugin_config("conform.lua")
         end
     },
-    -- lazy.nvim
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
-        dependencies = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            load_plugin_config("noice.lua")
-        end
-    }
 }
 
 if vim.g.enable_coc then
