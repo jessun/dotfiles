@@ -57,7 +57,7 @@ end
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
-vim.g.enable_coc = true
+vim.g.enable_coc = false
 vim.g.enable_native_lsp = not vim.g.enable_coc
 
 -- coc.nvim OR nvim-lspconfig
