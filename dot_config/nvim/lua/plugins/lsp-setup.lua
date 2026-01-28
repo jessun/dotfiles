@@ -155,7 +155,6 @@ require('lsp-setup').setup({
         -- Support custom the on_attach function for global
         -- Formatting on save as default
         -- require('lsp-setup.utils').format_on_save(client)
-        client.server_capabilities.semanticTokensProvider = nil
     end,
     -- Global capabilities
     capabilities = vim.lsp.protocol.make_client_capabilities(),
