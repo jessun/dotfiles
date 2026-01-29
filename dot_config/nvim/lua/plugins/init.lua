@@ -317,7 +317,12 @@ local nvim_lsp_plugins = {
             "lukas-reineke/cmp-under-comparator",
             "quangnguyen30192/cmp-nvim-tags",
             "saadparwaiz1/cmp_luasnip", -- 桥接：LuaSnip 到 CMP
-            { "uga-rosa/cmp-dictionary", config = function() load_plugin_config("cmp_dictionary.lua") end }
+            {
+                "uga-rosa/cmp-dictionary",
+                opts = function()
+                    require("plugins.cmp_dictionary")
+                end
+            },
         },
         config = function()
             load_plugin_config("nvim-cmp.lua")
