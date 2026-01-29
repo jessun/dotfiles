@@ -202,8 +202,8 @@ local plugins = {
     {
         "LunarVim/bigfile.nvim",
         version = "*",
-        config = function()
-            load_plugin_config("bigfile.lua")
+        opts = function()
+            return require("plugins.bigfile")
         end
     },
     -- git sign =============================================================
