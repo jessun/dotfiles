@@ -31,11 +31,6 @@ local function safe_dofile(path)
     end
 end
 
--- ============================================================================
--- 2. Config Loaders
--- ============================================================================
-
--- 重构 1: 使用 require 加载插件配置
 -- 假设传入 filename 为 "nvim-cmp.lua"
 local function load_plugin_config(filename)
     -- 1. 去掉 .lua 后缀 (require 不需要后缀)
@@ -47,7 +42,6 @@ local function load_plugin_config(filename)
     safe_require(target_module)
 end
 
--- 重构 2: 使用 vim.fs.joinpath 加载数据配置
 -- 保持使用 dofile，因为这些文件通常不在 lua 的 require 搜索路径中
 local function load_data_config(filepath)
     -- 使用 vim.fs.joinpath 自动处理路径分隔符 (Neovim 0.10+)
@@ -58,19 +52,13 @@ end
 -- 2. LSP
 -- ============================================================================
 -- "COC=1 nvim"
-local enable_coc = os.getenv("COC")
-if enable_coc == "true" or enable_coc == "1" then
-    vim.g.enable_coc = true
-else
-    vim.g.enable_coc = false
-end
+local env_coc = os.getenv("COC")
+vim.g.enable_coc = (env_coc == "true" or env_coc == "1")
 vim.g.enable_native_lsp = not vim.g.enable_coc
-
 -- coc.nvim OR nvim-lspconfig
 if vim.g.enable_coc then
     load_plugin_config("coc-plugins.lua")
 end
-
 
 -- ============================================================================
 -- 3. Bootstrap lazy.nvim
@@ -95,16 +83,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- ============================================================================
--- 3. Plugins
+-- 4. Plugins
 -- ============================================================================
 local plugins = {
     --  编辑器配色插件 ========================================================
     { 'gbprod/nord.nvim' },
     -- { 'shaunsingh/nord.nvim', },
     -- { 'nordtheme/vim' },
-    -- { 'AlexvZyl/nordic.nvim' },
-    -- { 'rmehri01/onenord.nvim' },
-    -- { 'fcancelinha/nordern.nvim' },
+    { 'AlexvZyl/nordic.nvim' },
+    { 'rmehri01/onenord.nvim' },
+    { 'fcancelinha/nordern.nvim' },
     { 'a/vim-trash-polka' },
 
     { 'tanvirtin/monokai.nvim' },
@@ -347,7 +335,6 @@ local nvim_lsp_plugins = {
     -- Golang =============================================================
     {
         "ray-x/go.nvim",
-        cond = false,
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
@@ -397,13 +384,44 @@ local nvim_lsp_plugins = {
     },
 }
 
-if vim.g.enable_coc then
-    vim.list_extend(plugins, coc_plugins)
+-- ============================================================================
+-- 5. Inject 'cond' & Merge Logic (核心逻辑实现)
+-- ============================================================================
+
+--- 递归设置插件列表的 cond 属性
+--- @param list table 插件列表
+--- @param group_enabled boolean 该组是否启用
+local function apply_group_cond(list, group_enabled)
+    for i, plugin in pairs(list) do
+        -- 1. 处理纯字符串定义的插件 (e.g., "author/repo")
+        if type(plugin) == "string" then
+            list[i] = { plugin, cond = group_enabled }
+
+            -- 2. 处理表定义的插件
+        elseif type(plugin) == "table" then
+            -- 如果组被禁用了 (use_coc=false)，则强制所有插件 cond = false
+            if not group_enabled then
+                plugin.cond = false
+            else
+                -- 如果组被启用 (use_coc=true)，我们需要小心处理：
+                -- 如果插件原本没有写 cond，默认为 true (懒加载机制接管)
+                -- 如果插件原本写了 cond = false (比如 wilder)，我们不应该覆盖它
+
+                -- 所以：只有当组被禁用时，我们才强制修改。
+                -- 当组启用时，保持原样即可。
+            end
+        end
+    end
 end
 
-if vim.g.enable_native_lsp then
-    vim.list_extend(plugins, nvim_lsp_plugins)
-end
+-- 1. 对两组插件应用 cond 逻辑
+apply_group_cond(coc_plugins, vim.g.enable_coc)
+apply_group_cond(nvim_lsp_plugins, vim.g.enable_native_lsp)
+
+-- 2. 将两组插件都加入到主列表中 (无论是否启用，都加入，这样 lazy 才能管理更新)
+vim.list_extend(plugins, coc_plugins)
+vim.list_extend(plugins, nvim_lsp_plugins)
+
 
 require("lazy").setup({
     spec = plugins,
