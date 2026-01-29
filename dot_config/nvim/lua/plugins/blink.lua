@@ -1,5 +1,4 @@
-local blink = require('blink.cmp')
-blink.setup({
+return {
     keymap = {
         preset = 'default',
         ['<Tab>'] = {
@@ -279,6 +278,4 @@ blink.setup({
             ghost_text = { enabled = true }
         },
     },
-})
-
-local set_hl = vim.api.nvim_set_hl
+}

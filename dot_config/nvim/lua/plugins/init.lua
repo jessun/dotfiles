@@ -298,8 +298,8 @@ local nvim_lsp_plugins = {
         },
         cond = use_blink,
         opts_extend = { "sources.default" },
-        config = function()
-            load_plugin_config("blink.lua")
+        opts = function()
+            return require("plugins.blink")
         end
     },
     -- 补全插件 ===========================================================
