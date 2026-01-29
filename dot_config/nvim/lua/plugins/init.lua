@@ -355,9 +355,7 @@ local nvim_lsp_plugins = {
     {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
-        config = function()
-            load_plugin_config("nvim-colorizer.lua")
-        end
+        opts = {},
     },
     -- Golang =============================================================
     {
