@@ -89,8 +89,7 @@ cmp.setup({
         { name = 'path',                    priority = 700 },  -- 路径
         { name = 'buffer',                  priority = 600 },  -- Buffer 内单词
         { name = "lazydev",                 priority = 500 },
-        { name = 'nvim_lua',                priority = 400 },
-        { name = 'luasnip',                 priority = 300 }, -- 代码片段
+        { name = 'luasnip',                 priority = 300 },  -- 代码片段
     }, {
         {
             name = "dictionary",
@@ -160,13 +159,6 @@ cmp.setup.cmdline(':', {
     })
 })
 
-require("cmp_dictionary").setup({
-    paths = {
-        "/usr/share/dict/words",
-        "~/.config/nvim/dicts/personal"
-    },
-    exact_length = 4,
-})
 -- ============================================================================
 -- End of file
 -- ============================================================================
