@@ -85,7 +85,7 @@ require("lualine").setup({
         lualine_x = {},
         lualine_y = {},
         lualine_z = {
-            { search_result },
+            -- { search_result },
             { "location" },
             { "progress" },
             { "filetype" },
@@ -131,6 +131,6 @@ require("lualine").setup({
         },
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {},
+        lualine_z = { 'tabs' },
     },
 })
