@@ -47,3 +47,8 @@ if type -q git
     abbr -a status-git 'git status'
     abbr -a diff-git 'git diff'
 end
+
+if type -q nvim
+    abbr -a COC 'COC=true nvim'
+    abbr -a coc 'COC=true nvim'
+end
