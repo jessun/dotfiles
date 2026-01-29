@@ -261,6 +261,7 @@ local nvim_lsp_plugins = {
         'junnplus/lsp-setup.nvim',
         dependencies = {
             'neovim/nvim-lspconfig',
+            "b0o/SchemaStore.nvim", -- json lsp
         },
         config = function()
             load_plugin_config("lsp-setup.lua")
@@ -380,10 +381,6 @@ local nvim_lsp_plugins = {
         opts = function()
             return require("plugins.lazydev")
         end
-    },
-    -- Json =============================================================
-    {
-        "b0o/SchemaStore.nvim",
     },
     -- 高亮光标当前词 =====================================================
     {
