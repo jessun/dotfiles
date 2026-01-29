@@ -128,7 +128,7 @@ end
 -- Logic: Attempt to load themes in order of preference.
 -- If the preferred theme (e.g., plugin not installed) fails, fallback gracefully.
 
-local preferred_schemes = { "nord", "habamax", "slate", "default" }
+local preferred_schemes = { "habamax", "slate", "default" }
 
 for _, scheme in ipairs(preferred_schemes) do
     -- pcall returns status (true/false) and potential errors.
