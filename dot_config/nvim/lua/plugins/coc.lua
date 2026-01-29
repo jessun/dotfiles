@@ -55,6 +55,7 @@ set_hl(0, "CocErrorHighlight", { bg = "#BF616A", fg = "#2E3440" })
 set_hl(0, "CocWarnHighlight", { bg = "#EBCB8B", fg = "#2E3440" })
 set_hl(0, "CocInfoHighlight", { bg = "#5E81AC", fg = "#2E3440" })
 set_hl(0, "CocHintHighlight", { bg = "#4C566A", fg = "#2E3440" })
+set_hl(0, "CocMenuSel", { link = "PmenuSel" })
 
 -- ============================================================================
 -- 4. Advanced Functions (Grep & Cursors)
