@@ -13,6 +13,17 @@ blink.setup({
             'snippet_forward',
             'fallback'
         },
+        ['<CR>'] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.accept()
+                else
+                    return cmp.select_and_accept()
+                end
+            end,
+            'snippet_forward',
+            'fallback'
+        },
         ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
     },
 
@@ -40,15 +51,48 @@ blink.setup({
         menu = {
             draw = {
                 -- 定义列：图标、标签(文字)、来源名称
-                columns = { { "label", "label_description", gap = 1 },
+                columns = {
+                    { "label",      gap = 1 },
+                    -- { "label_description", gap = 1 },
                     -- { "kind_icon" },
                     { "kind" },
-                    { "source_name" } },
+                    { "source_name" }
+                },
             },
             components = {
+                label = {
+                    width = { max = 10 },
+                    text = function(ctx)
+                        local text = ctx.label .. ctx.label_detail
+                        local max_len = 10
+
+                        -- 手动截断并加省略号
+                        if #text > max_len then
+                            return string.sub(text, 1, max_len) .. "..."
+                        end
+                        return text
+                    end,
+                    highlight = function(ctx)
+                        return "BlinkCmpKind" .. ctx.kind
+                    end,
+                },
+                label_description = {
+                    width = { max = 20 },
+                    text = function(ctx)
+                        local text = ctx.label_description
+                        local max_len = 10
+
+                        -- 手动截断并加省略号
+                        if #text > max_len then
+                            return string.sub(text, 1, max_len) .. "..."
+                        end
+                        return text
+                    end,
+                    highlight = "BlinkCmpLabelDetail",
+                },
                 kind = {
                     ellipsis = false,
-                    width = { fill = true },
+                    width = { fill = true, max = 2 },
                     text = function(ctx) return ctx.kind end,
 
                     highlight = function(ctx)
