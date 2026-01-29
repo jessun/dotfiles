@@ -2,19 +2,6 @@
 -- 1. Helper Functions
 -- ============================================================================
 
--- 专门用于 require 模块的安全加载函数
-local function safe_require(module_name)
-    -- require 只需要模块名，不需要 .lua 后缀，也不需要绝对路径
-    local status, err = pcall(require, module_name)
-    if not status then
-        vim.notify(
-            "加载模块失败 [" .. module_name .. "]:\n" .. err,
-            vim.log.levels.ERROR
-        )
-    end
-    return status
-end
-
 -- 专门用于加载任意路径文件的函数 (用于 data 目录等非模块文件)
 local function safe_dofile(path)
     if vim.fn.filereadable(path) == 1 then
@@ -29,17 +16,6 @@ local function safe_dofile(path)
         -- 这里可以选择是否报错，或者仅仅是 warn
         vim.notify("文件不存在: " .. path, vim.log.levels.WARN)
     end
-end
-
--- 假设传入 filename 为 "nvim-cmp.lua"
-local function load_plugin_config(filename)
-    -- 1. 去掉 .lua 后缀 (require 不需要后缀)
-    local module_name = filename:gsub("%.lua$", "")
-
-    -- 2. 拼接模块名 (lua/plugins/ 下的文件模块名为 "plugins.xxx")
-    local target_module = "plugins." .. module_name
-
-    safe_require(target_module)
 end
 
 -- 保持使用 dofile，因为这些文件通常不在 lua 的 require 搜索路径中
@@ -57,7 +33,7 @@ vim.g.enable_coc = (env_coc == "true" or env_coc == "1")
 vim.g.enable_native_lsp = not vim.g.enable_coc
 -- coc.nvim OR nvim-lspconfig
 if vim.g.enable_coc then
-    load_plugin_config("coc-plugins.lua")
+    require("plugins.coc-plugins")
 end
 
 local use_blink = true
@@ -129,7 +105,7 @@ local plugins = {
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         },
         config = function()
-            load_plugin_config("telescope.lua")
+            require("plugins.telescope")
         end
     },
     -- TODO 注释关键字高亮 ================================================
@@ -137,7 +113,7 @@ local plugins = {
         "folke/todo-comments.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            load_plugin_config("todo-comments.lua")
+            require('plugins.todo-comments')
         end
     },
     -- 高亮 ===============================================================
@@ -145,14 +121,14 @@ local plugins = {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            load_plugin_config("nvim-treesitter.lua")
+            require('plugins.nvim-treesitter')
         end
     },
     -- 高亮搜索关键字 =====================================================
     {
         'kevinhwang91/nvim-hlslens',
         config = function()
-            load_plugin_config("nvim-hlslens.lua")
+            require('plugins.nvim-hlslens')
         end
     },
     -- 函数括号线 =========================================================
@@ -160,7 +136,7 @@ local plugins = {
         "shellRaining/hlchunk.nvim",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            load_plugin_config("hlchunk.lua")
+            require('plugins.hlchunk')
         end
     },
     -- marks 插件 =========================================================
@@ -175,7 +151,7 @@ local plugins = {
         "windwp/nvim-spectre",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            load_plugin_config("nvim-spectre.lua")
+            require('plugins.nvim-spectre')
         end
     },
     -- 分隔符快捷操作 =====================================================
@@ -193,7 +169,7 @@ local plugins = {
     {
         'nvim-lualine/lualine.nvim',
         config = function()
-            load_plugin_config("lualine.lua")
+            require('plugins.lualine')
         end
     },
     -- 大文件 =============================================================
@@ -237,7 +213,7 @@ local coc_plugins = {
         build = 'pnpm install',
         config = function()
             load_data_config("/lazy/coc.nvim/doc/coc-example-config.lua")
-            load_plugin_config("coc.lua")
+            require('plugins.coc')
         end
     },
     -- Telescope coc integration ==========================================
@@ -245,13 +221,13 @@ local coc_plugins = {
         'fannheyward/telescope-coc.nvim',
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            load_plugin_config("coc-telescope.lua")
+            require('plugins.coc-telescope')
         end
     },
     {
         'gelguy/wilder.nvim',
         config = function()
-            load_plugin_config("wilder.lua")
+            require('plugins.wilder')
         end
     }
 }
@@ -264,14 +240,14 @@ local nvim_lsp_plugins = {
             "b0o/SchemaStore.nvim", -- json lsp
         },
         config = function()
-            load_plugin_config("lsp-setup.lua")
+            require('plugins.lsp-setup')
         end
     },
     -- 显示代码中的 LSP 错误 ==============================================
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
-            load_plugin_config("lsp_lines.lua")
+            require('plugins.lsp_lines')
         end,
     },
     -- 补全插件 ===========================================================
@@ -321,7 +297,7 @@ local nvim_lsp_plugins = {
             },
         },
         config = function()
-            load_plugin_config("nvim-cmp.lua")
+            require('plugins.nvim-cmp')
         end
     },
     -- snippet engine written in Lua ======================================
@@ -333,7 +309,7 @@ local nvim_lsp_plugins = {
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
         config = function()
-            load_plugin_config("luasnip.lua")
+            require('plugins.luasnip')
         end
     },
     -- File explorer ======================================================
@@ -347,7 +323,7 @@ local nvim_lsp_plugins = {
         },
         lazy = false, -- neo-tree will lazily load itself
         config = function()
-            load_plugin_config("neo-tree.lua")
+            require('plugins.neo-tree')
         end
     },
     -- 颜色值高亮 =========================================================
@@ -371,7 +347,7 @@ local nvim_lsp_plugins = {
         "mrcjkb/rustaceanvim",
         lazy = false, -- This plugin is already lazy
         config = function()
-            load_plugin_config("rustaceanvim.lua")
+            require('plugins.rustaceanvim')
         end
     },
     -- LuaLS 配置 =========================================================
@@ -390,7 +366,7 @@ local nvim_lsp_plugins = {
     {
         "gbprod/yanky.nvim",
         config = function()
-            load_plugin_config("yanky.lua")
+            require('plugins.yanky')
         end
     },
     -- code outline =============================================================
@@ -399,14 +375,14 @@ local nvim_lsp_plugins = {
         lazy = false,
         cmd = { "Outline", "OutlineOpen" },
         config = function()
-            load_plugin_config("outline.lua")
+            require('plugins.outline')
         end
     },
     -- formatter =============================================================
     {
         'stevearc/conform.nvim',
         config = function()
-            load_plugin_config("conform.lua")
+            require('plugins.conform')
         end
     },
 }
@@ -459,7 +435,7 @@ require("lazy").setup({
 -- ============================================================================
 -- after.lua
 -- ============================================================================
-load_plugin_config("after.lua")
+require('plugins.after')
 -- ============================================================================
 -- End of file
 -- ============================================================================
