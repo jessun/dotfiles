@@ -47,6 +47,50 @@ set_hl(0, "BlinkCmpDocBorder", { fg = nord.accents.blue, bg = nord.nord3 }) -- �
 set_hl(0, "BlinkCmpScrollBarThumb", { bg = nord.accents.blue })
 set_hl(0, "BlinkCmpScrollBarGutter", { bg = nord.nord3 })
 
+local kind_colors = {
+    -- 代码逻辑类 (Cyan / Blue)
+    Function      = nord.accents.cyan, -- Nord8 (冰蓝)
+    Method        = nord.accents.cyan, -- Nord8
+    Constructor   = nord.accents.blue, -- Nord9 (天蓝)
+
+    -- 数据结构类 (Teal / Yellow)
+    Class         = nord.accents.teal, -- Nord7 (蓝绿)
+    Interface     = nord.accents.teal,
+    Struct        = nord.accents.teal,
+    Enum          = nord.accents.yellow, -- Nord13 (黄)
+    EnumMember    = nord.accents.yellow,
+
+    -- 变量与常量 (White / Orange)
+    Variable      = nord.base.fg, -- Nord4 (白/普通)
+    Field         = nord.base.fg,
+    Property      = nord.base.fg,
+    Constant      = nord.accents.orange, -- Nord12 (橙)
+
+    -- 关键字与操作符 (Purple)
+    Keyword       = nord.accents.purple, -- Nord15 (紫)
+    Operator      = nord.accents.purple,
+    TypeParameter = nord.accents.purple,
+
+    -- 文本与文件 (Gray / Blue)
+    Text          = nord.base.comment, -- Nord3 (灰)
+    File          = nord.accents.blue,
+    Folder        = nord.accents.blue,
+
+    -- 片段 (Green)
+    Snippet       = nord.accents.green, -- Nord14 (绿)
+
+    -- 其他
+    Event         = nord.accents.yellow,
+    Module        = nord.accents.blue,
+    Unit          = nord.accents.orange,
+}
+
+-- 2. 循环自动生成高亮组
+--    生成格式: BlinkCmpKindFunction, BlinkCmpKindMethod ...
+for kind, color in pairs(kind_colors) do
+    set_hl(0, "BlinkCmpKind" .. kind, { fg = color, bg = "NONE" })
+end
+
 -- ============================================================================
 -- 4. Pmenu (全局菜单 / 原生菜单)
 -- ============================================================================

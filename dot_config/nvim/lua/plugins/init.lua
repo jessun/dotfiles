@@ -212,6 +212,7 @@ local plugins = {
             load_plugin_config("gitsigns.lua")
         end
     },
+    -- notify and cmdline =====================================================
     {
         "folke/noice.nvim",
         event = "VeryLazy",
@@ -229,7 +230,7 @@ local plugins = {
         config = function()
             load_plugin_config("noice.lua")
         end
-    }
+    },
 }
 
 local coc_plugins = {
@@ -252,7 +253,6 @@ local coc_plugins = {
     },
     {
         'gelguy/wilder.nvim',
-        cond = false,
         config = function()
             load_plugin_config("wilder.lua")
         end
@@ -281,7 +281,6 @@ local nvim_lsp_plugins = {
         'saghen/blink.cmp',
         build = 'cargo build --release',
         dependencies = {
-            'rafamadriz/friendly-snippets',
             'saghen/blink.compat',
             "quangnguyen30192/cmp-nvim-tags",
             "mikavilpas/blink-ripgrep.nvim",
@@ -295,6 +294,7 @@ local nvim_lsp_plugins = {
             'Kaiser-Yang/blink-cmp-dictionary',
             "mikavilpas/blink-ripgrep.nvim",
         },
+        cond = true,
         opts_extend = { "sources.default" },
         config = function()
             load_plugin_config("blink.lua")
@@ -327,7 +327,6 @@ local nvim_lsp_plugins = {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         dependencies = { "rafamadriz/friendly-snippets" },
-        cond = false,
         version = "*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",

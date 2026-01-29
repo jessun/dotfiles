@@ -40,8 +40,22 @@ blink.setup({
         menu = {
             draw = {
                 -- 定义列：图标、标签(文字)、来源名称
-                columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
+                columns = { { "label", "label_description", gap = 1 },
+                    -- { "kind_icon" },
+                    { "kind" },
+                    { "source_name" } },
             },
+            components = {
+                kind = {
+                    ellipsis = false,
+                    width = { fill = true },
+                    text = function(ctx) return ctx.kind end,
+
+                    highlight = function(ctx)
+                        return "BlinkCmpKind" .. ctx.kind
+                    end,
+                }
+            }
         },
         documentation = { auto_show = true }
     },
