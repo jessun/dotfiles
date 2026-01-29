@@ -278,21 +278,37 @@ local nvim_lsp_plugins = {
     },
     -- 补全插件 ===========================================================
     {
+        'saghen/blink.cmp',
+        build = 'cargo build --release',
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            'saghen/blink.compat',
+            "quangnguyen30192/cmp-nvim-tags",
+            "hrsh7th/cmp-nvim-lsp-document-symbol",
+            { "uga-rosa/cmp-dictionary", config = function() load_plugin_config("cmp_dictionary.lua") end }
+        },
+        opts_extend = { "sources.default" },
+        config = function()
+            load_plugin_config("blink.lua")
+        end
+    },
+    -- 补全插件 ===========================================================
+    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
+        cond = false,
         dependencies = {
             "hrsh7th/cmp-buffer",   -- 来源：当前 Buffer 内容
             "hrsh7th/cmp-cmdline",  -- 来源：命令行
             "hrsh7th/cmp-nvim-lsp", -- 来源：LSP
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "hrsh7th/cmp-nvim-lua",
             "hrsh7th/cmp-path",         -- 来源：文件路径
             "lukas-reineke/cmp-under-comparator",
             "onsails/lspkind.nvim",     -- UI：补全列表图标 (可选，但推荐)
             "quangnguyen30192/cmp-nvim-tags",
             "saadparwaiz1/cmp_luasnip", -- 桥接：LuaSnip 到 CMP
-            "uga-rosa/cmp-dictionary",
+            { "uga-rosa/cmp-dictionary", config = function() load_plugin_config("cmp_dictionary.lua") end }
         },
         config = function()
             load_plugin_config("nvim-cmp.lua")
@@ -303,7 +319,8 @@ local nvim_lsp_plugins = {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         dependencies = { "rafamadriz/friendly-snippets" },
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        cond = false,
+        version = "*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp",
         config = function()
@@ -350,6 +367,10 @@ local nvim_lsp_plugins = {
     -- LuaLS 配置 =========================================================
     {
         "folke/lazydev.nvim",
+        ft = "lua",
+        opts = function()
+            return require("plugins.lazydev")
+        end
     },
     -- Json =============================================================
     {
