@@ -34,7 +34,7 @@ set_hl(0, "CmpItemKindInterface", { fg = "#EBCB8B" })
 -- 红色系：片段 (Snippet)
 set_hl(0, "CmpItemKindSnippet", { fg = "#BF616A" })
 
-cmp.setup {
+cmp.setup({
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -132,8 +132,9 @@ cmp.setup {
                 cmp.config.compare.length,
                 cmp.config.compare.order,
             },
-        }, }
-}
+        },
+    }
+})
 
 -- `/` cmdline setup.
 cmp.setup.cmdline('/', {
