@@ -89,13 +89,6 @@ local plugins = {
     { 'kxzk/skull-vim' },
     { 'ntk148v/komau.vim' },
     { 'maxmx03/solarized.nvim' },
-    -- 注释插件 ===============================================================
-    {
-        'numToStr/Comment.nvim',
-        opts = function()
-            return require("plugins.comment")
-        end
-    },
     -- Telescope Fuzzy Finder =================================================
     {
         'nvim-telescope/telescope.nvim',
