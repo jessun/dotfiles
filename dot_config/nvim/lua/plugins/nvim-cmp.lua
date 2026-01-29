@@ -1,6 +1,5 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 
 cmp.setup({
     snippet = {
@@ -83,11 +82,17 @@ cmp.setup({
         },
     }),
     formatting = {
-        format = lspkind.cmp_format({
-            mode = 'symbol_text',
-            maxwidth = 50,
-            ellipsis_char = '...',
-        }),
+        format = function(entry, vim_item)
+            local max_width = 40
+
+            local label = vim_item.abbr
+            local truncated_label = vim.fn.strcharpart(label, 0, max_width)
+
+            if truncated_label ~= label then
+                vim_item.abbr = truncated_label .. "..."
+            end
+            return vim_item
+        end,
         sorting = {
             comparators = {
                 cmp.config.compare.offset,
