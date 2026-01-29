@@ -99,10 +99,14 @@ vim.opt.rtp:prepend(lazypath)
 -- ============================================================================
 local plugins = {
     --  编辑器配色插件 ========================================================
-    { 'shaunsingh/nord.nvim', },
-    { 'AlexvZyl/nordic.nvim' },
-    { 'rmehri01/onenord.nvim' },
-    { 'fcancelinha/nordern.nvim' },
+    { 'gbprod/nord.nvim' },
+    -- { 'shaunsingh/nord.nvim', },
+    -- { 'nordtheme/vim' },
+    -- { 'AlexvZyl/nordic.nvim' },
+    -- { 'rmehri01/onenord.nvim' },
+    -- { 'fcancelinha/nordern.nvim' },
+    { 'a/vim-trash-polka' },
+
     { 'tanvirtin/monokai.nvim' },
     { 'cocopon/iceberg.vim' },
     { 'rktjmp/lush.nvim' },
@@ -258,13 +262,13 @@ local coc_plugins = {
             load_plugin_config("coc-telescope.lua")
         end
     },
-    -- {
-    --     'gelguy/wilder.nvim',
-    --     enable = false,
-    --     config = function()
-    --         load_plugin_config("wilder.lua")
-    --     end
-    -- }
+    {
+        'gelguy/wilder.nvim',
+        cond = false,
+        config = function()
+            load_plugin_config("wilder.lua")
+        end
+    }
 }
 local nvim_lsp_plugins = {
     -- LSP ================================================================
@@ -343,7 +347,7 @@ local nvim_lsp_plugins = {
     -- Golang =============================================================
     {
         "ray-x/go.nvim",
-        enabled = false,
+        cond = false,
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
