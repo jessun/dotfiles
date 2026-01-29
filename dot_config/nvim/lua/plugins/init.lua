@@ -155,9 +155,7 @@ local plugins = {
         opts = {},
     },
     -- registers 快捷操作 ============================================================
-    {
-        'junegunn/vim-peekaboo'
-    },
+    { 'junegunn/vim-peekaboo' },
     -- lualine ============================================================
     {
         'nvim-lualine/lualine.nvim',
@@ -331,9 +329,7 @@ local nvim_lsp_plugins = {
         event = { "CmdlineEnter" },
         ft = { "go", 'gomod' },
         build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-        opts = function()
-            return require("plugins.go")
-        end
+        opts = {},
     },
     -- Rust =============================================================
     {
