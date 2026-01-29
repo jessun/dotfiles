@@ -198,7 +198,6 @@ blink.setup({
             return {}
         end,
 
-        -- (可选) 可以在这里单独定义命令行的快捷键
         keymap = {
             preset = 'super-tab', -- 命令行里通常习惯用 Tab 选词
             ['<Tab>'] = { 'show_and_insert_or_accept_single', 'select_next' },
