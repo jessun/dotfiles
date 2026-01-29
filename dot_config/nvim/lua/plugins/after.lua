@@ -63,17 +63,45 @@ set_hl(0, "PmenuThumb", { bg = nord.accents.blue })
 -- ============================================================================
 -- 5. nvim-cmp (Cmp 专用配置)
 -- ============================================================================
+-- CmpNormal: 补全菜单的背景
+set_hl(0, "CmpNormal", { bg = nord.base.comment, fg = nord.base.fg })
+-- CmpBorder: 边框颜色
+set_hl(0, "CmpBorder", { bg = nord.accents.blue })
+-- CmpSel: 被选中的条目
+set_hl(0, "CmpSel", { bg = nord.accents.orange, fg = nord.base.fg_highlight, bold = true })
 -- 列表文字
 set_hl(0, "CmpItemAbbr", { fg = nord.base.fg })
 set_hl(0, "CmpItemAbbrDeprecated", { fg = nord.base.comment, strikethrough = true })
-
+-- 幽灵文字
+set_hl(0, "CmpGhostText", { fg = nord.base.comment, italic = true })
 -- 匹配与来源
 set_hl(0, "CmpItemAbbrMatch", { fg = nord.accents.cyan, bold = true })
 set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = nord.accents.cyan, bold = true })
 set_hl(0, "CmpItemMenu", { fg = nord.accents.blue, italic = true })
 
--- 幽灵文字
-set_hl(0, "CmpGhostText", { fg = nord.base.comment, italic = true })
+-- (可选) 文档悬浮窗的颜色，可以稍微浅一点区分
+set_hl(0, "CmpDoc", { bg = nord.nord3, fg = nord.base.fg })
+set_hl(0, "CmpDocBorder", { bg = nord.accents.blue })
+-- 灰白色系：文本、变量
+set_hl(0, "CmpItemKindVariable", { fg = nord.base.fg })
+set_hl(0, "CmpItemKindText", { fg = nord.base.fg })
+
+-- 蓝色系：函数、方法
+set_hl(0, "CmpItemKindFunction", { fg = nord.accents.cyan })
+set_hl(0, "CmpItemKindMethod", { fg = nord.accents.cyan })
+
+-- 绿色系：字符串、类
+set_hl(0, "CmpItemKindKeyword", { fg = nord.accents.blue })
+set_hl(0, "CmpItemKindProperty", { fg = nord.accents.blue })
+set_hl(0, "CmpItemKindUnit", { fg = nord.accents.blue })
+
+-- 黄橙色系：类、结构体
+set_hl(0, "CmpItemKindClass", { fg = nord.accents.yellow })
+set_hl(0, "CmpItemKindStruct", { fg = nord.accents.yellow })
+set_hl(0, "CmpItemKindInterface", { fg = nord.accents.yellow })
+
+-- 红色系：片段 (Snippet)
+set_hl(0, "CmpItemKindSnippet", { fg = nord.accents.red })
 
 -- ============================================================================
 -- 6. coc.nvim
