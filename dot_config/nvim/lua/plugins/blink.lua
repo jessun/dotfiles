@@ -77,6 +77,9 @@ blink.setup({
             'ripgrep',
         },
         providers = {
+            snippets = {
+                score_offset = -10,
+            },
             dictionary = {
                 module = 'blink-cmp-dictionary',
                 name = 'Dict',
@@ -92,7 +95,7 @@ blink.setup({
                         vim.fn.expand("/usr/share/dict/"),
                     },
                 },
-                score_offset = 03, -- 提高搜索时的优先级
+                score_offset = -10, -- 提高搜索时的优先级
             },
             nvim_lsp_document_symbol = {
                 name = 'nvim_lsp_document_symbol',
