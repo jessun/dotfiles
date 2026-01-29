@@ -57,7 +57,13 @@ end
 -- ============================================================================
 -- 2. LSP
 -- ============================================================================
-vim.g.enable_coc = false
+-- "COC=1 nvim"
+local enable_coc = os.getenv("COC")
+if enable_coc == "true" or enable_coc == "1" then
+    vim.g.enable_coc = true
+else
+    vim.g.enable_coc = false
+end
 vim.g.enable_native_lsp = not vim.g.enable_coc
 
 -- coc.nvim OR nvim-lspconfig
@@ -93,12 +99,7 @@ vim.opt.rtp:prepend(lazypath)
 -- ============================================================================
 local plugins = {
     --  编辑器配色插件 ========================================================
-    {
-        'gbprod/nord.nvim',
-        config = function()
-            load_plugin_config("nord.lua")
-        end
-    },
+    { 'gbprod/nord.nvim', },
     { 'tanvirtin/monokai.nvim' },
     { 'cocopon/iceberg.vim' },
     { 'rktjmp/lush.nvim' },
@@ -407,7 +408,7 @@ require("lazy").setup({
     checker = { enabled = false },
 })
 -- ============================================================================
--- fix theme
+-- after.lua
 -- ============================================================================
 load_plugin_config("after.lua")
 -- ============================================================================
