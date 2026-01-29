@@ -43,21 +43,7 @@ vim.g.go_highlight_structs = 1
 vim.g.go_highlight_types = 1
 
 -- ============================================================================
--- 3. Highlights & Colors
--- ============================================================================
-
-local set_hl = vim.api.nvim_set_hl
-
--- SemanticTokens ==============================================================
--- Active Highlights
-set_hl(0, "CocHighlightText", { bg = "#D08770", fg = "#2E3440" })
-set_hl(0, "CocErrorHighlight", { bg = "#BF616A", fg = "#2E3440" })
-set_hl(0, "CocWarnHighlight", { bg = "#EBCB8B", fg = "#2E3440" })
-set_hl(0, "CocInfoHighlight", { bg = "#5E81AC", fg = "#2E3440" })
-set_hl(0, "CocHintHighlight", { bg = "#4C566A", fg = "#2E3440" })
-
--- ============================================================================
--- 4. Advanced Functions (Grep & Cursors)
+-- 3. Advanced Functions (Grep & Cursors)
 -- ============================================================================
 
 -- Function to grep search from selected text (Visual or Motion)
@@ -99,7 +85,7 @@ keyset("n", "<C-x>", function()
     end
 end, { silent = true, expr = true, replace_keycodes = true })
 -- ============================================================================
--- 5. coc-spell-checker
+-- 4. coc-spell-checker
 -- ============================================================================
 vim.api.nvim_create_user_command('CleanList', function(opts)
     local start_line = opts.line1
@@ -108,7 +94,7 @@ vim.api.nvim_create_user_command('CleanList', function(opts)
     vim.cmd(string.format('%d,%ds/^\\s*"\\([^"]*\\)",\\?\\s*$/\\1/e', start_line, end_line))
 end, { range = true })
 -- ============================================================================
--- 6. Key Mappings
+-- 5. Key Mappings
 -- ============================================================================
 
 local opts_expr = { silent = true, expr = true, replace_keycodes = false }

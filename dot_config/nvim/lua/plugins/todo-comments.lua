@@ -3,11 +3,11 @@ local colors = require("utils.nord_colors")
 
 require("todo-comments").setup({
     colors = {
-        error = { colors.Diagnostic.error },
-        warning = { colors.Diagnostic.warn },
-        info = { colors.Diagnostic.info },
-        hint = { colors.Diagnostic.hint },
-        default = { colors.Diagnostic.orange },
+        error = { colors.diagnostic.error },
+        warning = { colors.diagnostic.warn },
+        info = { colors.diagnostic.info },
+        hint = { colors.diagnostic.hint },
+        default = { colors.diagnostic.orange },
     },
     signs = false,      -- show icons in the signs column
     sign_priority = 11, -- sign priority

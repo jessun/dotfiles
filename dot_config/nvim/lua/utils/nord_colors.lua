@@ -60,7 +60,7 @@ M.accents    = {
     purple   = M.nord15,
 }
 
-M.Diagnostic = {
+M.diagnostic = {
     error = M.accents.red,
     warn = M.accents.yellow,
     info = M.accents.cyan,

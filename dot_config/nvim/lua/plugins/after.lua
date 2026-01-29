@@ -76,14 +76,23 @@ set_hl(0, "CmpItemMenu", { fg = colors.accents.blue, italic = true })
 set_hl(0, "CmpGhostText", { fg = colors.base.comment, italic = true })
 
 -- ============================================================================
--- 6. Native LSP (原生悬浮窗)
+-- 6. coc.nvim
+-- ============================================================================
+set_hl(0, "CocHighlightText", { bg = colors.accents.orange, fg = colors.base.bg })
+set_hl(0, "CocErrorHighlight", { bg = colors.diagnostic.error, fg = colors.base.bg })
+set_hl(0, "CocWarnHighlight", { bg = colors.diagnostic.warn, fg = colors.base.bg })
+set_hl(0, "CocInfoHighlight", { bg = colors.diagnostic.info, fg = colors.base.bg })
+set_hl(0, "CocHintHighlight", { bg = colors.diagnostic.hint, fg = colors.base.bg })
+
+-- ============================================================================
+-- 7. Native LSP (原生悬浮窗)
 -- ============================================================================
 set_hl(0, "NormalFloat", { fg = colors.base.fg, bg = colors.nord3 })
 set_hl(0, "FloatBorder", { fg = colors.accents.blue, bg = colors.nord3 })
 set_hl(0, "FloatTitle", { fg = colors.accents.cyan, bg = colors.nord3, bold = true })
 
 -- ============================================================================
--- 7. Diagnostics (诊断信息)
+-- 8. Diagnostics (诊断信息)
 -- ============================================================================
 local diagnostics = {
     Error = colors.accents.red,
@@ -97,3 +106,6 @@ for type, color in pairs(diagnostics) do
     set_hl(0, "DiagnosticSign" .. type, { fg = color })
     set_hl(0, "DiagnosticUnderline" .. type, { sp = color, undercurl = true })
 end
+-- ============================================================================
+-- End of file
+-- ============================================================================
