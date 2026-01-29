@@ -54,28 +54,67 @@ local typos_lsp_cfg = {
         diagnosticSeverity = "Hint",
     },
 }
+
 local jsonls_cfg = {
     settings = {
         json = {
-            -- 这里调用 schemastore 获取所有流行 JSON 文件的 schema
-            schemas = require("schemastore").json.schemas(),
             validate = { enable = true },
-        },
-    },
+            schemas = {
+                {
+                    -- custom json schema
+                    -- fileMatch = { "package.json" },
+                    -- url = "https://json.schemastore.org/package.json"
+                }
+            }
+        }
+    }
 }
+local has_schemastore, schemastore = pcall(require, 'schemastore')
+if has_schemastore then
+    local store_schemas = schemastore.json.schemas()
+    if jsonls_cfg.settings.json.schemas then
+        vim.list_extend(jsonls_cfg.settings.json.schemas, store_schemas)
+    else
+        jsonls_cfg.settings.json.schemas = store_schemas
+    end
+    jsonls_cfg.settings.json.schemas = schemastore.json.schemas()
+end
+
 local yamlls_cfg = {
     settings = {
         yaml = {
             schemaStore = {
-                -- 必须关闭内置的 schemaStore 支持，防止冲突
-                enable = false,
+                -- 默认开启内置支持。
+                -- 逻辑：如果没装插件，让 LSP 自己去下载 schema，总比没有好。
+                enable = true,
                 url = "",
             },
-            -- 使用 SchemaStore 提供的 yaml schemas
-            schemas = require("schemastore").yaml.schemas(),
+            -- 初始化为空表 (或者放入你自己私有的 schema 配置)
+            schemas = {},
         },
     },
 }
+local has_schemastore, schemastore = pcall(require, 'schemastore')
+if has_schemastore then
+    -- 🟢 场景 A: 插件加载成功
+
+    -- 1. 必须关闭内置的 schemaStore 支持，防止与插件冲突
+    yamlls_cfg.settings.yaml.schemaStore.enable = false
+
+    -- 2. 注入插件提供的 schemas
+    -- 使用 vim.tbl_deep_extend 进行深度合并
+    -- 这样如果你在上面 `schemas = {}` 里定义了自己的 schema，也不会被覆盖
+    yamlls_cfg.settings.yaml.schemas = vim.tbl_deep_extend(
+        "force",
+        yamlls_cfg.settings.yaml.schemas,
+        schemastore.yaml.schemas()
+    )
+else
+    -- 🔴 场景 B: 插件未找到
+    -- 保持 yamlls_cfg.settings.yaml.schemaStore.enable = true
+    -- 这样 LSP 会回退到使用它内置的 schema 列表
+end
+
 local harper_ls_cfg = {
     settings = {
         ["harper-ls"] = {
