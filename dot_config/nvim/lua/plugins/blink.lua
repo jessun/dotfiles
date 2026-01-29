@@ -1,6 +1,20 @@
 local blink = require('blink.cmp')
 blink.setup({
-    keymap = { preset = 'default' },
+    keymap = {
+        preset = 'default',
+        ['<Tab>'] = {
+            function(cmp)
+                if cmp.snippet_active() then
+                    return cmp.accept()
+                else
+                    return cmp.select_and_accept()
+                end
+            end,
+            'snippet_forward',
+            'fallback'
+        },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+    },
 
     appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -22,28 +36,54 @@ blink.setup({
     -- See :h blink-cmp-config-keymap for defining your own keymap
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = true } },
+    completion = {
+        menu = {
+            draw = {
+                -- 定义列：图标、标签(文字)、来源名称
+                columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
+            },
+        },
+        documentation = { auto_show = true }
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
         default = {
             'lsp', 'path', 'snippets', 'buffer', -- default
-            'tags',
             'lazydev',
             'avante',
             'git',
             'conventional_commits',
+            'dictionary',
             'env',
             "tmux",
             'latex',
-            -- 'dictionary',
+            'tags',
+            'ripgrep',
         },
         providers = {
+            dictionary = {
+                module = 'blink-cmp-dictionary',
+                name = 'Dict',
+                -- Make sure this is at least 2.
+                -- 3 is recommended
+                min_keyword_length = 3,
+                opts = {
+                    -- options for blink-cmp-dictionary
+                    dictionary_files = {
+                        vim.fn.expand("~/.config/nvim/dicts/personal"),
+                    },
+                    dictionary_directories = {
+                        vim.fn.expand("/usr/share/dict/"),
+                    },
+                },
+                score_offset = 03, -- 提高搜索时的优先级
+            },
             nvim_lsp_document_symbol = {
                 name = 'nvim_lsp_document_symbol',
                 module = 'blink.compat.source',
-                score_offset = 3, -- 提高搜索时的优先级
+                score_offset = -3, -- 提高搜索时的优先级
             },
             latex = {
                 name = "Latex",
@@ -85,29 +125,17 @@ blink.setup({
                 ---@module 'blink-cmp-conventional-commits'
                 ---@type blink-cmp-conventional-commits.Options
                 opts = {}, -- none so far
-            },
-            nvim_lsp_document_symbol = {
-                -- 插件注册的源名称 (必须完全匹配)
-                name = 'nvim_lsp_document_symbol',
-                -- 使用兼容层加载
-                module = 'blink.compat.source',
-                -- (可选) 调高优先级，让它在搜索时排在前面
-                score_offset = 3,
+                score_offset = -10,
             },
             lazydev = {
                 name = 'lazydev',
-                module = 'blink.compat.source',
-            },
-            dictionary = {
-                name = 'dictionary',
-                module = 'blink.compat.source',
-                -- (可选) 调低优先级，防止它干扰 LSP 补全
-                score_offset = -3,
+                module = "lazydev.integrations.blink", -- 使用原生模块
             },
             tags = {
                 name = 'tags',
                 module = 'blink.compat.source',
                 score_offset = -3,
+                enabled = false,
             },
             avante = {
                 module = 'blink-cmp-avante',
@@ -120,8 +148,27 @@ blink.setup({
                 name = 'Git',
                 opts = { -- options for the blink-cmp-git
                 },
+                score_offset = -3,
+            },
+            ripgrep = {
+                module = "blink-ripgrep",
+                name = "Ripgrep",
+                -- see the full configuration below for all available options
+                ---@module "blink-ripgrep"
+                ---@type blink-ripgrep.Options
+                opts = {
+                    backend = {
+                        use = "gitgrep-or-ripgrep",
+                    }
+                },
             },
         },
+        per_filetype = {
+            lua = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+            gitcommit = { 'git', 'conventional_commits', 'buffer' },
+            rust = { 'lsp', 'path', 'snippets', 'buffer', 'env', 'dictionary', 'tmux', 'ripgrep' },
+            go = { 'lsp', 'path', 'snippets', 'buffer', 'env', 'dictionary', 'tmux' },
+        }
     },
     signature = { enabled = true },
 
@@ -168,8 +215,10 @@ blink.setup({
             ['<C-e>'] = { 'cancel', 'fallback' },
         },
         completion = {
-            menu = { auto_show = true },
+            menu = { auto_show = true, },
             ghost_text = { enabled = true }
         },
     },
 })
+
+local set_hl = vim.api.nvim_set_hl

@@ -87,8 +87,8 @@ vim.opt.rtp:prepend(lazypath)
 -- ============================================================================
 local plugins = {
     --  编辑器配色插件 ========================================================
-    { 'gbprod/nord.nvim' },
-    -- { 'shaunsingh/nord.nvim', },
+    -- { 'gbprod/nord.nvim' },
+    { 'shaunsingh/nord.nvim', },
     -- { 'nordtheme/vim' },
     { 'AlexvZyl/nordic.nvim' },
     { 'rmehri01/onenord.nvim' },
@@ -292,7 +292,8 @@ local nvim_lsp_plugins = {
             "bydlw98/blink-cmp-env",
             'disrupted/blink-cmp-conventional-commits',
             'Kaiser-Yang/blink-cmp-git',
-            { "uga-rosa/cmp-dictionary", config = function() load_plugin_config("cmp_dictionary.lua") end }
+            'Kaiser-Yang/blink-cmp-dictionary',
+            "mikavilpas/blink-ripgrep.nvim",
         },
         opts_extend = { "sources.default" },
         config = function()

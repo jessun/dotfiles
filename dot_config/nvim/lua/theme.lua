@@ -138,6 +138,13 @@ for _, scheme in ipairs(preferred_schemes) do
         break
     end
 end
+
+vim.diagnostic.config({
+    float = { border = "single" },
+    virtual_text = false,
+    virtual_lines = nil,
+})
+
 -- ============================================================================
 -- End of file
 -- ============================================================================

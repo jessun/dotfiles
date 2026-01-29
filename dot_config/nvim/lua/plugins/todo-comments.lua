@@ -1,8 +1,8 @@
 require("todo-comments").setup({
     colors = {
         error = { "DiagnosticError", "ErrorMsg", "#BF616A" },
-        warning = { "DiagnosticWarning", "WarningMsg", "#B48EAD" },
-        -- warning = { "DiagnosticWarning", "WarningMsg", "#EBCB8B" },
+        -- warning = { "DiagnosticWarning", "WarningMsg", "#B48EAD" },
+        warning = { "DiagnosticWarning", "WarningMsg", "#EBCB8B" },
         info = { "DiagnosticInfo", "#5E81AC" },
         hint = { "DiagnosticHint", "#4C566A" },
         default = { "Identifier", "#ECEFF4" },
@@ -17,7 +17,7 @@ require("todo-comments").setup({
         },
         TODO = { color = "error" },
         HACK = { color = "warning" },
-        WARN = { color = "warning", alt = { "WARNING", "XXX", "Deprecated", "WIP" } },
+        WARN = { color = "warning", alt = { "WARNING", "XXX", "Deprecated", "WIP", "IMPORTANT" } },
         PERF = { color = "warning", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
         NOTE = { color = "info", alt = { "INFO", "summary", "param" } },
         TEST = { color = "warning", alt = { "TESTING", "PASSED", "FAILED" } },
