@@ -319,9 +319,11 @@ local nvim_lsp_plugins = {
     },
     -- 颜色值高亮 =========================================================
     {
-        "catgoose/nvim-colorizer.lua",
-        event = "BufReadPre",
-        opts = {},
+        'brenoprata10/nvim-highlight-colors',
+        opts = function()
+            return require('plugins.nvim-highlight-colors')
+        end
+
     },
     -- Golang =============================================================
     {
