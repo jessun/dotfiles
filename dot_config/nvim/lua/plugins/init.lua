@@ -116,8 +116,8 @@ local plugins = {
     -- 注释插件 ===============================================================
     {
         'numToStr/Comment.nvim',
-        config = function()
-            load_plugin_config("comment.lua")
+        opts = function()
+            return require("plugins.comment")
         end
     },
     -- Telescope Fuzzy Finder =================================================
@@ -210,8 +210,8 @@ local plugins = {
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            load_plugin_config("gitsigns.lua")
+        opts = function()
+            return require("plugins.gitsigns")
         end
     },
     -- notify and cmdline =====================================================
