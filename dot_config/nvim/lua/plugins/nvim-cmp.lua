@@ -11,7 +11,7 @@ set_hl(0, "CmpBorder", { fg = "#81A1C1", bg = "#2E3440" })
 -- CmpSel: 被选中的条目 (bg 使用 Nord 高亮灰 #434C5E，fg 使用白色)
 set_hl(0, "CmpSel", { bg = "#D08770", fg = "#ECEFF4", bold = true })
 -- (可选) 文档悬浮窗的颜色，可以稍微浅一点区分
-set_hl(0, "CmpDoc", { bg = "#3B4252", fg = "#D8DEE9" })
+set_hl(0, "CmpDoc", { bg = "#4C566A", fg = "#D8DEE9" })
 set_hl(0, "CmpDocBorder", { fg = "#81A1C1", bg = "#2E3440" })
 -- 灰白色系：文本、变量
 set_hl(0, "CmpItemKindVariable", { fg = "#D8DEE9" })
