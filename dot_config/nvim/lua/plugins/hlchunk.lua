@@ -1,3 +1,4 @@
+local nord = require("utils.nord_colors")
 require('hlchunk').setup({
     blank = {
         enable = false,
@@ -14,13 +15,13 @@ require('hlchunk').setup({
         },
         -- you can uncomment to get more indented line style
         style = {
-            "#FF0000",
-            "#FF7F00",
-            "#FFFF00",
-            "#00FF00",
-            "#00FFFF",
-            "#0000FF",
-            "#8B00FF",
+            nord.accents.red,
+            nord.accents.orange,
+            nord.accents.yellow,
+            nord.accents.green,
+            nord.accents.blue,
+            nord.accents.cyan,
+            nord.accents.purple,
         },
         exclude_filetype = {
             dashboard = true,
@@ -39,7 +40,7 @@ require('hlchunk').setup({
         support_filetypes = {
             "*"
         },
-        style = "#5E81AC",
+        style = nord.accents.darkblue,
     },
     chunk = {
         enable = true,
@@ -50,6 +51,6 @@ require('hlchunk').setup({
             left_bottom = "└",
             right_arrow = ">",
         },
-        style = "#A3BE8C",
+        style = nord.accents.green,
     },
 })
