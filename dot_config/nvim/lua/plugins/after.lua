@@ -1,4 +1,6 @@
 vim.cmd.color('nord')
+
+-- Nord color =================================================================
 local search_opts = {
     fg = "#4c566a",   -- 对应 guifg
     bg = "#ECEFF4",   -- 对应 guibg
@@ -20,3 +22,9 @@ set_hl(0, 'Pmenu', { bg = "#4C566A", fg = "#D8DEE9" })
 set_hl(0, 'PmenuSbar', { bg = "#D8DEE9" })
 set_hl(0, 'PmenuSel', { bg = "#D08770", fg = "#ECEFF4", bold = true })
 set_hl(0, 'PmenuThumb', { bg = "#D8DEE9" })
+--=============================================================================
+
+-- NeoTree ====================================================================
+local set_hl = vim.api.nvim_set_hl
+set_hl(0, "NeoTreeDirectoryName", { fg = "#88c0d0", bold = true })
+--=============================================================================
