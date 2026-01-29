@@ -166,8 +166,8 @@ local plugins = {
     -- marks 插件 =========================================================
     {
         "chentoast/marks.nvim",
-        config = function()
-            load_plugin_config("marks.lua")
+        opts = function()
+            return require("plugins.marks")
         end
     },
     -- 批量替换插件 =======================================================
