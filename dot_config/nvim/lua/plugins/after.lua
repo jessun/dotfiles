@@ -28,3 +28,12 @@ set_hl(0, 'PmenuThumb', { bg = "#D8DEE9" })
 local set_hl = vim.api.nvim_set_hl
 set_hl(0, "NeoTreeDirectoryName", { fg = "#88c0d0", bold = true })
 --=============================================================================
+
+-- theme ====================================================================
+require('lspconfig.ui.windows').default_options.border = "single"
+vim.diagnostic.config({
+    float = { border = "single" },
+    virtual_text = false,
+    virtual_lines = nil,
+})
+--=============================================================================
