@@ -1,4 +1,4 @@
-vim.cmd.color('nordic')
+vim.cmd.color('nord')
 local search_opts = {
     fg = "#4c566a",   -- 对应 guifg
     bg = "#ECEFF4",   -- 对应 guibg

@@ -99,13 +99,13 @@ vim.opt.rtp:prepend(lazypath)
 -- ============================================================================
 local plugins = {
     --  编辑器配色插件 ========================================================
-    { 'gbprod/nord.nvim', },
-    { 'tanvirtin/monokai.nvim' },
-    { 'cocopon/iceberg.vim' },
-    { 'rktjmp/lush.nvim' },
+    { 'shaunsingh/nord.nvim', },
     { 'AlexvZyl/nordic.nvim' },
     { 'rmehri01/onenord.nvim' },
     { 'fcancelinha/nordern.nvim' },
+    { 'tanvirtin/monokai.nvim' },
+    { 'cocopon/iceberg.vim' },
+    { 'rktjmp/lush.nvim' },
     { 'chriskempson/base16-vim' },
     { 'rebelot/kanagawa.nvim' },
     { 'vague-theme/vague.nvim' },
