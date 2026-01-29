@@ -1,11 +1,13 @@
+local colors = require("utils.nord_colors")
+
+
 require("todo-comments").setup({
     colors = {
-        error = { "DiagnosticError", "ErrorMsg", "#BF616A" },
-        -- warning = { "DiagnosticWarning", "WarningMsg", "#B48EAD" },
-        warning = { "DiagnosticWarning", "WarningMsg", "#EBCB8B" },
-        info = { "DiagnosticInfo", "#5E81AC" },
-        hint = { "DiagnosticHint", "#4C566A" },
-        default = { "Identifier", "#ECEFF4" },
+        error = { colors.Diagnostic.error },
+        warning = { colors.Diagnostic.warn },
+        info = { colors.Diagnostic.info },
+        hint = { colors.Diagnostic.hint },
+        default = { colors.Diagnostic.orange },
     },
     signs = false,      -- show icons in the signs column
     sign_priority = 11, -- sign priority
