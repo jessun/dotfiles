@@ -63,8 +63,14 @@ M.accents    = {
 M.diagnostic = {
     error = M.accents.red,
     warn = M.accents.yellow,
-    info = M.accents.cyan,
-    hint = M.accents.purple,
+    info = M.accents.darkblue,
+    hint = M.accents.blue,
+}
+
+M.git        = {
+    add = M.accents.green,
+    modified = M.accents.yellow,
+    removed = M.accents.red,
 }
 
 return M
