@@ -119,8 +119,15 @@ local plugins = {
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
-        opts = function()
-            return require('plugins.nvim-treesitter-context')
+        config = function()
+            require('plugins.nvim-treesitter-context')
+        end
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        branch = "main",
+        config = function()
+            require('plugins.nvim-treesitter-textobjects')
         end
     },
     -- 高亮搜索关键字 =====================================================
