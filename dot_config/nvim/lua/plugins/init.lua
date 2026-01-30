@@ -117,11 +117,23 @@ local plugins = {
             require('plugins.nvim-treesitter')
         end
     },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        opts = function()
+            return require('plugins.nvim-treesitter-context')
+        end
+    },
     -- 高亮搜索关键字 =====================================================
     {
         'kevinhwang91/nvim-hlslens',
         config = function()
             require('plugins.nvim-hlslens')
+        end
+    },
+    {
+        'jinh0/eyeliner.nvim',
+        config = function()
+            require('plugins.eyeliner')
         end
     },
     -- 函数括号线 =========================================================

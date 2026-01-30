@@ -180,3 +180,6 @@ end
 -- ============================================================================
 -- End of file
 -- ============================================================================
+
+set_hl(0, 'EyelinerPrimary', { bg = nord.accents.orange, fg = nord.base.fg_highlight })
+set_hl(0, 'EyelinerSecondary', { bg = nord.accents.darkblue, fg = nord.base.fg_highlight, })
