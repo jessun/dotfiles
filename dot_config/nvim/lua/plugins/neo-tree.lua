@@ -1,4 +1,29 @@
+local events = require("neo-tree.events")
+local function on_move(data)
+    -- 1. 检查全局变量 Snacks 是否存在
+    -- 2. 检查 rename 模块是否已加载
+    -- 3. 检查方法是否存在
+    if Snacks and Snacks.rename and Snacks.rename.on_rename_file then
+        Snacks.rename.on_rename_file(data.source, data.destination)
+    else
+        vim.notify(
+            "can not find global object Snack",
+            vim.log.levels.ERROR
+        )
+    end
+end
+
 require("neo-tree").setup({
+    event_handlers = {
+        {
+            event = events.FILE_MOVED,
+            handler = on_move,
+        },
+        {
+            event = events.FILE_RENAMED,
+            handler = on_move,
+        },
+    },
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "NC",    -- or "" to use 'winborder' on Neovim v0.11+
     clipboard = {
@@ -350,6 +375,8 @@ require("neo-tree").setup({
         },
     },
 })
+
+
 
 vim.keymap.set("n", "<leader>ce", "<Cmd>Neotree toggle<CR>", { silent = true, nowait = true })
 vim.keymap.set("n", "<F3>", "<Cmd>Neotree toggle<CR>", { silent = true, nowait = true })
