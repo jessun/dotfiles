@@ -7,7 +7,7 @@ return {
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
         progress = {
-            enabled = false,
+            enabled = true,
             -- Lsp Progress is formatted using the built-in lsp_progress format
             -- and other options to format.
             format = "lsp_progress",
