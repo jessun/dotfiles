@@ -223,6 +223,14 @@ local plugins = {
             return require('plugins.which-key')
         end
     },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = { "kevinhwang91/promise-async" },
+        event = "BufReadPost", -- 打开文件后加载
+        config = function()
+            require('plugins.nvim-ufo')
+        end
+    },
 }
 
 local coc_plugins = {
