@@ -12,9 +12,6 @@ local opts = { silent = true, noremap = true }
 -- 1. General File Operations
 -- ============================================================================
 
--- Fast Save (<Space>w)
-map("n", "<leader>w", "<cmd>w<CR>", opts)
-
 -- Clear Search Highlights (Backspace)
 -- Clears the highlighting of search terms until the next search.
 map("n", "<BS>", "<cmd>nohlsearch<CR>", opts)
