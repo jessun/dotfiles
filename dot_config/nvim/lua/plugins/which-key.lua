@@ -13,7 +13,7 @@ wk.setup({
         title = false,
         title_pos = "center",
         -- 窗口内边距 {上, 右, 下, 左}
-        padding = { 2, 2, 2, 2 },
+        padding = { 1, 0, 1, 0 },
 
         -- 透明度 (0-100)，需要你的终端和配色支持
         -- winblend = 0,
