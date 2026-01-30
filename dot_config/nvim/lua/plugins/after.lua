@@ -8,8 +8,8 @@ vim.cmd.color('nord')
 -- 1. Editor / Core (编辑器基础)
 -- ============================================================================
 local search_opts = {
-    fg = nord.base.comment,
-    bg = nord.base.fg_highlight,
+    fg = nord.base.bg,
+    bg = nord.accents.orange,
     bold = true,
     nocombine = true,
     ctermfg = 240,
@@ -178,8 +178,10 @@ for type, color in pairs(diagnostics) do
     set_hl(0, "DiagnosticUnderline" .. type, { sp = color, undercurl = true })
 end
 -- ============================================================================
--- End of file
+-- 9. jinh0/eyeliner.nvim
 -- ============================================================================
-
 set_hl(0, 'EyelinerPrimary', { bg = nord.accents.orange, fg = nord.base.fg_highlight })
 set_hl(0, 'EyelinerSecondary', { bg = nord.accents.darkblue, fg = nord.base.fg_highlight, })
+-- ============================================================================
+-- End of file
+-- ============================================================================
