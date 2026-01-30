@@ -62,7 +62,15 @@ opt.breakindent = true                       -- Indent wrapped lines visually
 opt.backspace = { "indent", "eol", "start" } -- Fix backspace behavior
 
 -- ============================================================================
--- 4. Search & Performance
+-- 4. Fold
+-- ============================================================================
+vim.o.foldcolumn = '1' -- 显示左侧折叠栏 (0为隐藏)
+vim.o.foldlevel = 99   -- 打开文件时默认不折叠
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+-- ============================================================================
+-- 5. Search & Performance
 -- ============================================================================
 opt.ignorecase = true  -- Ignore case when searching
 opt.smartcase = true   -- Case sensitive if uppercase is used
@@ -73,7 +81,7 @@ opt.timeoutlen = 500   -- Faster key sequence timeout
 opt.lazyredraw = false -- Don't redraw while executing macros
 
 -- ============================================================================
--- 5. System Integration
+-- 6. System Integration
 -- ============================================================================
 opt.mouse = "a" -- Enable mouse in all modes
 

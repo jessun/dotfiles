@@ -17,12 +17,6 @@ ufo.setup {
     },
 }
 
-
-vim.o.foldcolumn = '1' -- 显示左侧折叠栏 (0为隐藏)
-vim.o.foldlevel = 99   -- 打开文件时默认不折叠
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
 local map = vim.keymap.set
 map('n', 'zR', ufo.openAllFolds)
 map('n', 'zM', ufo.closeAllFolds)
