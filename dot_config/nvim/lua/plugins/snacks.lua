@@ -68,34 +68,21 @@ local zen_cfg = {
 }
 
 Snacks.setup {
-    animate = { enabled = true },
-    scroll = { enabled = true },
-    bufdelete = { enabled = true },
+    animate = {},
+    bufdelete = {},
     dim = dim_cfg,
-    zen = zen_cfg,
     input = input_cfg,
-    picker = { enabled = true },
-    lazygit = { enabled = true },
-    notifier = { enabled = true },
-    quickfile = { enabled = true },
-    rename = { enabled = true },
+    lazygit = {},
+    notifier = {},
+    picker = {},
+    quickfile = {},
+    rename = {},
+    scratch = {},
+    scroll = {},
     terminal = {},
-
-    -- gitbrowse = { enabled = true },
-    -- scope = { enabled = true },
-    -- words = { enabled = true },
-    -- scratch = { enabled = true },
-    -- debug = { enabled = true },
-    -- image = { enabled = true },
-    -- profiler= {},
-
-
-
-    -- dashboard = { enabled = true },
-    -- explorer = { enabled = true },
-    -- indent = { enabled = true },
-    -- statuscolumn = { enabled = true },
-    -- bigfile = { enabled = true },
+    toggle = {},
+    words = {},
+    zen = zen_cfg,
 }
 
 vim.ui.input = function(data, on_confirm)
@@ -155,7 +142,10 @@ vim.api.nvim_create_autocmd("LspProgress", {
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map({ "n" }, "<leader>z", function() Snacks.dim() end, opts)
+map({ "n" }, "<leader>z", function() Snacks.toggle.dim():toggle() end, opts)
 map({ "n" }, "<leader>g", function() Snacks.lazygit.open() end, opts)
 map({ "n" }, "<leader>n", function() Snacks.notifier.show_history() end, opts)
+map({ "n" }, "<leader>h", function() Snacks.toggle.inlay_hints():toggle() end, opts)
+map({ "n" }, "]]", function() Snacks.words.jump(1, true) end, { desc = "Next Reference (下一个引用)" })
+map({ "n" }, "[[", function() Snacks.words.jump(-1, true) end, { desc = "Prev Reference (上一个引用)" })
 map({ "n", "t" }, "<C-\\>", function() Snacks.terminal.toggle() end, opts)
