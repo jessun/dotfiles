@@ -345,6 +345,7 @@ local nvim_lsp_plugins = {
             require('plugins.neo-tree')
         end
     },
+    -- 颜色值高亮 =========================================================
     {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
