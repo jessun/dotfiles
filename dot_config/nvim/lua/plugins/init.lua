@@ -222,7 +222,7 @@ local plugins = {
         config = function()
             return require('plugins.which-key')
         end
-    }
+    },
 }
 
 local coc_plugins = {
@@ -250,6 +250,7 @@ local coc_plugins = {
         end
     }
 }
+
 local nvim_lsp_plugins = {
     -- LSP ================================================================
     {
