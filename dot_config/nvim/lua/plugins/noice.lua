@@ -6,6 +6,16 @@ return {
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
+        progress = {
+            enabled = false,
+            -- Lsp Progress is formatted using the built-in lsp_progress format
+            -- and other options to format.
+            format = "lsp_progress",
+            format_done = "lsp_progress_done",
+            throttle = 1000 / 30, -- frequency to update lsp progress message
+
+            view = "mini",
+        },
     },
     -- you can enable a preset for easier configuration
     presets = {
