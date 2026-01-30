@@ -57,8 +57,10 @@ require("theme")
 
 -- 2.5 Plugins
 -- Plugins and plugin settings
--- Source: plugins/
--- require("plugins")
+-- Source: lazy.nvim
+require("config.lazy")
+
+
 
 -- ============================================================================
 -- End of file
