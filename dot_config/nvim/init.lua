@@ -48,7 +48,7 @@ require("keymaps")
 -- 2.3 Auto Commands
 -- Handles automatic events (like auto-save or resizing splits).
 -- Source: lua/autocmds.lua
--- require("autocmds")
+require("autocmds")
 
 -- 2.4 Theme & Visuals
 -- Themes, fonts, and Neovide specific configurations.
