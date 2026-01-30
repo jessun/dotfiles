@@ -58,47 +58,6 @@ return {
                     { "source_name" }
                 },
             },
-            components = {
-                label = {
-                    width = { max = 10 },
-                    text = function(ctx)
-                        local text = ctx.label .. ctx.label_detail
-                        local max_len = 10
-
-                        -- 手动截断并加省略号
-                        if #text > max_len then
-                            return string.sub(text, 1, max_len) .. "..."
-                        end
-                        return text
-                    end,
-                    highlight = function(ctx)
-                        return "BlinkCmpKind" .. ctx.kind
-                    end,
-                },
-                label_description = {
-                    width = { max = 20 },
-                    text = function(ctx)
-                        local text = ctx.label_description
-                        local max_len = 10
-
-                        -- 手动截断并加省略号
-                        if #text > max_len then
-                            return string.sub(text, 1, max_len) .. "..."
-                        end
-                        return text
-                    end,
-                    highlight = "BlinkCmpLabelDetail",
-                },
-                kind = {
-                    ellipsis = false,
-                    width = { fill = true, max = 2 },
-                    text = function(ctx) return ctx.kind end,
-
-                    highlight = function(ctx)
-                        return "BlinkCmpKind" .. ctx.kind
-                    end,
-                }
-            }
         },
         documentation = { auto_show = true }
     },
@@ -135,9 +94,7 @@ return {
                         vim.fn.expand("~/.config/nvim/dicts/personal"),
                         vim.fn.expand("/usr/share/dict/words"),
                     },
-                    dictionary_directories = {
-                        -- vim.fn.expand("/usr/share/dict/"),
-                    },
+                    dictionary_directories = {},
                 },
                 score_offset = -10, -- 提高搜索时的优先级
             },
