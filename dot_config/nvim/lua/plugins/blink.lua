@@ -133,9 +133,10 @@ return {
                     -- options for blink-cmp-dictionary
                     dictionary_files = {
                         vim.fn.expand("~/.config/nvim/dicts/personal"),
+                        vim.fn.expand("/usr/share/dict/words"),
                     },
                     dictionary_directories = {
-                        vim.fn.expand("/usr/share/dict/"),
+                        -- vim.fn.expand("/usr/share/dict/"),
                     },
                 },
                 score_offset = -10, -- 提高搜索时的优先级

@@ -195,6 +195,22 @@ local plugins = {
             return require("plugins.noice")
         end
     },
+    --- usefull plugins collections ===========================================
+    {
+        "folke/snacks.nvim",
+        version = "*",
+        config = function()
+            return require('plugins.snacks')
+        end
+    },
+    -- show keymap ============================================================
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            return require('plugins.which-key')
+        end
+    }
 }
 
 local coc_plugins = {
@@ -348,10 +364,6 @@ local nvim_lsp_plugins = {
         opts = function()
             return require("plugins.lazydev")
         end
-    },
-    -- 高亮光标当前词 =====================================================
-    {
-        "RRethy/vim-illuminate",
     },
     -- 剪切板历史 =====================================================
     {
