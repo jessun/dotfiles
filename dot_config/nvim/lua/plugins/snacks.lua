@@ -79,10 +79,10 @@ Snacks.setup {
     notifier = { enabled = true },
     quickfile = { enabled = true },
     rename = { enabled = true },
+    terminal = {},
 
     -- gitbrowse = { enabled = true },
     -- scope = { enabled = true },
-    -- terminal = { enabled = true },
     -- words = { enabled = true },
     -- scratch = { enabled = true },
     -- debug = { enabled = true },
@@ -97,13 +97,6 @@ Snacks.setup {
     -- statuscolumn = { enabled = true },
     -- bigfile = { enabled = true },
 }
-
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-map({ "n" }, "<leader>z", function() Snacks.dim() end, opts)
-map({ "n" }, "<leader>g", function() Snacks.lazygit.open() end, opts)
-map({ "n" }, "<leader>n", function() Snacks.notifier.show_history() end, opts)
 
 vim.ui.input = function(data, on_confirm)
     Snacks.input(data, on_confirm)
@@ -157,3 +150,12 @@ vim.api.nvim_create_autocmd("LspProgress", {
         })
     end,
 })
+
+
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+map({ "n" }, "<leader>z", function() Snacks.dim() end, opts)
+map({ "n" }, "<leader>g", function() Snacks.lazygit.open() end, opts)
+map({ "n" }, "<leader>n", function() Snacks.notifier.show_history() end, opts)
+map({ "n", "t" }, "<C-\\>", function() Snacks.terminal.toggle() end, opts)
