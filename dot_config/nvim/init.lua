@@ -53,7 +53,7 @@ require("autocmds")
 -- 2.4 Theme & Visuals
 -- Themes, fonts, and Neovide specific configurations.
 -- Source: lua/theme.lua
--- require("theme")
+require("theme")
 
 -- 2.5 Plugins
 -- Plugins and plugin settings
