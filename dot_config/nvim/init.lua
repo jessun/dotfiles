@@ -43,7 +43,7 @@ require("options")
 -- 2.2 Key Mappings
 -- Defines keyboard shortcuts.
 -- Source: lua/keymaps.lua
--- require("keymaps")
+require("keymaps")
 
 -- 2.3 Auto Commands
 -- Handles automatic events (like auto-save or resizing splits).
