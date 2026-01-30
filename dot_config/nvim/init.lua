@@ -58,7 +58,7 @@ require("theme")
 -- 2.5 Plugins
 -- Plugins and plugin settings
 -- Source: lazy.nvim
-require("config.lazy")
+require("config")
 
 
 
