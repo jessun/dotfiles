@@ -219,7 +219,7 @@ local plugins = {
         "folke/snacks.nvim",
         version = "*",
         config = function()
-            return require('plugins.snacks')
+            require('plugins.snacks')
         end
     },
     -- show keymap ============================================================
@@ -227,7 +227,7 @@ local plugins = {
         "folke/which-key.nvim",
         event = "VeryLazy",
         config = function()
-            return require('plugins.which-key')
+            require('plugins.which-key')
         end
     },
     {
