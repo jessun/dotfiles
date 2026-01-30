@@ -64,7 +64,7 @@ opt.backspace = { "indent", "eol", "start" } -- Fix backspace behavior
 -- ============================================================================
 -- 4. Fold
 -- ============================================================================
-vim.o.foldcolumn = '1' -- 显示左侧折叠栏 (0为隐藏)
+vim.o.foldcolumn = '0' -- 显示左侧折叠栏 (0为隐藏)
 vim.o.foldlevel = 99   -- 打开文件时默认不折叠
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
