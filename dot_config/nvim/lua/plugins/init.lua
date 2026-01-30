@@ -109,7 +109,7 @@ local plugins = {
             require('plugins.todo-comments')
         end
     },
-    -- 高亮 ===============================================================
+    -- 代码着色 ===============================================================
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -117,12 +117,14 @@ local plugins = {
             require('plugins.nvim-treesitter')
         end
     },
+    -- 基于 nvim-treesitter 的面包屑导航 ======================================
     {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
             require('plugins.nvim-treesitter-context')
         end
     },
+    -- 代码块对象选择 =========================================================
     {
         'nvim-treesitter/nvim-treesitter-textobjects',
         branch = "main",
@@ -137,6 +139,7 @@ local plugins = {
             require('plugins.nvim-hlslens')
         end
     },
+    -- 高亮行搜索关键字 =====================================================
     {
         'jinh0/eyeliner.nvim',
         config = function()
@@ -230,6 +233,7 @@ local plugins = {
             require('plugins.which-key')
         end
     },
+    -- Fold ============================================================
     {
         "kevinhwang91/nvim-ufo",
         dependencies = { "kevinhwang91/promise-async" },
@@ -238,6 +242,13 @@ local plugins = {
             require('plugins.nvim-ufo')
         end
     },
+    {
+        'akinsho/git-conflict.nvim',
+        version = "*",
+        config = function()
+            require('plugins.git-conflict')
+        end
+    }
 }
 
 local coc_plugins = {
