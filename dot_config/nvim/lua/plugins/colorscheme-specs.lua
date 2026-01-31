@@ -4,7 +4,6 @@ return {
 	{ "AlexvZyl/nordic.nvim" },
 	{ "rmehri01/onenord.nvim" },
 	{ "fcancelinha/nordern.nvim" },
-	{ "a/vim-trash-polka" },
 
 	{ "tanvirtin/monokai.nvim" },
 	{ "cocopon/iceberg.vim" },
