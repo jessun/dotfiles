@@ -1,6 +1,5 @@
 return {
     'stevearc/conform.nvim',
-    lazy = false,
     event = { "BufWritePre" },
     opts = {
         formatters_by_ft = {
@@ -15,7 +14,8 @@ return {
         },
     },
 
-    config = function()
+    config = function(_, opts)
+        require("conform").setup(opts) -- 必须调用这一行！
         vim.api.nvim_create_user_command("Format", function(args)
             local range = nil
             if args.count ~= -1 then

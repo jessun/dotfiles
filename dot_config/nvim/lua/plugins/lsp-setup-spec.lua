@@ -32,7 +32,8 @@ return {
         on_attach = function(client, bufnr)
             -- Support custom the on_attach function for global
             -- Formatting on save as default
-            require('lsp-setup.utils').format_on_save(client)
+            --  we use stevearc/conform.nvim instead
+            -- require('lsp-setup.utils').format_on_save(client)
         end,
         -- Global capabilities
         capabilities = capabilities,
