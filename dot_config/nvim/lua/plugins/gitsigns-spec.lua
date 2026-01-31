@@ -116,5 +116,6 @@ return {
             map({ 'o', 'x' }, 'ig', gitsigns.select_hunk)
             map({ 'o', 'x' }, 'ag', gitsigns.select_hunk)
         end
+
     }
 }
