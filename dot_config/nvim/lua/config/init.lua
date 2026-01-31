@@ -1,6 +1,6 @@
 vim.g.enable_coc = true
 vim.g.enable_native_lsp = true
-vim.g.enable_blink = false
+vim.g.enable_blink = true
 vim.g.enable_nvim_cmp = true
 
 local env_coc = os.getenv("COC")
