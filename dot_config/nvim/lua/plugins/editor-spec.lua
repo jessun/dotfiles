@@ -3,7 +3,6 @@ return {
     {
         "hedyhli/outline.nvim",
         cond = not vim.g.enable_coc,
-        lazy = true,
         cmd = { "Outline", "OutlineOpen" },
         keys = { -- Example mapping to toggle outline
             { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
