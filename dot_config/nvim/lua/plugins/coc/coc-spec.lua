@@ -149,7 +149,7 @@ local keys_cfg = {
     { "<leader>m",        "<Cmd>CocList maps<CR>",                                                      desc = "Maps" },
     { "<leader>o",        "<cmd>CocOutline<CR>",                                                        mode = { "n", "x" },          desc = "Outline" },
     { "<leader>/",        ":<C-u>CocList --interactive --auto-preview grep --ignore-case --regexp<CR>", desc = "Interactive Grep" },
-    { "<leader>y",        ":<C-u>CocList yank<CR>",                                                     desc = "Yank List" },
+    -- { "<leader>y",        ":<C-u>CocList yank<CR>",                                                     desc = "Yank List" },
     {
         "<F3>",
         function()
