@@ -1,5 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
+    cond = not vim.g.enable_coc,
     cmd = "Telescope",
     version = false, -- 使用 master 分支，或者用 tag = '0.1.8'
     dependencies = {
@@ -14,6 +15,49 @@ return {
             end,
         },
     },
+    -- opts 会自动传递给 require("telescope").setup(opts)
+    opts = {
+        layout_strategy = "horizontal",
+        defaults = {
+            layout_config = {
+                width = 0.999,
+                height = 0.999,
+                preview_width = 0.6,     -- 预览窗口占 60% 宽度
+                preview_cutoff = 0,      -- ⚠️ 重要：设置为 0 意味着永远不隐藏预览窗口（即使屏幕很小）
+                prompt_position = "top", -- 个人推荐：把搜索框放在顶部
+            },
+            -- 可以在这里配置 fzf 扩展的参数
+            -- mappings = { ... }
+        },
+        pickers = {
+            -- 可以在这里针对特定的 picker 进行微调
+            -- find_files = { theme = "dropdown" }
+        },
+        extensions = {
+            fzf = {
+                fuzzy = true,                   -- false will only do exact matching
+                override_generic_sorter = true, -- override the generic sorter
+                override_file_sorter = true,    -- override the file sorter
+                case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+                -- the default case_mode is "smart_case"
+            }
+        }
+    },
+    config = function(_, opts)
+        local telescope = require("telescope")
+
+        -- 1. 初始化 Telescope
+        telescope.setup(opts)
+
+        -- 2. 加载 fzf 扩展 (必须在 setup 之后)
+        -- 使用 pcall 防止因为编译失败导致整个 telescope 崩溃
+        local ok, _ = pcall(telescope.load_extension, "fzf")
+        if not ok then
+            vim.notify("FZF extension failed to load. Try running ':Lazy build telescope-fzf-native.nvim'",
+                vim.log.levels.WARN)
+        end
+    end,
+
     keys = {
         -- ==========================================
         -- 常用快捷键 (Quick Access)
@@ -70,43 +114,4 @@ return {
             desc = "Live Grep Word (Workspace)"
         },
     },
-    -- opts 会自动传递给 require("telescope").setup(opts)
-    opts = {
-        defaults = {
-            layout_config = {
-                width = 0.999,
-                height = 0.999,
-                -- prompt_position = "top", -- 个人推荐：把搜索框放在顶部
-            },
-            -- 可以在这里配置 fzf 扩展的参数
-            -- mappings = { ... }
-        },
-        pickers = {
-            -- 可以在这里针对特定的 picker 进行微调
-            -- find_files = { theme = "dropdown" }
-        },
-        extensions = {
-            fzf = {
-                fuzzy = true,                   -- false will only do exact matching
-                override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true,    -- override the file sorter
-                case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                -- the default case_mode is "smart_case"
-            }
-        }
-    },
-    config = function(_, opts)
-        local telescope = require("telescope")
-
-        -- 1. 初始化 Telescope
-        telescope.setup(opts)
-
-        -- 2. 加载 fzf 扩展 (必须在 setup 之后)
-        -- 使用 pcall 防止因为编译失败导致整个 telescope 崩溃
-        local ok, _ = pcall(telescope.load_extension, "fzf")
-        if not ok then
-            vim.notify("FZF extension failed to load. Try running ':Lazy build telescope-fzf-native.nvim'",
-                vim.log.levels.WARN)
-        end
-    end,
 }
