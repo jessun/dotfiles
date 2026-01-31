@@ -1,7 +1,6 @@
 -- lazy.nvim
 return {
     "folke/noice.nvim",
-    cond = vim.g.enable_native_lsp,
     dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
