@@ -4,9 +4,10 @@
 --  Description: Defines general keyboard shortcuts, window navigation, and system clipboard integration.
 --  Location:    ~/.config/nvim/lua/keymaps.lua
 -- -----------------------------------------------------------------------------
-
-local map = vim.keymap.set
-local opts = { silent = true, noremap = true }
+local keyset = vim.keymap.set
+local function opts(text)
+    return { silent = true, noremap = true, desc = text }
+end
 
 -- ============================================================================
 -- 1. General File Operations
@@ -14,7 +15,7 @@ local opts = { silent = true, noremap = true }
 
 -- Clear Search Highlights (Backspace)
 -- Clears the highlighting of search terms until the next search.
-map("n", "<BS>", "<cmd>nohlsearch<CR>", opts)
+keyset("n", "<BS>", "<cmd>nohlsearch<CR>", opts("Nvim: no highlight"))
 
 -- ============================================================================
 -- 2. Navigation & Motions
@@ -22,23 +23,20 @@ map("n", "<BS>", "<cmd>nohlsearch<CR>", opts)
 
 -- Window Navigation (Ctrl + h/j/k/l)
 -- Move focus between splits without pressing Ctrl-w.
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
+keyset("n", "<C-h>", "<C-w>h", opts("Nvim: windows jumping"))
+keyset("n", "<C-j>", "<C-w>j", opts("Nvim: windows jumping"))
+keyset("n", "<C-k>", "<C-w>k", opts("Nvim: windows jumping"))
+keyset("n", "<C-l>", "<C-w>l", opts("Nvim: windows jumping"))
 
 -- Buffer Switching (Alternate File)
 -- Map '\' to toggle between the current and the last accessed buffer.
-map("n", "\\", "<C-^>", opts)
-map("i", "<C-6>", "<cmd>e #<CR>", { silent = true, desc = "Switch to alternate file" })
--- map({ "n", "i" }, "<C-b>", "<cmd>bprev<CR>", { silent = true, desc = "Prev Buffer" })
--- map({ "n", "i" }, "<C-f>", "<cmd>bnext<CR>", { silent = true, desc = "Next Buffer" })
+keyset("n", "\\", "<C-^>", opts("Nvim: siwtch to last buffer"))
 
 -- Visual Motions
 -- Move by visual lines (screen lines) instead of physical lines.
 -- Useful when 'wrap' is enabled.
-map("n", "j", "gj", opts)
-map("n", "k", "gk", opts)
+keyset("n", "j", "gj", opts("Nvim: gj"))
+keyset("n", "k", "gk", opts("Nvim: gk"))
 
 -- Search Centering
 -- Keep the search result in the middle of the screen when jumping.
@@ -46,29 +44,16 @@ map("n", "k", "gk", opts)
 -- map("n", "N", "Nzz", opts)
 
 -- ============================================================================
--- 3. Clipboard Integration
+-- 3. Utilities
 -- ============================================================================
--- Sync with System Clipboard using <Space>y and <Space>p
--- Requires 'clipboard' option (xclip/pbcopy) to be set in options.lua.
-
--- Copy to system clipboard
--- map({ "n", "v" }, "<leader>y", "\"+y", opts)
-
--- Paste from system clipboard
--- map({ "n", "v" }, "<leader>p", "\"+p", opts)
-
--- ============================================================================
--- 4. Utilities
--- ============================================================================
-
--- F2: Copy Current File Path
+-- Copy Current File Path
 -- Gets the full path of the current file, copies it to the system clipboard,
 -- and prints a confirmation message.
-map("n", "<F12>", function()
-	local path = vim.fn.expand("%:p")
-	vim.fn.setreg("+", path)
-	print("Copied path: " .. path)
-end, opts)
+keyset("n", "<F12>", function()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    print("Copied path: " .. path)
+end, opts("Nvim: copy path to clipboard"))
 -- ============================================================================
 -- End of file
 -- ============================================================================
