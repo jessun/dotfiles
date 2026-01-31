@@ -17,8 +17,8 @@ return {
     },
     -- opts 会自动传递给 require("telescope").setup(opts)
     opts = {
-        layout_strategy = "horizontal",
         defaults = {
+            sorting_strategy = "ascending",
             layout_config = {
                 width = 0.999,
                 height = 0.999,
@@ -26,12 +26,6 @@ return {
                 preview_cutoff = 0,      -- ⚠️ 重要：设置为 0 意味着永远不隐藏预览窗口（即使屏幕很小）
                 prompt_position = "top", -- 个人推荐：把搜索框放在顶部
             },
-            -- 可以在这里配置 fzf 扩展的参数
-            -- mappings = { ... }
-        },
-        pickers = {
-            -- 可以在这里针对特定的 picker 进行微调
-            -- find_files = { theme = "dropdown" }
         },
         extensions = {
             fzf = {
@@ -39,7 +33,6 @@ return {
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true,    -- override the file sorter
                 case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-                -- the default case_mode is "smart_case"
             }
         }
     },
@@ -62,24 +55,24 @@ return {
         -- ==========================================
         -- 常用快捷键 (Quick Access)
         -- ==========================================
-        { "<leader><leader>", "<cmd>Telescope find_files<cr>",  desc = "Find Files (Root)" },
-        { "<leader>/",        "<cmd>Telescope live_grep<cr>",   desc = "Live Grep (Root)" },
-        { "<leader>b",        "<cmd>Telescope buffers<cr>",     desc = "Buffers" },
-        { "<leader>m",        "<cmd>Telescope keymaps<cr>",     desc = "Keymaps" },
-        { "<leader>d",        "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+        { "<leader><leader>", "<cmd>Telescope find_files<cr>",  desc = "Telescope: Find Files (Root)" },
+        { "<leader>/",        "<cmd>Telescope live_grep<cr>",   desc = "Telescope: Live Grep (Root)" },
+        { "<leader>b",        "<cmd>Telescope buffers<cr>",     desc = "Telescope: Buffers" },
+        { "<leader>m",        "<cmd>Telescope keymaps<cr>",     desc = "Telescope: Keymaps" },
+        { "<leader>d",        "<cmd>Telescope diagnostics<cr>", desc = "Telescope: Diagnostics" },
 
         -- ==========================================
         -- 以 t 开头的分组 (Telescope Prefix)
         -- ==========================================
-        { "<leader>t/",       "<cmd>Telescope live_grep<cr>",   desc = "Live Grep" },
-        { "<leader>tb",       "<cmd>Telescope buffers<cr>",     desc = "Buffers" },
-        { "<leader>tc",       "<cmd>Telescope commands<cr>",    desc = "Commands" },
-        { "<leader>tf",       "<cmd>Telescope find_files<cr>",  desc = "Find Files" },
-        { "<leader>th",       "<cmd>Telescope help_tags<cr>",   desc = "Help Tags" },
-        { "<leader>tk",       "<cmd>Telescope marks<cr>",       desc = "Marks" },
-        { "<leader>tm",       "<cmd>Telescope keymaps<cr>",     desc = "Keymaps" },
-        { "<leader>td",       "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-        { "<leader>tr",       "<cmd>Telescope registers<cr>",   desc = "Registers" },
+        { "<leader>t/",       "<cmd>Telescope live_grep<cr>",   desc = "Telescope: Live Grep" },
+        { "<leader>tb",       "<cmd>Telescope buffers<cr>",     desc = "Telescope: Buffers" },
+        { "<leader>tc",       "<cmd>Telescope commands<cr>",    desc = "Telescope: Commands" },
+        { "<leader>tf",       "<cmd>Telescope find_files<cr>",  desc = "Telescope: Find Files" },
+        { "<leader>th",       "<cmd>Telescope help_tags<cr>",   desc = "Telescope: Help Tags" },
+        { "<leader>tk",       "<cmd>Telescope marks<cr>",       desc = "Telescope: Marks" },
+        { "<leader>tm",       "<cmd>Telescope keymaps<cr>",     desc = "Telescope: Keymaps" },
+        { "<leader>td",       "<cmd>Telescope diagnostics<cr>", desc = "Telescope: Diagnostics" },
+        { "<leader>tr",       "<cmd>Telescope registers<cr>",   desc = "Telescope: Registers" },
 
         -- 选择配色方案 (带预览)
         {
@@ -87,7 +80,7 @@ return {
             function()
                 require('telescope.builtin').colorscheme({ enable_preview = true })
             end,
-            desc = "Colorscheme with Preview"
+            desc = "Telescope: Colorscheme with Preview"
         },
 
         -- ==========================================
@@ -101,7 +94,7 @@ return {
                     default_text = vim.fn.expand('<cword>')
                 })
             end,
-            desc = "Fuzzy Find Word (Current Buffer)"
+            desc = "Telescope: Fuzzy Find Word (Current Buffer)"
         },
         -- <leader>W: 在当前 Workspace (项目) 中搜索当前光标下的单词
         {
@@ -111,7 +104,7 @@ return {
                     default_text = vim.fn.expand('<cword>')
                 })
             end,
-            desc = "Live Grep Word (Workspace)"
+            desc = "Telescope: Live Grep Word (Workspace)"
         },
     },
 }
