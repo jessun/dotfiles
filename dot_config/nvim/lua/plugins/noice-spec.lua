@@ -40,6 +40,6 @@ return {
         },
     },
     keys = {
-        { "<F11>", "<cmd>NoiceDismiss<cr>", mode = { "n" }, desc = "Notice dismiss", }
+        { "<F10>", "<cmd>NoiceDismiss<cr>", mode = { "n" }, desc = "Notice dismiss", }
     }
 }
