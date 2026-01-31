@@ -3,6 +3,7 @@ return {
 	{
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
+		cond = false,
 		opts = {},
 	},
 	{
