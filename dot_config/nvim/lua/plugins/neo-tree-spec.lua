@@ -1,7 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     cond = not vim.g.enable_coc,
-    lazy = false, -- neo-tree will lazily load itself
     version = "*",
     dependencies = {
         "nvim-lua/plenary.nvim",
