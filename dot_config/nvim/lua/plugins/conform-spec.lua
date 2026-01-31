@@ -4,7 +4,7 @@ return {
     event = { "BufWritePre" },
     opts = {
         formatters_by_ft = {
-            rust = { "rust-analyzer", lsp_format = "fallback" },
+            rust = { "rustfmt", lsp_format = "fallback" },
             lua = { "stylua", lsp_format = "fallback" },
         },
         format_on_save = {
