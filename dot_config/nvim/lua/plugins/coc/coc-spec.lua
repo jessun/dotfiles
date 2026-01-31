@@ -147,10 +147,35 @@ local keys_cfg = {
     { "<leader>d",        "<Cmd>CocList --auto-preview diagnostics<CR>",                                desc = "Diagnostics" },
     { "<leader>e",        "<Cmd>CocCommand explorer<CR>",                                               desc = "Explorer" },
     { "<leader>m",        "<Cmd>CocList maps<CR>",                                                      desc = "Maps" },
-    { "<F3>",             "<cmd>CocOutline<CR>",                                                        mode = { "n", "x" },          desc = "Outline" },
     { "<leader>o",        "<cmd>CocOutline<CR>",                                                        mode = { "n", "x" },          desc = "Outline" },
     { "<leader>/",        ":<C-u>CocList --interactive --auto-preview grep --ignore-case --regexp<CR>", desc = "Interactive Grep" },
     { "<leader>y",        ":<C-u>CocList yank<CR>",                                                     desc = "Yank List" },
+    {
+        "<F3>",
+        function()
+            -- 1. 定义 Outline 窗口的文件类型 (CocOutline 默认通常是 coctree)
+            local outline_ft = "coctree"
+
+            -- 2. 遍历所有窗口，查找是否存在该文件类型的窗口
+            local wins = vim.api.nvim_list_wins()
+            for _, win in ipairs(wins) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+
+                if ft == outline_ft then
+                    -- A. 如果找到了，说明已经打开，直接关闭该窗口
+                    vim.api.nvim_win_close(win, true)
+                    return
+                end
+            end
+
+            -- B. 如果循环结束还没找到，说明没打开，执行打开命令
+            vim.cmd("CocOutline")
+        end,
+
+        mode = { "n", "x" },
+        desc = "Outline"
+    },
 
     -- Complex Function Wrappers
     {
@@ -177,6 +202,8 @@ return {
     build = 'pnpm i --frozen-lockfile',
     init = coc_init,
     cond = vim.g.enable_coc,
+    event = "VeryLazy",
+    cmd = { "CocList", "CocCommand", "CocOutline", "CocEnable" },
     keys = keys_cfg,
     config = function(_, opts)
         local utils = require("utils")
