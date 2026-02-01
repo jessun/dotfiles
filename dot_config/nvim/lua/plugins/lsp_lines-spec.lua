@@ -12,6 +12,7 @@ return {
 		{
 			"<F4>",
 			function()
+				vim.notify("LSP lines toggle")
 				require("lsp_lines").toggle()
 			end,
 			mode = { "n" },
