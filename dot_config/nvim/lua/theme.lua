@@ -8,6 +8,9 @@
 local opt = vim.opt
 local g = vim.g
 local keyset = vim.keymap.set
+local function opts(text)
+	return { silent = true, noremap = true, desc = text }
+end
 
 -- ============================================================================
 -- 01. Basic Appearance
@@ -116,10 +119,10 @@ if g.neovide then
 		print("Zoom: 1.00")
 	end)
 
-	keyset("i", "<D-v>", "<C-r>+", { noremap = true, silent = true })
-	keyset("c", "<D-v>", "<C-r>+", { noremap = true, silent = true })
-	keyset("n", "<D-v>", '"+p', { noremap = true, silent = true })
-	keyset("t", "<D-v>", '<C-\\><C-n>"+pi', { noremap = true, silent = true })
+	keyset("i", "<D-v>", "<C-r>+", opts(""))
+	keyset("c", "<D-v>", "<C-r>+", opts(""))
+	keyset("n", "<D-v>", '"+p', opts(""))
+	keyset("t", "<D-v>", '<C-\\><C-n>"+pi', opts(""))
 end
 
 -- ============================================================================
