@@ -74,13 +74,27 @@ set laststatus=2
 " 'unnamedplus' uses the '+' register (standard on Linux/macOS).
 " 'unnamed' uses the '*' register (standard on Windows).
 set paste
+
 if has('clipboard')
-  if has('unnamedplus')
-    set clipboard=unnamedplus
+  let s:clip_tool_exists = 0
+  
+  if has('win32') || has('mac') || has('wsl')
+    let s:clip_tool_exists = 1
   else
-    set clipboard=unnamed
+    if executable('xclip') || executable('xsel') || executable('wl-copy')
+      let s:clip_tool_exists = 1
+    endif
+  endif
+
+  if s:clip_tool_exists
+    if has('unnamedplus')
+      set clipboard=unnamedplus
+    else
+      set clipboard=unnamed
+    endif
   endif
 endif
+
 
 " =============================================================================
 " 03. Formatting & Indentation
