@@ -109,30 +109,6 @@ return {
 			desc = "Telescope: Live Grep Word (Workspace)",
 		},
 		{
-			"gd",
-			function()
-				require("telescope.builtin").lsp_definitions()
-			end,
-			mode = { "n" },
-			desc = "",
-		},
-		{
-			"gi",
-			function()
-				require("telescope.builtin").lsp_implementations()
-			end,
-			mode = { "n" },
-			desc = "",
-		},
-		{
-			"gr",
-			function()
-				require("telescope.builtin").lsp_references()
-			end,
-			mode = { "n" },
-			desc = "",
-		},
-		{
 			"gt",
 			function()
 				require("telescope.builtin").lsp_type_definitions()
