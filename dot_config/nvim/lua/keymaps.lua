@@ -6,7 +6,7 @@
 -- -----------------------------------------------------------------------------
 local keyset = vim.keymap.set
 local function opts(text)
-    return { silent = true, noremap = true, desc = text }
+	return { silent = true, noremap = true, desc = text }
 end
 
 -- ============================================================================
@@ -15,7 +15,10 @@ end
 
 -- Clear Search Highlights (Backspace)
 -- Clears the highlighting of search terms until the next search.
-keyset("n", "<BS>", "<cmd>nohlsearch<CR>", opts("Nvim: no highlight"))
+keyset("n", "<BS>", function()
+	pcall(vim.cmd.NoiceDismiss)
+	pcall(vim.cmd.nohl)
+end, opts("Nvim: no highlight"))
 
 -- ============================================================================
 -- 2. Navigation & Motions
@@ -50,9 +53,9 @@ keyset("n", "k", "gk", opts("Nvim: gk"))
 -- Gets the full path of the current file, copies it to the system clipboard,
 -- and prints a confirmation message.
 keyset("n", "<F12>", function()
-    local path = vim.fn.expand("%:p")
-    vim.fn.setreg("+", path)
-    print("Copied path: " .. path)
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("Copied path: " .. path)
 end, opts("Nvim: copy path to clipboard"))
 -- ============================================================================
 -- End of file

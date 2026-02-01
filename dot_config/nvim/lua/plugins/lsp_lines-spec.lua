@@ -10,7 +10,7 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<leader>l",
+			"<F4>",
 			function()
 				require("lsp_lines").toggle()
 			end,
