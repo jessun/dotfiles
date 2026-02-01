@@ -15,7 +15,7 @@ return {
 				require("lsp_lines").toggle()
 			end,
 			mode = { "n" },
-			desc = "",
+			desc = "lsp_lines: toggle",
 		},
 	},
 }
