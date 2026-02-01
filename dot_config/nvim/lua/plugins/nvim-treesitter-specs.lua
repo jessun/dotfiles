@@ -95,8 +95,8 @@ return {
 				end)
 			end
 
-			keyset_select("am", "@function.outer", "textobjects")
-			keyset_select("im", "@function.inner", "textobjects")
+			keyset_select("af", "@function.outer", "textobjects")
+			keyset_select("if", "@function.inner", "textobjects")
 			keyset_select("ac", "@class.outer", "textobjects")
 			keyset_select("ic", "@class.inner", "textobjects")
 			-- 使用 locals.scm 中的定义
@@ -117,22 +117,11 @@ return {
 				end)
 			end
 
-			-- 跳转到开始
-			keyset_move("]m", "@function.outer", "textobjects", "goto_next_start")
-			keyset_move("]o", { "@loop.inner", "@loop.outer" }, "textobjects", "goto_next_start")
-			keyset_move("]s", "@local.scope", "locals", "goto_next_start")
-			keyset_move("]z", "@fold", "folds", "goto_next_start")
-			keyset_move("[m", "@function.outer", "textobjects", "goto_previous_start")
+			keyset_move("]f", "@function.outer", "textobjects", "goto_next_start")
+			keyset_move("[f", "@function.outer", "textobjects", "goto_previous_start")
 
-			-- 跳转到结束
-			keyset_move("]M", "@function.outer", "textobjects", "goto_next_end")
-			keyset_move("][", "@class.outer", "textobjects", "goto_next_end")
-			keyset_move("[M", "@function.outer", "textobjects", "goto_previous_end")
-			keyset_move("[]", "@class.outer", "textobjects", "goto_previous_end")
-
-			-- 颗粒度移动 (start or end)
-			keyset_move("]d", "@conditional.outer", "textobjects", "goto_next")
-			keyset_move("[d", "@conditional.outer", "textobjects", "goto_previous")
+			keyset_move("]a", "@class.outer", "textobjects", "goto_next_start")
+			keyset_move("[a", "@class.outer", "textobjects", "goto_previous_start")
 
 			-- WARN: 与插件 eyeliner 有冲突
 			-- 4. Repeatable Move (增强 ; 和 , 以及 f/t)
