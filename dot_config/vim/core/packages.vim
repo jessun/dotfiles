@@ -49,6 +49,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
 
 " --- UI & Themes ---
 " Status line (Configuration in ui/lightline.vim).
@@ -119,6 +120,9 @@ let g:coc_global_extensions = [
 " =============================================================================
 " 03. General Plugin Settings
 " =============================================================================
+if filereadable("Session.vim") && argc() == 0
+  execute 'source Session.vim'
+endif
 " -- Disable netrw
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
@@ -339,7 +343,6 @@ noremap <silent><nowait> <leader>w :exe 'CocList --interactive --auto-preview --
 noremap <silent><nowait> <leader>/ :<C-u>CocList --interactive --auto-preview grep --ignore-case --regexp<CR>
 noremap <silent><nowait> <leader>y :<C-u>CocList --interactive yank<CR>
 noremap <silent><nowait> <leader>m :<C-u>Maps <CR>
-
 " =============================================================================
 " End of file
 " =============================================================================
