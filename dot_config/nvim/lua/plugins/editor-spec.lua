@@ -1,6 +1,10 @@
 return {
 	{ "junegunn/vim-peekaboo" },
 	{
+		"chentoast/marks.nvim",
+		opts = {},
+	},
+	{
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		cond = false,
