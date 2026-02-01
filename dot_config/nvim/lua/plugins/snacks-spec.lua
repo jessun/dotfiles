@@ -68,7 +68,7 @@ return {
 			desc = "Snacks: prev reference",
 		},
 		{
-			"<c-\\>",
+			"<F12>",
 			function()
 				Snacks.terminal.toggle()
 			end,
