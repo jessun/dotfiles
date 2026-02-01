@@ -52,7 +52,7 @@ keyset("n", "k", "gk", opts("Nvim: gk"))
 -- Copy Current File Path
 -- Gets the full path of the current file, copies it to the system clipboard,
 -- and prints a confirmation message.
-keyset("n", "<F12>", function()
+keyset("n", "<F5>", function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 	print("Copied path: " .. path)
