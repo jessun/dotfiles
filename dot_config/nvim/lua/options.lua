@@ -48,6 +48,7 @@ opt.list = true -- Show invisible characters
 opt.listchars = { tab = "| ", trail = "·", extends = "»", precedes = "«" }
 opt.wrap = false
 opt.colorcolumn = "80"
+vim.opt.splitkeep = "screen"
 
 -- ============================================================================
 -- 3. Indentation & Editing
