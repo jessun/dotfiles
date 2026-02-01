@@ -174,6 +174,7 @@ return {
 					"ripgrep",
 				},
 				providers = {
+					lsp = { fallbacks = {} },
 					snippets = {
 						score_offset = -10,
 					},
