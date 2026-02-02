@@ -71,18 +71,17 @@ return {
 	cond = vim.g.enable_blink,
 	build = "cargo build --release",
 	dependencies = {
-		"saghen/blink.compat",
-		"quangnguyen30192/cmp-nvim-tags",
-		"mikavilpas/blink-ripgrep.nvim",
-		"hrsh7th/cmp-nvim-lsp-document-symbol",
-		"mgalliou/blink-cmp-tmux",
 		"Kaiser-Yang/blink-cmp-avante",
-		"erooke/blink-cmp-latex",
+		"Kaiser-Yang/blink-cmp-dictionary",
+		"Kaiser-Yang/blink-cmp-git",
 		"bydlw98/blink-cmp-env",
 		"disrupted/blink-cmp-conventional-commits",
-		"Kaiser-Yang/blink-cmp-git",
-		"Kaiser-Yang/blink-cmp-dictionary",
+		"erooke/blink-cmp-latex",
+		"hrsh7th/cmp-nvim-lsp-document-symbol",
+		"mgalliou/blink-cmp-tmux",
 		"mikavilpas/blink-ripgrep.nvim",
+		"quangnguyen30192/cmp-nvim-tags",
+		"saghen/blink.compat",
 		{
 			"folke/lazydev.nvim",
 			ft = "lua",
@@ -265,6 +264,7 @@ return {
 						score_offset = -3,
 					},
 					ripgrep = {
+						score_offset = -1,
 						module = "blink-ripgrep",
 						name = "Ripgrep",
 						-- see the full configuration below for all available options
