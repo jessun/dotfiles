@@ -82,6 +82,41 @@ keyset({ "n", "i", "v" }, "<F1>", function()
 		vim.cmd("help")
 	end
 end, { desc = "Nvim: Toggle Help Window" })
+
+local function copy_diagnostic()
+	-- 1. 获取当前行号 (API 需要 0-based 索引)
+	local line = vim.fn.line(".") - 1
+
+	-- 2. 获取当前 Buffer 当前行的所有诊断信息
+	local diagnostics = vim.diagnostic.get(0, { lnum = line })
+
+	-- 3. 如果当前行没有错误，提示并退出
+	if vim.tbl_isempty(diagnostics) then
+		vim.notify("当前行没有诊断信息", vim.log.levels.WARN)
+		return
+	end
+
+	-- 4. 提取并格式化信息
+	local result = {}
+	for _, d in ipairs(diagnostics) do
+		-- 格式示例: "[Pyright] Object of type 'None' is not callable"
+		local source = d.source and ("[" .. d.source .. "] ") or ""
+		table.insert(result, source .. d.message)
+	end
+
+	-- 5. 拼接多条信息（如果有多个错误挤在一行）
+	local content = table.concat(result, "\n")
+
+	-- 6. 写入系统剪贴板 ('+')
+	-- 注意：这依赖于你之前配置好的 clipboard provider (xclip/OSC52)
+	vim.fn.setreg("+", content)
+
+	-- 7. 成功提示
+	vim.notify("Copy Diagnostic to Clipboard:\n" .. content, vim.log.levels.INFO)
+end
+
+-- 绑定快捷键，例如 <leader>ce (Copy Error)
+keyset("n", "<F6>", copy_diagnostic, opts("Copy Diagnostic to Clipboard"))
 -- ============================================================================
 -- End of file
 -- ============================================================================
