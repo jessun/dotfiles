@@ -17,6 +17,20 @@ return {
 		terminal = {},
 		toggle = {},
 		words = {},
+		styles = {
+			notification = {
+				wo = { wrap = true }, -- Wrap notifications
+				border = "solid",
+			},
+			-- 修改终端的样式
+			terminal = {
+				border = "solid",
+			},
+			-- 修改其他浮动组件
+			float = {
+				border = "solid",
+			},
+		},
 	},
 	keys = {
 		{

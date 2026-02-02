@@ -100,6 +100,12 @@ vim.diagnostic.config({
 	virtual_text = true,
 	virtual_lines = true,
 	severity_sort = true,
+	float = {
+		source = "always",
+		format = function(diagnostic)
+			return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+		end,
+	},
 })
 -- ============================================================================
 -- End of file
