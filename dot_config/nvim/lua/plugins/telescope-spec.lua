@@ -17,6 +17,8 @@ return {
 	-- opts 会自动传递给 require("telescope").setup(opts)
 	opts = {
 		defaults = {
+			border = true,
+			borderchars = { " ", "█", " ", " ", " ", " ", " ", " " },
 			sorting_strategy = "ascending",
 			layout_config = {
 				width = 0.999,
