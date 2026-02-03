@@ -128,20 +128,43 @@ autocmd("FileType", {
 		vim.opt_local.colorcolumn = "50"
 	end,
 })
-autocmd("CursorHold", {
-	buffer = bufnr,
+
+local enable_auto_diag = false
+vim.api.nvim_create_autocmd("CursorHold", {
+	group = vim.api.nvim_create_augroup("AutoDiagnosticFloat", { clear = true }),
 	callback = function()
+		if not enable_auto_diag then
+			return
+		end
+
 		local opts = {
-			focusable = false,
+			focusable = false, -- 极其重要：防止光标跳到悬浮窗里
 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-			border = "solid",
+			border = "solid", -- 保持你喜欢的 solid 边框
 			source = "always",
 			prefix = " ",
 			scope = "cursor",
 		}
-		vim.diagnostic.open_float(nil, opts)
+		-- 只有当当前位置有错误时才尝试显示，避免无意义的调用
+		if #vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 }) > 0 then
+			vim.diagnostic.open_float(nil, opts)
+		end
 	end,
 })
+
+-- 3. 创建切换开关的快捷键
+-- 这里绑定到 <leader>td (Toggle Diagnostics)
+vim.keymap.set("n", "<F7>", function()
+	enable_auto_diag = not enable_auto_diag
+
+	if enable_auto_diag then
+		vim.notify("LSP float diagnostic show", vim.log.levels.INFO)
+		-- 开启时立即触发一次，不用等下一次移动
+		vim.cmd("doautocmd CursorHold")
+	else
+		vim.notify("LSP float diagnostic hide", vim.log.levels.WARN)
+	end
+end, { desc = "Toggle Auto Diagnostic Float" })
 -- ============================================================================
 -- End of file
 -- ============================================================================
