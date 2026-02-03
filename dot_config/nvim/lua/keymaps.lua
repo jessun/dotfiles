@@ -92,7 +92,7 @@ local function copy_diagnostic()
 
 	-- 3. 如果当前行没有错误，提示并退出
 	if vim.tbl_isempty(diagnostics) then
-		vim.notify("当前行没有诊断信息", vim.log.levels.WARN)
+		vim.notify("No diagnostic", vim.log.levels.INFO)
 		return
 	end
 
