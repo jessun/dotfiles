@@ -182,7 +182,7 @@ return {
 						name = "Dict",
 						-- Make sure this is at least 2.
 						-- 3 is recommended
-						min_keyword_length = 3,
+						min_keyword_length = 4,
 						opts = {
 							-- options for blink-cmp-dictionary
 							dictionary_files = {
@@ -191,7 +191,7 @@ return {
 							},
 							dictionary_directories = {},
 						},
-						score_offset = -10, -- 提高搜索时的优先级
+						score_offset = -1000, -- 提高搜索时的优先级
 					},
 					nvim_lsp_document_symbol = {
 						name = "nvim_lsp_document_symbol",
@@ -280,7 +280,16 @@ return {
 				per_filetype = {
 					lua = { "lsp", "path", "snippets", "buffer", "lazydev" },
 					gitcommit = { "git", "conventional_commits", "buffer" },
-					rust = { "lsp", "path", "snippets", "buffer", "env", "dictionary", "tmux", "ripgrep" },
+					rust = {
+						"lsp",
+						"path",
+						"snippets",
+						-- "buffer",
+						"env",
+						"dictionary",
+						"tmux",
+						"ripgrep",
+					},
 					go = { "lsp", "path", "snippets", "buffer", "env", "dictionary", "tmux" },
 					toml = { "path", "buffer", "ripgrep" },
 				},
