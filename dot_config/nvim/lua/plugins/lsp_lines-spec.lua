@@ -10,7 +10,7 @@ return {
 	opts = {},
 	keys = {
 		{
-			"<F4>",
+			"<F5>",
 			function()
 				vim.notify("LSP lines toggle")
 				require("lsp_lines").toggle()
