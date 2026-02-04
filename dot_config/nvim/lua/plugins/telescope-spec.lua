@@ -28,6 +28,12 @@ return {
 				prompt_position = "top", -- 个人推荐：把搜索框放在顶部
 			},
 		},
+		pickers = {
+			find_files = {
+				hidden = true,
+				no_ignore = true,
+			},
+		},
 		extensions = {
 			fzf = {
 				fuzzy = true, -- false will only do exact matching
