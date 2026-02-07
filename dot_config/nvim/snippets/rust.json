@@ -1,0 +1,13 @@
+{
+    "Tokio Main": {
+        "prefix": "tokio_main",
+        "body": [
+            "#[tokio::main]",
+            "async fn main() -> Result<(), Box<dyn std::error::Error>> {",
+            "    $0",
+            "    Ok(())",
+            "}"
+        ],
+        "description": "Create a tokio main function"
+    }
+}
