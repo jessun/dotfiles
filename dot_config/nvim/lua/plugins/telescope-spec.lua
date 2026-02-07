@@ -18,7 +18,8 @@ return {
 	opts = {
 		defaults = {
 			border = true,
-			borderchars = { " ", "█", " ", " ", " ", " ", " ", " " },
+			borderchars = { " ", "│", " ", " ", " ", " ", " ", " " },
+			-- borderchars             = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
 			sorting_strategy = "ascending",
 			layout_config = {
 				width = 0.999,
