@@ -280,16 +280,7 @@ return {
 				per_filetype = {
 					lua = { "lsp", "path", "snippets", "buffer", "lazydev" },
 					gitcommit = { "git", "conventional_commits", "buffer" },
-					rust = {
-						"lsp",
-						"path",
-						"snippets",
-						-- "buffer",
-						"env",
-						"dictionary",
-						"tmux",
-						"ripgrep",
-					},
+					rust = { "lsp", "path", "snippets", "buffer", "env", "dictionary", "tmux", "ripgrep" },
 					go = { "lsp", "path", "snippets", "buffer", "env", "dictionary", "tmux" },
 					toml = { "path", "buffer", "ripgrep" },
 				},
