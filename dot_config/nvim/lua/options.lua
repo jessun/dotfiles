@@ -46,7 +46,7 @@ opt.splitright = true -- Split vertical windows to the right
 opt.splitbelow = true -- Split horizontal windows to the bottom
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = "| ", trail = "·", extends = "»", precedes = "«" }
-opt.wrap = true
+opt.wrap = false
 opt.colorcolumn = "80"
 vim.opt.splitkeep = "screen"
 
