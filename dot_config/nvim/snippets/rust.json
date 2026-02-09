@@ -9,5 +9,12 @@
             "}"
         ],
         "description": "Create a tokio main function"
+    },
+    "cfg_test": {
+        "prefix": "cfg_test",
+        "body": [
+            "#[cfg(test)]"
+        ],
+        "description": "tests"
     }
 }
