@@ -4,6 +4,9 @@ local function blink_theme()
 	-- 菜单与文档背景
 	set_hl(0, "BlinkCmpMenu", { fg = nord.base.fg, bg = nord.nord3 })
 	set_hl(0, "BlinkCmpDoc", { fg = nord.base.fg, bg = nord.nord3 })
+	set_hl(0, "BlinkCmpSource", { fg = nord.base.fg, bg = nord.nord3 })
+	set_hl(0, "BlinkCmpLabelDetail", { fg = nord.base.fg, bg = nord.nord3 })
+	set_hl(0, "BlinkCmpLabelDescription", { fg = nord.base.fg, bg = nord.nord3 })
 
 	-- 选中项 (橙色高亮)
 	set_hl(0, "BlinkCmpMenuSelection", {
@@ -139,6 +142,7 @@ return {
 			-- (Default) Only show the documentation popup when manually triggered
 			completion = {
 				menu = {
+					border = "",
 					draw = {
 						-- 定义列：图标、标签(文字)、来源名称
 						columns = {
@@ -150,9 +154,19 @@ return {
 						},
 					},
 				},
-				documentation = { auto_show = true },
+				documentation = {
+					auto_show = true,
+					auto_show_delay_ms = 200, -- 可选：稍微增加延迟，避免快速移动光标时窗口乱闪
+					window = {
+						border = "", -- 关键：设置为 "single", "rounded" 或 "padded"
+						-- 确保边框有宽度，这样 Blink 才能正确计算两个窗口的间距
+					},
+				},
 			},
-
+			signature = {
+				enabled = true,
+				-- window = { border = "single" },
+			},
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
@@ -173,7 +187,10 @@ return {
 					"ripgrep",
 				},
 				providers = {
-					lsp = { fallbacks = {} },
+					lsp = {
+						fallbacks = {},
+						score_offset = 100,
+					},
 					snippets = {
 						score_offset = -10,
 					},
@@ -285,14 +302,20 @@ return {
 					toml = { "path", "buffer", "ripgrep" },
 				},
 			},
-			signature = { enabled = true },
 
 			-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
 			-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
 			-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
 			--
 			-- See the fuzzy documentation for more information
-			fuzzy = { implementation = "prefer_rust_with_warning" },
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+				sorts = {
+					"score", -- Primary sort: by fuzzy matching score
+					"sort_text", -- Secondary sort: by sortText field if scores are equal
+					"label", -- Tertiary sort: by label if still tied
+				},
+			},
 			cmdline = {
 				enabled = true, -- 确保启用
 
