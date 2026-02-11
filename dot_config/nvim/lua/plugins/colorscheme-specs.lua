@@ -39,4 +39,7 @@ return {
 			vim.cmd.colorscheme("nord")
 		end,
 	},
+	{
+		"rktjmp/lush.nvim",
+	},
 }
