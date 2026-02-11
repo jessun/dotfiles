@@ -2,6 +2,7 @@ tap "ksk001100/ruget"
 tap "lencx/chatgpt", "https://github.com/lencx/ChatGPT.git"
 tap "lihaoyun6/tap"
 tap "localsend/localsend"
+tap "microsoft/inshellisense", "https://github.com/microsoft/inshellisense"
 tap "playcover/playcover"
 tap "productdevbook/tap"
 tap "sozercan/kaset", "https://github.com/sozercan/kaset"
@@ -17,6 +18,8 @@ brew "bruno-cli"
 brew "btop"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Shell script to build fancy DMGs
+brew "create-dmg"
 # Maintained ctags implementation
 brew "universal-ctags"
 # LSP implementation using universal-ctags as backend
@@ -47,6 +50,8 @@ brew "gnu-sed"
 brew "gnupg"
 # Language server for the Go language
 brew "gopls"
+# Grammar Checker for Developers
+brew "harper"
 # Post-modern modal text editor
 brew "helix"
 # Configurable static site generator
@@ -57,6 +62,8 @@ brew "jj"
 brew "jless"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Package manager for the Lua programming language
+brew "luarocks"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -65,10 +72,16 @@ brew "neovim"
 brew "neovide"
 # Highly capable, feature-rich programming language
 brew "perl"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Rsync for cloud storage
 brew "rclone"
+# Alternative to backtracking PCRE-style regular expression engines
+brew "re2"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Opinionated Lua code formatter
+brew "stylua"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Terminal multiplexer
@@ -79,15 +92,31 @@ brew "tmuxinator"
 brew "tpm"
 # CLI tool that moves files or folder to the trash
 brew "trash"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Source code spell checker
+brew "typos-cli"
+# Language Server for typos-cli
+brew "typos-lsp"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Ncurses-based file manager with vi-like keybindings
+brew "vifm"
+# Lexical database for the English language
+brew "wordnet"
+# Access X11 clipboards from the command-line
+brew "xclip"
 # JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 brew "ksk001100/ruget/ruget"
+# IDE style command line auto complete
+brew "microsoft/inshellisense/inshellisense"
 # Comprehensive macOS cleanup and application uninstall tool
 brew "tw93/tap/mole"
 # GPU-accelerated terminal emulator
@@ -100,12 +129,8 @@ cask "antigravity"
 cask "apifox"
 # User-friendly GUI app for Homebrew
 cask "applite"
-# Telegram client with ghost mode and message history
-cask "ayugram"
 # Cloud storage service
 cask "baidunetdisk"
-# Online gaming platform
-cask "battle-net"
 # Display management tool
 cask "betterdisplay"
 # Official bilibili video streaming and sharing platform
@@ -227,12 +252,12 @@ cask "ybeapps/sourcegit/sourcegit"
 cask "stash"
 # System monitor for the menu bar
 cask "stats"
-# Video game digital distribution service
-cask "steam"
 # Git client
 cask "sublime-merge"
 # Native GUI tool for relational databases
 cask "tableplus"
+# Cloud video conferencing
+cask "tencent-meeting"
 # Unpacks archive files
 cask "the-unarchiver"
 # Web browser
@@ -272,11 +297,35 @@ cask "zed@preview"
 vscode "arcticicestudio.nord-visual-studio-code"
 vscode "donjayamanne.githistory"
 vscode "ms-ceintl.vscode-language-pack-zh-hans"
+go "golang.org/x/tools/cmd/callgraph"
+go "github.com/go-delve/delve/cmd/dlv"
+go "github.com/davidrjenni/reftools/cmd/fillswitch"
 go "github.com/tfkhdyt/geminicommit"
+go "github.com/onsi/ginkgo/v2/ginkgo"
 go "cmd/go"
+go "github.com/abice/go-enum"
 go "cmd/gofmt"
+go "mvdan.cc/gofumpt"
+go "golang.org/x/tools/cmd/goimports"
+go "github.com/twpayne/go-jsonstruct/v3/cmd/gojsonstruct"
+go "github.com/golangci/golangci-lint/v2/cmd/golangci-lint"
+go "github.com/segmentio/golines"
+go "github.com/fatih/gomodifytags"
+go "github.com/abenz1267/gomvp"
+go "golang.org/x/tools/cmd/gonew"
+go "golang.org/x/tools/gopls"
+go "github.com/cweill/gotests/gotests"
+go "gotest.tools/gotestsum"
+go "golang.org/x/vuln/cmd/govulncheck"
+go "github.com/koron/iferr"
+go "github.com/josharian/impl"
+go "github.com/tmc/json-to-struct"
+go "go.uber.org/mock/mockgen"
+go "github.com/kyoh86/richgo"
 cargo "cargo-bundle"
+cargo "cargo-edit"
 cargo "cargo-machete"
+cargo "cargo-outdated"
 cargo "cargo-udeps"
 cargo "cargo-update"
 cargo "du-dust"
@@ -284,4 +333,5 @@ cargo "mdbook"
 cargo "rm-improved"
 cargo "rust-analyzer"
 cargo "rustlings"
+cargo "toastify"
 cargo "work-tuimer"
