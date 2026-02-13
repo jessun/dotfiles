@@ -57,13 +57,13 @@ local function coc_cfg()
 	end
 
 	-- 2. Go syntax settings
-	vim.g.go_highlight_build_constraints = 1
-	vim.g.go_highlight_fields = 1
-	vim.g.go_highlight_functions = 1
-	vim.g.go_highlight_methods = 1
-	vim.g.go_highlight_operators = 1
-	vim.g.go_highlight_structs = 1
-	vim.g.go_highlight_types = 1
+	-- vim.g.go_highlight_build_constraints = 1
+	-- vim.g.go_highlight_fields = 1
+	-- vim.g.go_highlight_functions = 1
+	-- vim.g.go_highlight_methods = 1
+	-- vim.g.go_highlight_operators = 1
+	-- vim.g.go_highlight_structs = 1
+	-- vim.g.go_highlight_types = 1
 
 	local set_hl = vim.api.nvim_set_hl
 	local nord = require("utils.nord")
