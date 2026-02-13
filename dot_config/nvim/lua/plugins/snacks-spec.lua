@@ -3,7 +3,7 @@ return {
 	version = "*",
 	event = "VeryLazy",
 	opts = {
-		animate = {},
+		-- animate = {},
 		bufdelete = {},
 		dim = {},
 		input = {},
@@ -13,7 +13,7 @@ return {
 		quickfile = {},
 		rename = {},
 		scratch = {},
-		scroll = {},
+		-- scroll = {},
 		terminal = {},
 		toggle = {},
 		words = {},
