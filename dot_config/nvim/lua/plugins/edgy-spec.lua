@@ -46,6 +46,14 @@ return {
 				title = function()
 					return ""
 				end, -- 返回空字符串
+				ft = "coc-explorer",
+				size = { height = 0.5 },
+			},
+			-- Neo-tree filesystem always takes half the screen height
+			{
+				title = function()
+					return ""
+				end, -- 返回空字符串
 				ft = "neo-tree",
 				filter = function(buf)
 					return vim.b[buf].neo_tree_source == "filesystem"
@@ -75,6 +83,12 @@ return {
 			{
 				title = "",
 				ft = "Outline",
+				pinned = false,
+				open = "SymbolsOutlineOpen",
+			},
+			{
+				title = "",
+				ft = "coctree",
 				pinned = false,
 				open = "SymbolsOutlineOpen",
 			},

@@ -21,7 +21,7 @@ local function blink_theme()
 	set_hl(0, "BlinkCmpDocBorder", { fg = nord.accents.blue, bg = nord.nord3 }) -- 边框
 
 	-- 滚动条
-	set_hl(0, "BlinkCmpScrollBarThumb", { bg = nord.accents.blue })
+	set_hl(0, "BlinkCmpScrollBarThumb", { bg = nord.nord4 })
 	set_hl(0, "BlinkCmpScrollBarGutter", { bg = nord.nord3 })
 
 	local kind_colors = {

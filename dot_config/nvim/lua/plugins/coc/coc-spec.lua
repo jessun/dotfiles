@@ -72,6 +72,9 @@ local function coc_cfg()
 	set_hl(0, "CocWarnHighlight", { bg = nord.diagnostic.warn, fg = nord.base.bg })
 	set_hl(0, "CocInfoHighlight", { bg = nord.diagnostic.info, fg = nord.base.bg })
 	set_hl(0, "CocHintHighlight", { bg = nord.diagnostic.hint, fg = nord.base.bg })
+	set_hl(0, "CocMenuSel", { bg = nord.accents.orange, fg = nord.base.fg_highlight })
+	set_hl(0, "CocFloating", { bg = nord.nord3, fg = nord.base.fg })
+	set_hl(0, "CocSearch", { bg = nord.nord3, fg = nord.nord8 })
 
 	-- 3. Spell Checker Command
 	vim.api.nvim_create_user_command("CleanList", function(opts)
@@ -350,7 +353,7 @@ local keys_cfg = {
 	},
 	-- { "<leader>y",        ":<C-u>CocList yank<CR>",                                                     desc = "Yank List" },
 	{
-		"<F3>",
+		"<leader><F3>",
 		function()
 			-- 1. 定义 Outline 窗口的文件类型 (CocOutline 默认通常是 coctree)
 			local outline_ft = "coctree"
