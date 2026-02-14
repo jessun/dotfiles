@@ -72,9 +72,10 @@ local function coc_cfg()
 	set_hl(0, "CocWarnHighlight", { bg = nord.diagnostic.warn, fg = nord.base.bg })
 	set_hl(0, "CocInfoHighlight", { bg = nord.diagnostic.info, fg = nord.base.bg })
 	set_hl(0, "CocHintHighlight", { bg = nord.diagnostic.hint, fg = nord.base.bg })
-	set_hl(0, "CocMenuSel", { bg = nord.accents.orange, fg = nord.base.fg_highlight })
-	set_hl(0, "CocFloating", { bg = nord.nord3, fg = nord.base.fg })
-	set_hl(0, "CocSearch", { bg = nord.nord3, fg = nord.nord8 })
+
+	set_hl(0, "CocFloating", { bg = nord.nord2, fg = nord.base.fg })
+	set_hl(0, "CocSearch", { bg = nord.nord2, fg = nord.nord8 })
+	set_hl(0, "CocMenuSel", { bg = nord.accents.orange, fg = nord.base.fg })
 
 	-- 3. Spell Checker Command
 	vim.api.nvim_create_user_command("CleanList", function(opts)

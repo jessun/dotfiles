@@ -2,11 +2,11 @@ local function blink_theme()
 	local set_hl = vim.api.nvim_set_hl
 	local nord = require("utils.nord")
 	-- 菜单与文档背景
-	set_hl(0, "BlinkCmpMenu", { fg = nord.base.fg, bg = nord.nord3 })
-	set_hl(0, "BlinkCmpDoc", { fg = nord.base.fg, bg = nord.nord3 })
-	set_hl(0, "BlinkCmpSource", { fg = nord.base.fg, bg = nord.nord3 })
-	set_hl(0, "BlinkCmpLabelDetail", { fg = nord.base.fg, bg = nord.nord3 })
-	set_hl(0, "BlinkCmpLabelDescription", { fg = nord.base.fg, bg = nord.nord3 })
+	set_hl(0, "BlinkCmpMenu", { fg = nord.fg, bg = nord.nord2 })
+	set_hl(0, "BlinkCmpDoc", { fg = nord.fg, bg = nord.nord2 })
+	set_hl(0, "BlinkCmpSource", { fg = nord.fg, bg = nord.nord2 })
+	set_hl(0, "BlinkCmpLabelDetail", { fg = nord.fg, bg = nord.nord2 })
+	set_hl(0, "BlinkCmpLabelDescription", { fg = nord.fg, bg = nord.nord2 })
 
 	-- 选中项 (橙色高亮)
 	set_hl(0, "BlinkCmpMenuSelection", {
@@ -49,7 +49,7 @@ local function blink_theme()
 		TypeParameter = nord.accents.purple,
 
 		-- 文本与文件 (Gray / Blue)
-		Text = nord.base.comment, -- Nord3 (灰)
+		Text = nord.accents.blue, -- Nord3 (灰)
 		File = nord.accents.blue,
 		Folder = nord.accents.blue,
 
