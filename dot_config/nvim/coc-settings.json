@@ -36,6 +36,7 @@
     "suggest.defaultSortMethod": "alphabetical",
     "suggest.selection": "recentlyUsedByPrefix",
     "suggest.triggerAfterInsertEnter": true,
+    "snippet.statusText": "Snippet",
     "suggest.completionItemKindLabels": {
         "text": "Text",
         "method": "Method",
