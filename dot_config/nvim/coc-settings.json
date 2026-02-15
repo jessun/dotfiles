@@ -71,7 +71,6 @@
     "diagnostic.infoSign": "I",
     "diagnostic.warningSign": "W",
     "dialog.rounded": false,
-    "explorer.file.showHiddenFiles": true,
     "extensions.updateCheck": "daily",
     "git.enableGutters": false,
     "git.addGBlameToVirtualText": false,
@@ -81,6 +80,14 @@
     "git.removedSign.text": "█",
     "git.signPriority": 0,
     "git.topRemovedSign.text": "█",
+    "explorer.file.showHiddenFiles": true,
+    "explorer.keyMappings.global": {
+        "w": [
+            "expandable?",
+            "expand",
+            "open"
+        ]
+    },
     "cSpell.allowCompoundWords": true,
     "cSpell.ignorePaths": [
         "node_modules",
