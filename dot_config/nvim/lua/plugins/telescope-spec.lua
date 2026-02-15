@@ -1,3 +1,5 @@
+local actions = require("telescope.actions")
+
 return {
 	"nvim-telescope/telescope.nvim",
 	cond = not vim.g.enable_coc,
@@ -17,6 +19,17 @@ return {
 	-- opts 会自动传递给 require("telescope").setup(opts)
 	opts = {
 		defaults = {
+			mappings = {
+				i = {
+					-- 在插入模式下，按 Ctrl+d 关闭当前选中或多选的 buffer
+					["<C-d>"] = actions.delete_buffer,
+				},
+				n = {
+					-- 在正常模式下，按 d or dd or Ctrl+d 关闭
+					["dd"] = actions.delete_buffer,
+					["<C-d>"] = actions.delete_buffer,
+				},
+			},
 			border = true,
 			borderchars = { " ", "│", " ", " ", " ", " ", " ", " " },
 			-- borderchars             = {"─", "│", "─", "│", "┌", "┐", "┘", "└"},
