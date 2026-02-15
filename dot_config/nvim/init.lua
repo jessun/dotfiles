@@ -59,8 +59,6 @@ require("theme")
 -- Plugins and plugin settings
 -- Source: lazy.nvim
 require("config")
-
-require("dev.castor")
 -- ============================================================================
 -- End of file
 -- ============================================================================
