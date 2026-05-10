@@ -70,6 +70,13 @@
     "diagnostic.warningSign": "W",
     "dialog.rounded": false,
     "explorer.file.showHiddenFiles": true,
+    "explorer.keyMappings.global": {
+        "w": [
+            "expandable?",
+            "expand",
+            "open"
+        ]
+    },
     "extensions.updateCheck": "daily",
     "git.enableGutters": false,
     "git.addGBlameToVirtualText": false,

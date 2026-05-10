@@ -224,6 +224,8 @@ xmap <silent> <leader>cb :CocList --auto-preview buffers<CR>
 nmap <silent> <leader>cb :CocList --auto-preview buffers<CR>
 xmap <silent> <leader>co :CocList --auto-preview outline<CR>
 nmap <silent> <leader>co :CocList --auto-preview outline<CR>
+xmap <silent> <F3> :CocList --auto-preview outline<CR>
+nmap <silent> <F3> :CocList --auto-preview outline<CR>
 xmap <silent> <leader>cs  <Plug>(coc-codeaction-selected)
 nmap <silent> <leader>cs  <Plug>(coc-codeaction-selected)
 xmap <leader>ca  <Plug>(coc-codeaction)
@@ -290,7 +292,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " --- Keymaps ---
 " <F2>: Show full path and copy to system clipboard
-nnoremap <silent> <F2> :let @+ = expand("%:p") <bar> echo "Copied path: " . expand("%:p")<CR>
+nnoremap <silent> <F4> :let @+ = expand("%:p") <bar> echo "Copied path: " . expand("%:p")<CR>
 nnoremap <silent> <BS> :nohlsearch<cr>
 " Buffer Switching (Alternate File)
 nnoremap \ <C-^>
@@ -334,7 +336,7 @@ endfunction
 "A: Create kep-mapping like:
 
 noremap <silent><nowait> <leader>e <Cmd>CocCommand explorer<CR>
-noremap <silent><nowait> <F3> <Cmd>CocCommand explorer<CR>
+noremap <silent><nowait> <F2> <Cmd>CocCommand explorer<CR>
 noremap <silent><nowait> <leader>b <Cmd>CocList --auto-preview buffers<CR>
 noremap <silent><nowait> <leader>d <Cmd>CocList --auto-preview diagnostics<CR>
 noremap <silent><nowait> <leader><leader> :<C-u>CocList --auto-preview files<CR>
