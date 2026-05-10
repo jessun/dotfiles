@@ -72,6 +72,7 @@ end
 return {
 	"saghen/blink.cmp",
 	cond = vim.g.enable_blink,
+	version = "1.*",
 	build = "cargo build --release",
 	dependencies = {
 		"Kaiser-Yang/blink-cmp-avante",
