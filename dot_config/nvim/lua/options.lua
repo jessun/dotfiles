@@ -6,6 +6,10 @@
 -- -----------------------------------------------------------------------------
 
 local opt = vim.opt
+local keyset = vim.keymap.set
+local function opts(text)
+	return { silent = true, noremap = true, desc = text }
+end
 
 -- ============================================================================
 -- 1. XDG Path Isolation
@@ -106,6 +110,11 @@ vim.diagnostic.config({
 		end,
 	},
 })
+
+keyset("n", "<F6>", function()
+	vim.diagnostic.open_float()
+end, opts("show diagnostic info"))
+
 -- ============================================================================
 -- End of file
 -- ============================================================================
